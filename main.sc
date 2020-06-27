@@ -10,6 +10,9 @@ enum DefinitionException plain
     UNEXPECTED_ARGUMENT
     DEPENDS_ON_UNKNOWN_TYPE
 
+fn builtin-type? (T)
+    (T < integer) or (T < real)
+
 global known-typenames : (Map type Symbol)
 global defined-types : (Map type Symbol)
 global anonymous-types : (Array type)
@@ -56,7 +59,7 @@ fn gen-type-definition (T)
                         else
                             report T
                             raise DefinitionException.UNEXPECTED_ARGUMENT
-                    if (storage < tuple)
+                    if (not (builtin-type? T))
                         raise DefinitionException.DEPENDS_ON_UNKNOWN_TYPE
                     interpolate "(${k} = ${this-function eT})"
             ")"
