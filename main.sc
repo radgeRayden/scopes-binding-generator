@@ -185,9 +185,70 @@ io-write!
             static-if (lhs == Closure)
                 inline (self)
                     imply self (storageof rhs)
+
+# first pass: typedefs to pointers
 for k v in known-typenames
     let T = (k as type)
     let name = (v as Symbol)
+    if (('superof T) == pointer)
+        try
+            io-write!
+                interpolate
+                    """"'set-plain-storage ${name}
+                            ${gen-type-definition T}
+            'set defined-types T name
+        except (ex)
+            if (ex == DefinitionException.UNEXPECTED_ARGUMENT)
+                error "wrong argument"
+            else
+                continue;
+    else
+        continue;
+
+# then enums
+for k v in known-typenames
+    let T = (k as type)
+    let name = (v as Symbol)
+    if (('superof T) == CEnum)
+        try
+            io-write!
+                interpolate
+                    """"'set-plain-storage ${name}
+                            ${gen-type-definition T}
+            'set defined-types T name
+        except (ex)
+            if (ex == DefinitionException.UNEXPECTED_ARGUMENT)
+                error "wrong argument"
+            else
+                continue;
+    else
+        continue;
+
+print "run-stage;"
+for k v in known-typenames
+    let T = (k as type)
+    let name = (v as Symbol)
+    if (('superof T) == CEnum)
+        for k v in ('symbols T)
+            let match? start end = ('match? "^[0-9]+" (tostring v))
+            if match?
+                let fieldn = (lslice (tostring v) end)
+                print
+                    interpolate "'set-symbol ${name} '${k} (bitcast ${fieldn} ${name})"
+            else
+                error "unknown symbol in enum"
+print "run-stage;"
+
+
+for k v in known-typenames
+    let T = (k as type)
+    let name = (v as Symbol)
+    try
+        'get defined-types T
+        continue;
+    else
+        ;
+
     if ('opaque? T)
         'set defined-types T name
         continue;
@@ -213,6 +274,8 @@ for k v in known-typenames
             continue;
 
 for k v in header.extern
+    if ('match? filter (k as Symbol as string))
+        continue;
     k as:= Symbol
     let T = ('element@ ('typeof v) 0)
     try
