@@ -45,11 +45,13 @@ enum StorageKind
 struct TypeStorage
     name : Symbol
     storage : StorageKind
+    inline __copy (self)
+        this-type self.name (copy self.storage)
 
 struct HeaderBindings
     typenames : (Map Symbol hash)
     typename-lookup : (Map hash Symbol)
-    defined-types : (Map Symbol hash)
+    defined-types : (Map Symbol TypeStorage)
     # topologically sorted array of storage types
     storages : (Array TypeStorage)
 
@@ -58,18 +60,32 @@ fn type-builtin? (T)
     va-lfold false
         inline (__ current computed)
             computed or (T == current)
-        _ i8 u8 i16 u16 i32 u32 i64 u64 f16 f32 f64
+        _ i8 u8 i16 u16 i32 u32 i64 u64 f16 f32 f64 void
+
+fn get-typename (T bindings)
+    if (type-builtin? T)
+        tostring T
+    else
+        try
+            tostring
+                'get bindings.typename-lookup (hash T)
+        else
+            "Unknown"
 
 fn walk-type (sym T bindings)
     try
         # have we defined this already?
         # we must lookup by symbol because a lot of typedefs are aliases to
         # builtin types.
-        'get bindings.defined-types sym
-        return;
+        return
+            copy
+                'get bindings.defined-types sym
     else
         # go on, then
         ;
+    if (type-builtin? T)
+        return
+            TypeStorage (Symbol (tostring T)) (StorageKind.Native (tostring T))
 
     let super = ('superof T)
     let stkind =
@@ -99,8 +115,14 @@ fn walk-type (sym T bindings)
             let innerT = ('element@ T 0)
             if (type-builtin? innerT)
                 StorageKind.Pointer (tostring innerT)
-            elseif (('superof innerT) == function)
-                StorageKind.Opaque;
+            elseif ('function-pointer? T)
+                let retT = ('return-type innerT)
+                let farglist = (list (get-typename retT bindings))
+                StorageKind.Function
+                    fold (args = farglist) for el in ('elements innerT)
+                        el as:= type
+                        args .. (list (get-typename el bindings))
+
             else
                 let tname =
                     try
@@ -110,10 +132,15 @@ fn walk-type (sym T bindings)
                 StorageKind.Pointer (tostring tname)
         default
             StorageKind.Opaque;
-    'emplace-append bindings.storages
-        name = sym
-        storage = stkind
-    'set bindings.defined-types sym (hash T)
+
+    let TS =
+        TypeStorage
+            name = sym
+            storage = stkind
+
+    'set bindings.defined-types sym (copy TS)
+    'append bindings.storages (copy TS)
+    TS
 
 fn import-bindings (includestr opt)
     sc_import_c "bindings.c" includestr opt (Scope)
