@@ -30,30 +30,46 @@ using import itertools
 # ================================================================================
 
 enum StorageKind
-    Pointer = none
+    Pointer
     Composite : Scope
     Native : string
+    Opaque
 
 struct TypeStorage
     name : Symbol
     storage : StorageKind
 
 struct HeaderBindings
-    typenames : (Map Symbol type)
+    typenames : (Map hash Symbol)
+    defined-types : (Map hash StorageKind)
+    # topologically sorted array of storage types
     storages : (Array TypeStorage)
+
+fn type-builtin? (T)
+    """"Test whether T is one of the default language types.
+    va-lfold true
+        inline (__ current computed)
+            computed and (T == current)
+        _ i8 u8 i16 u16 i32 u32 i64 u64 f16 f32 f64
 
 fn walk-type (sym T bindings)
     let storages = bindings.storages
+    # try
+    #     # have we defined this already?
+    #     'get bindings.defined-types sym
+    #     return;
+    # else
+    #     # go on, then
+    #     ;
     # native type?
     let super = ('superof T)
     match super
     case (or real integer)
-        'emplace-append storages
-            sym
-            (StorageKind.Native (tostring ('storageof T)))
+    case CStruct
         ;
     default
         ;
+
 
 fn import-bindings (includestr opt)
     sc_import_c "bindings.c" includestr opt (Scope)
@@ -67,11 +83,10 @@ fn gen-bindings-object (includestr opt filter)
                 k as:= Symbol
                 let match? start end = ('match? filter (k as string))
                 if match?
-                    'set bindings.typenames k (v as type)
+                    let T = (v as type)
+                    'set bindings.typenames (hash T) (k as Symbol)
+                    walk-type (k as Symbol) T bindings
         _ 'typedef 'enum 'struct 'union
-
-    for k v in bindings.typenames
-        walk-type (k as Symbol) (v as type) bindings
 
     bindings
 
