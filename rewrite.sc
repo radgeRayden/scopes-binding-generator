@@ -30,17 +30,24 @@ using import itertools
 # ================================================================================
 
 enum StorageKind
-    # pointer to builtin type
-    Pointer : string
+    Pointer : (pointer this-type)
     Composite : list
     Native : string
-    Opaque
     Function : list
+    TypeReference : string
+    Opaque
 
     inline __copy (self)
         'apply self
             inline (T ...)
                 T ...
+
+    inline __drop (self)
+        dispatch self
+        case Pointer (ptr)
+            free ptr
+        default
+            ;
 
 struct TypeStorage
     name : Symbol
@@ -77,9 +84,11 @@ fn walk-type (sym T bindings)
         # have we defined this already?
         # we must lookup by symbol because a lot of typedefs are aliases to
         # builtin types.
+        let defined =
+            'get bindings.defined-types sym
         return
-            copy
-                'get bindings.defined-types sym
+            TypeStorage defined.name
+                StorageKind.TypeReference (tostring defined.name)
     else
         # go on, then
         ;
@@ -90,6 +99,10 @@ fn walk-type (sym T bindings)
     let super = ('superof T)
     let stkind =
         match super
+        case function
+            # functions are never defined outside of pointers, so we can skip adding
+            # it to our list. However we might still want to add its dependencies.
+            StorageKind.Opaque;
         case (or real integer)
             if (type-builtin? T)
                 StorageKind.Native (tostring ('storageof T))
@@ -113,23 +126,25 @@ fn walk-type (sym T bindings)
                 StorageKind.Composite (list)
         case pointer
             let innerT = ('element@ T 0)
-            if (type-builtin? innerT)
-                StorageKind.Pointer (tostring innerT)
-            elseif ('function-pointer? T)
-                let retT = ('return-type innerT)
-                let farglist = (list (get-typename retT bindings))
-                StorageKind.Function
-                    fold (args = farglist) for el in ('elements innerT)
-                        el as:= type
-                        args .. (list (get-typename el bindings))
+            copy
+                (this-function (Symbol (get-typename innerT bindings)) innerT bindings) . storage
+            # if (type-builtin? innerT)
+            #     StorageKind.Pointer (tostring innerT)
+            # elseif ('function-pointer? T)
+            #     let retT = ('return-type innerT)
+            #     let farglist = (list (get-typename retT bindings))
+            #     StorageKind.Function
+            #         fold (args = farglist) for el in ('elements innerT)
+            #             el as:= type
+            #             args .. (list (get-typename el bindings))
 
-            else
-                let tname =
-                    try
-                        'get bindings.typename-lookup (hash innerT)
-                    except (ex)
-                        error "opaque pointer to unknown typename"
-                StorageKind.Pointer (tostring tname)
+            # else
+            #     let tname =
+            #         try
+            #             'get bindings.typename-lookup (hash innerT)
+            #         except (ex)
+            #             error "opaque pointer to unknown typename"
+            #     StorageKind.Pointer (tostring tname)
         default
             StorageKind.Opaque;
 
