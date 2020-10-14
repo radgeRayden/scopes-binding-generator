@@ -19,6 +19,14 @@ using import itertools
     It's important that the storages agree with the typenames, so we don't have duplicates
     or that it's impossible to find the type they're referencing. Also we need to account for
     anonymous structs / unions, and give them unique identifiers.
+
+    We sort types by recursively introspecting them and defining types we haven't seen
+    yet as we go. This means we need both an ordered storage definition array and a lookup map
+    (so we can check whether the type has been defined or not). Again it is important
+    that we properly define this map, as we need the type identifier to be unique.
+    The best way to achieve this is by using the type itself as recognized by the compiler.
+    Types are represented by opaque pointers. We can directly store the hash of the type,
+    to make serialization easier.
 # ================================================================================
 
 enum StorageKind
