@@ -6,5 +6,8 @@ let bindings =
         '()
         "^WGPU"
 
-for k v in bindings.typenames
-    print k
+for el in bindings.storages
+    print el.name
+        'apply el.storage
+            (T self) -> (repr self)
+none
