@@ -67,7 +67,7 @@ fn walk-type (sym T bindings)
     else
         # go on, then
         ;
-    # native type?
+
     let super = ('superof T)
     let stkind =
         match super
@@ -77,6 +77,10 @@ fn walk-type (sym T bindings)
             else
                 StorageKind.Opaque;
         case CStruct
+            StorageKind.Opaque;
+        case CUnion
+            StorageKind.Opaque;
+        case CEnum
             StorageKind.Opaque;
         default
             StorageKind.Opaque;
