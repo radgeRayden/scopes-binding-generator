@@ -30,10 +30,12 @@ using import itertools
 # ================================================================================
 
 enum StorageKind
-    Pointer
-    Composite : Scope
+    # pointer to builtin type
+    Pointer : string
+    Composite : list
     Native : string
     Opaque
+    Function : list
 
     inline __copy (self)
         'apply self
@@ -46,6 +48,7 @@ struct TypeStorage
 
 struct HeaderBindings
     typenames : (Map Symbol hash)
+    typename-lookup : (Map hash Symbol)
     defined-types : (Map Symbol hash)
     # topologically sorted array of storage types
     storages : (Array TypeStorage)
@@ -75,13 +78,36 @@ fn walk-type (sym T bindings)
             if (type-builtin? T)
                 StorageKind.Native (tostring ('storageof T))
             else
-                StorageKind.Opaque;
+                # honestly not sure what to do here. I suspect this branch never hits.
+                error "unexpected typedef aliasing"
         case CStruct
-            StorageKind.Opaque;
+            if ('opaque? T)
+                StorageKind.Opaque;
+            else
+                StorageKind.Composite (list)
         case CUnion
-            StorageKind.Opaque;
+            if ('opaque? T)
+                StorageKind.Opaque;
+            else
+                StorageKind.Composite (list)
         case CEnum
-            StorageKind.Opaque;
+            if ('opaque? T)
+                StorageKind.Opaque;
+            else
+                StorageKind.Composite (list)
+        case pointer
+            let innerT = ('element@ T 0)
+            if (type-builtin? innerT)
+                StorageKind.Pointer (tostring innerT)
+            elseif (('superof innerT) == function)
+                StorageKind.Opaque;
+            else
+                let tname =
+                    try
+                        'get bindings.typename-lookup (hash innerT)
+                    except (ex)
+                        error "opaque pointer to unknown typename"
+                StorageKind.Pointer (tostring tname)
         default
             StorageKind.Opaque;
     'emplace-append bindings.storages
@@ -105,6 +131,7 @@ fn gen-bindings-object (includestr opt filter)
                 if match?
                     let T = (v as type)
                     'set bindings.typenames (k as Symbol) (hash T)
+                    'set bindings.typename-lookup (hash T) (k as Symbol)
         _ 'typedef 'enum 'struct 'union
     # recursively define types
     va-map
