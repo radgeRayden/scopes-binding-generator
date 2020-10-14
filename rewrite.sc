@@ -35,41 +35,55 @@ enum StorageKind
     Native : string
     Opaque
 
+    inline __copy (self)
+        'apply self
+            inline (T ...)
+                T ...
+
 struct TypeStorage
     name : Symbol
     storage : StorageKind
 
 struct HeaderBindings
     typenames : (Map hash Symbol)
-    defined-types : (Map hash StorageKind)
+    defined-types : (Map Symbol hash)
     # topologically sorted array of storage types
     storages : (Array TypeStorage)
 
 fn type-builtin? (T)
     """"Test whether T is one of the default language types.
-    va-lfold true
+    va-lfold false
         inline (__ current computed)
-            computed and (T == current)
+            computed or (T == current)
         _ i8 u8 i16 u16 i32 u32 i64 u64 f16 f32 f64
 
 fn walk-type (sym T bindings)
-    let storages = bindings.storages
-    # try
-    #     # have we defined this already?
-    #     'get bindings.defined-types sym
-    #     return;
-    # else
-    #     # go on, then
-    #     ;
+    try
+        # have we defined this already?
+        # we must lookup by symbol because a lot of typedefs are aliases to
+        # builtin types.
+        'get bindings.defined-types sym
+        return;
+    else
+        # go on, then
+        ;
     # native type?
     let super = ('superof T)
-    match super
-    case (or real integer)
-    case CStruct
-        ;
-    default
-        ;
-
+    let stkind =
+        match super
+        case (or real integer)
+            if (type-builtin? T)
+                StorageKind.Native (tostring ('storageof T))
+            else
+                StorageKind.Opaque;
+        case CStruct
+            StorageKind.Opaque;
+        default
+            StorageKind.Opaque;
+    'emplace-append bindings.storages
+        name = sym
+        storage = stkind
+    'set bindings.defined-types sym (hash T)
 
 fn import-bindings (includestr opt)
     sc_import_c "bindings.c" includestr opt (Scope)
@@ -77,6 +91,8 @@ fn import-bindings (includestr opt)
 fn gen-bindings-object (includestr opt filter)
     local bindings = (HeaderBindings)
     let header = (import-bindings includestr opt)
+
+    # collect typenames
     va-map
         inline (subscope)
             for k v in (('@ header subscope) as Scope)
@@ -85,6 +101,15 @@ fn gen-bindings-object (includestr opt filter)
                 if match?
                     let T = (v as type)
                     'set bindings.typenames (hash T) (k as Symbol)
+        _ 'typedef 'enum 'struct 'union
+    # recursively define types
+    va-map
+        inline (subscope)
+            for k v in (('@ header subscope) as Scope)
+                k as:= Symbol
+                let match? start end = ('match? filter (k as string))
+                if match?
+                    let T = (v as type)
                     walk-type (k as Symbol) T bindings
         _ 'typedef 'enum 'struct 'union
 
