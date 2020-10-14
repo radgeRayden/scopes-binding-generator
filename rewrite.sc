@@ -45,7 +45,7 @@ struct TypeStorage
     storage : StorageKind
 
 struct HeaderBindings
-    typenames : (Map hash Symbol)
+    typenames : (Map Symbol hash)
     defined-types : (Map Symbol hash)
     # topologically sorted array of storage types
     storages : (Array TypeStorage)
@@ -104,7 +104,7 @@ fn gen-bindings-object (includestr opt filter)
                 let match? start end = ('match? filter (k as string))
                 if match?
                     let T = (v as type)
-                    'set bindings.typenames (hash T) (k as Symbol)
+                    'set bindings.typenames (k as Symbol) (hash T)
         _ 'typedef 'enum 'struct 'union
     # recursively define types
     va-map
