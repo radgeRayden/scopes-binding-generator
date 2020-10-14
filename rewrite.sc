@@ -7,6 +7,20 @@ import .cjson
 using import radlib.stringtools
 using import itertools
 
+# WORKFLOW
+# ================================================================================
+    In order to generate bindings, we need:
+    - a full list of typenames, so they can be forward declared and
+    pointers can refer to them even in the case of circular dependencies.
+    - a topologically sorted array of types with their storages, or
+    an indication that they're opaque.
+    - a list of function interfaces.
+
+    It's important that the storages agree with the typenames, so we don't have duplicates
+    or that it's impossible to find the type they're referencing. Also we need to account for
+    anonymous structs / unions, and give them unique identifiers.
+# ================================================================================
+
 enum StorageKind
     Pointer = none
     Composite : Scope
