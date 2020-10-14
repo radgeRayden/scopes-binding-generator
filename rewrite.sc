@@ -45,6 +45,7 @@ enum StorageKind
     inline __drop (self)
         dispatch self
         case Pointer (ptr)
+            # FIXME: if the pointer is nested, we leak
             free ptr
         default
             ;
