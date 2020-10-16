@@ -162,14 +162,9 @@ struct HeaderBindings
                 TypeStorage sym
                     StorageKind.Enum (deref fields)
             case CUnion
+                error "not yet implemented"
             default
                 error (.. "unknown type kind: " (tostring T) " < " (tostring super))
-
-
-            TypeStorage 'Unknown
-                StorageKind.TypeReference
-                    'Unknown
-
             finish ::
         TS := (Rc.wrap TS)
         'append self.storages (copy TS)
