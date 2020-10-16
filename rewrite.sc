@@ -136,6 +136,12 @@ fn gen-bindings-object (includestr opt filter)
     local bindings = (HeaderBindings)
     let header = (import-bindings includestr opt)
 
+    # insert builtin types first as references
+    va-map
+        inline (T)
+            'add-typename bindings (Symbol (tostring T)) T
+        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64
+
     # collect typenames
     va-map
         inline (subscope)
