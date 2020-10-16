@@ -51,7 +51,7 @@ struct TypeStorage
     name : Symbol
     storage : StorageKind
 
-struct HeaderBindings
+struct HeaderTypeInfo
     typenames : (Map Symbol hash)
     typename-lookup : (Map hash Symbol)
     # topologically sorted array of storage types
@@ -170,7 +170,7 @@ struct HeaderBindings
         'set self.storage-lookup TS.name (copy TS)
         ;
 
-fn gen-bindings-object (includestr opt filter)
+fn gen-header-type-info (includestr opt filter)
     local bindings = (HeaderBindings)
     let header =
         sc_import_c "bindings.c" includestr opt (Scope)
@@ -208,5 +208,5 @@ fn gen-bindings-object (includestr opt filter)
     bindings
 
 do
-    let emit-bindings-JSON emit-bindings-stdout gen-bindings-object
+    let gen-header-type-info
     locals;
