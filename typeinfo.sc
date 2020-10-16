@@ -34,7 +34,7 @@ fn type-builtin? (T)
     va-lfold false
         inline (__ curT result)
             result or (T == curT)
-        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64 bool
+        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64 bool void
 
 enum StorageKind
     Pointer : (mutable? = bool) (T = Symbol)
@@ -182,7 +182,7 @@ fn gen-header-type-info (includestr opt filter)
             'set bindings.storage-lookup sym
                 Rc.wrap
                     TypeStorage sym (StorageKind.TypeReference sym)
-        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64 bool
+        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64 bool void
 
     # collect typenames
     va-map
