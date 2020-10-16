@@ -81,8 +81,7 @@ struct HeaderBindings
             # have we defined this already?
             # we must lookup by symbol because a lot of typedefs are aliases to
             # builtin types.
-            let defined =
-                'get self.storage-lookup sym
+            'get self.storage-lookup sym
             return;
         else
             # go on, then
@@ -107,11 +106,32 @@ struct HeaderBindings
                         StorageKind.FunctionPointer
                             retT = ret-sym
                             params = (deref params)
-           
+
+            if ('pointer? T)
+                let innerT = ('element@ T 0)
+                let innerT-sym = ('get-typename self innerT)
+                this-function self innerT-sym innerT
+                merge finish
+                    TypeStorage sym
+                        StorageKind.Pointer ('writable? T) innerT-sym
+
             if ('opaque? T)
                 merge finish
                     TypeStorage sym
                         StorageKind.TypeReference sym
+
+            if (type-builtin? T)
+                merge finish
+                    TypeStorage sym
+                        StorageKind.TypeReference (Symbol (tostring T))
+            let super = ('superof T)
+            match super
+            case CStruct
+            case CEnum
+            case CUnion
+            default
+                error (.. "unknown type kind: " (tostring T) " < " (tostring super))
+
 
             TypeStorage 'Unknown
                 StorageKind.TypeReference
