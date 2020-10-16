@@ -29,6 +29,12 @@ using import itertools
     to make serialization easier.
 # ================================================================================
 
+fn type-builtin? (T)
+    va-lfold false
+        inline (__ curT result)
+            result or (T == curT)
+        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64 bool
+
 enum StorageKind
     Pointer : (mutable? = bool) (T = Symbol)
     FunctionPointer : (retT = Symbol) (args = (Array Symbol))
@@ -50,6 +56,18 @@ struct HeaderBindings
     storages : (Array TypeStorage)
     # easy lookup, has to be set whenever storages is appended.
     storage-lookup : (Map Symbol TypeStorage)
+
+    fn get-typename (self T)
+        # prefer to use builtin typenames when possible, otherwise
+        # it'll just use the last defined alias, which isn't good.
+        if (type-builtin? T)
+            tostring T
+        else
+            try
+                'get self.typename-lookup (hash T)
+            else
+                # FIXME: generate typenames when necessary
+                'Unknown
 
     fn add-typename (self sym T)
         'set self.typenames sym (hash T)
@@ -140,7 +158,7 @@ fn gen-bindings-object (includestr opt filter)
     va-map
         inline (T)
             'add-typename bindings (Symbol (tostring T)) T
-        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64
+        _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64 bool
 
     # collect typenames
     va-map
