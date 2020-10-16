@@ -30,31 +30,16 @@ using import itertools
 # ================================================================================
 
 enum StorageKind
-    Pointer : (pointer this-type)
-    Composite : list
-    Native : string
-    Function : list
-    TypeReference : string
-    Opaque
-
-    inline __copy (self)
-        'apply self
-            inline (T ...)
-                T ...
-
-    inline __drop (self)
-        dispatch self
-        case Pointer (ptr)
-            # FIXME: if the pointer is nested, we leak
-            free ptr
-        default
-            ;
+    Pointer : (mutable? = bool) (T = Symbol)
+    FunctionPointer : (retT = Symbol) (args = (Array Symbol))
+    Tuple : (Array (tuple (field-name = Symbol) (T = Symbol)))
+    Enum : (Array (tuple (field-name = Symbol) (constant = u64)))
+    Union : (Array (tuple (variant = Symbol) (T = Symbol)))
+    TypeReference : Symbol
 
 struct TypeStorage
     name : Symbol
     storage : StorageKind
-    inline __copy (self)
-        this-type self.name (copy self.storage)
 
 struct HeaderBindings
     typenames : (Map Symbol hash)
