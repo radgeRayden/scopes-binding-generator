@@ -42,9 +42,8 @@ enum StorageKind
     Tuple : (Array (tuple (field-name = Symbol) (T = Symbol)))
     Enum : (Array (tuple (field-name = Symbol) (constant = i32)))
     Union : (Array (tuple (variant = Symbol) (T = Symbol)))
-    # can be used for opaque, or builtin types, or simply to avoid redefining types
-    # where necessary.
     TypeReference : Symbol
+    Opaque
     # to detect cycles, we append the type initially in a pending state.
     Pending
 
@@ -126,7 +125,7 @@ struct HeaderBindings
             if ('opaque? T)
                 merge finish
                     TypeStorage sym
-                        StorageKind.TypeReference sym
+                        StorageKind.Opaque;
 
             if (type-builtin? T)
                 merge finish
