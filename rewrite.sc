@@ -37,7 +37,7 @@ fn type-builtin? (T)
 
 enum StorageKind
     Pointer : (mutable? = bool) (T = Symbol)
-    FunctionPointer : (retT = Symbol) (args = (Array Symbol))
+    FunctionPointer : (retT = Symbol) (params = (Array Symbol))
     Tuple : (Array (tuple (field-name = Symbol) (T = Symbol)))
     Enum : (Array (tuple (field-name = Symbol) (constant = u64)))
     Union : (Array (tuple (variant = Symbol) (T = Symbol)))
@@ -61,7 +61,7 @@ struct HeaderBindings
         # prefer to use builtin typenames when possible, otherwise
         # it'll just use the last defined alias, which isn't good.
         if (type-builtin? T)
-            tostring T
+            Symbol (tostring T)
         else
             try
                 'get self.typename-lookup (hash T)
@@ -82,70 +82,40 @@ struct HeaderBindings
             # builtin types.
             let defined =
                 'get self.storage-lookup sym
-            return
-                TypeStorage defined.name
-                    StorageKind.TypeReference defined.name
+            return;
+                # TypeStorage defined.name
+                #     StorageKind.TypeReference defined.name
         else
             # go on, then
             ;
-        # let super = ('superof T)
-        # let stkind =
-        #     match super
-        #     case function
-        #         # functions are never defined outside of pointers, so we can skip adding
-        #         # it to our list. However we might still want to add its dependencies.
-        #         local args : (Array StorageKind)
-        #         'append args
-        #             copy
-        #                 (this-function (get-typename T bindings) ('return-type T) bindings) . storage
-        #         for el in ('elements T)
-        #             'append args
-        #                 copy
-        #                     (this-function (get-typename el bindings) el bindings) . storage
-        #         return
-        #             TypeStorage 'Unknown (StorageKind.Function (Rc.wrap (deref args)))
-        #     case (or real integer)
-        #         if (type-builtin? T)
-        #             StorageKind.Native (Symbol (tostring ('storageof T)))
-        #         else
-        #             # honestly not sure what to do here. I suspect this branch never hits.
-        #             error "unexpected typedef aliasing"
-        #     case CStruct
-        #         StorageKind.Opaque;
-        #         # if ('opaque? T)
-        #         #     StorageKind.Opaque;
-        #         # else
-        #         #     StorageKind.Composite;
-        #     case CUnion
-        #         StorageKind.Opaque;
-        #         # if ('opaque? T)
-        #         #     StorageKind.Opaque;
-        #         # else
-        #         #     StorageKind.Composite;
-        #     case CEnum
-        #         StorageKind.Opaque;
-        #         # if ('opaque? T)
-        #         #     StorageKind.Opaque;
-        #         # else
-        #         #     StorageKind.Composite;
-        #     case pointer
-        #         let innerT = ('element@ T 0)
-        #         let newST =
-        #             copy
-        #                 (this-function (get-typename innerT bindings) innerT bindings) . storage
-        #         StorageKind.Pointer (Rc.wrap newST)
-        #     default
-        #         StorageKind.Opaque;
 
-        # let TS =
-        #     TypeStorage
-        #         name = sym
-        #         storage = stkind
+        let TS =
+            :: finish
+            if ('function-pointer? T)
+                # unwrap FP into `function', then get the return type
+                let f = ('element@ ('storageof T) 0)
+                let retT = ('return-type f)
+                let ret-sym = ('get-typename self retT)
+                this-function self ret-sym retT
 
-        # 'set bindings.defined-types sym (copy TS)
-        # 'append bindings.storages (copy TS)
-        # # if we got here, this is a type that can be referenced.
-        TypeStorage sym (StorageKind.TypeReference sym)
+                local params : (Array Symbol)
+                for param in ('elements f)
+                    let p-sym = ('get-typename self param)
+                    this-function self p-sym param
+                    'append params p-sym
+                merge finish
+                    TypeStorage sym
+                        StorageKind.FunctionPointer
+                            retT = ret-sym
+                            params = (deref params)
+            TypeStorage 'Unknown
+                StorageKind.TypeReference
+                    'Unknown
+
+            finish ::
+        'append self.storages TS
+        ;
+        # TypeStorage sym (StorageKind.TypeReference sym)
 
 fn import-bindings (includestr opt)
     sc_import_c "bindings.c" includestr opt (Scope)
