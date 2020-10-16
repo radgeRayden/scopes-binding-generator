@@ -171,7 +171,7 @@ struct HeaderTypeInfo
         ;
 
 fn gen-header-type-info (includestr opt filter)
-    local bindings = (HeaderBindings)
+    local bindings = (HeaderTypeInfo)
     let header =
         sc_import_c "bindings.c" includestr opt (Scope)
 
