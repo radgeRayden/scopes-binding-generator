@@ -2,6 +2,7 @@ using import struct
 using import Map
 using import Array
 using import enum
+using import Rc
 
 import .cjson
 using import radlib.stringtools
@@ -53,9 +54,9 @@ struct HeaderBindings
     typenames : (Map Symbol hash)
     typename-lookup : (Map hash Symbol)
     # topologically sorted array of storage types
-    storages : (Array TypeStorage)
+    storages : (Array (Rc TypeStorage))
     # easy lookup, has to be set whenever storages is appended.
-    storage-lookup : (Map Symbol TypeStorage)
+    storage-lookup : (Map Symbol (Rc TypeStorage))
 
     fn get-typename (self T)
         # prefer to use builtin typenames when possible, otherwise
@@ -83,8 +84,6 @@ struct HeaderBindings
             let defined =
                 'get self.storage-lookup sym
             return;
-                # TypeStorage defined.name
-                #     StorageKind.TypeReference defined.name
         else
             # go on, then
             ;
@@ -113,7 +112,9 @@ struct HeaderBindings
                     'Unknown
 
             finish ::
-        'append self.storages TS
+        TS := (Rc.wrap TS)
+        'append self.storages (copy TS)
+        'set self.storage-lookup TS.name (copy TS)
         ;
         # TypeStorage sym (StorageKind.TypeReference sym)
 
