@@ -45,6 +45,8 @@ enum StorageKind
     # can be used for opaque, or builtin types, or simply to avoid redefining types
     # where necessary.
     TypeReference : Symbol
+    # to detect cycles, we append the type initially in a pending state.
+    Pending
 
 struct TypeStorage
     name : Symbol
@@ -77,15 +79,21 @@ struct HeaderBindings
 
     fn add-storage (self sym T)
         raising Error
-        try
-            # have we defined this already?
-            # we must lookup by symbol because a lot of typedefs are aliases to
-            # builtin types.
-            'get self.storage-lookup sym
-            return;
-        else
-            # go on, then
-            ;
+        # have we defined this already?
+        # we must lookup by symbol because a lot of typedefs are aliases to
+        # builtin types.
+        if ('in? self.storage-lookup sym)
+            try
+                'get self.storage-lookup sym
+                return;
+            else
+                # go on, then
+                ;
+
+        'set self.storage-lookup sym
+            Rc.wrap
+                TypeStorage sym
+                    StorageKind.Pending;
 
         let TS =
             :: finish
