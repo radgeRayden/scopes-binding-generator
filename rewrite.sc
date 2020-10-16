@@ -170,12 +170,10 @@ struct HeaderBindings
         'set self.storage-lookup TS.name (copy TS)
         ;
 
-fn import-bindings (includestr opt)
-    sc_import_c "bindings.c" includestr opt (Scope)
-
 fn gen-bindings-object (includestr opt filter)
     local bindings = (HeaderBindings)
-    let header = (import-bindings includestr opt)
+    let header =
+        sc_import_c "bindings.c" includestr opt (Scope)
 
     # insert builtin types first as references
     va-map
@@ -208,15 +206,6 @@ fn gen-bindings-object (includestr opt filter)
         _ 'typedef 'enum 'struct 'union
 
     bindings
-
-fn emit-bindings-JSON (includestr opt filter)
-    let bindings = (cjson.CreateObject)
-    let typename-array = (cjson.CreateArray)
-    cjson.AddItemToObjectCS bindings "typenames" typename-array
-
-    bindings
-
-fn emit-bindings-stdout (includestr opt filter)
 
 do
     let emit-bindings-JSON emit-bindings-stdout gen-bindings-object
