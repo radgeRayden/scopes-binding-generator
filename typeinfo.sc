@@ -58,6 +58,7 @@ struct HeaderTypeInfo
     storages : (Array (Rc TypeStorage))
     # easy lookup, has to be set whenever storages is appended.
     storage-lookup : (Map Symbol (Rc TypeStorage))
+    functions : (Array TypeStorage)
 
     fn get-typename (self T)
         # prefer to use builtin typenames when possible, otherwise
@@ -170,6 +171,28 @@ struct HeaderTypeInfo
         'set self.storage-lookup TS.name (copy TS)
         ;
 
+    fn add-function (self sym T)
+        if (not ('function-pointer? T))
+            error f"type ${T} is not a function"
+
+        let f = ('element@ ('storageof T) 0)
+        let retT = ('return-type f)
+        # FIXME: deal with pointers properly
+        let ret-sym = ('get-typename self retT)
+
+        local params : (Array Symbol)
+        for param in ('elements f)
+            'append params ('get-typename self param)
+
+        'append self.functions
+            TypeStorage sym
+                StorageKind.FunctionPointer
+                    retT = ret-sym
+                    params = (deref params)
+        ;
+
+
+
 fn gen-header-type-info (includestr opt filter)
     local bindings = (HeaderTypeInfo)
     let header =
@@ -205,8 +228,15 @@ fn gen-header-type-info (includestr opt filter)
                     'add-storage bindings (k as Symbol) T
         _ 'typedef 'enum 'struct 'union
 
+    for k v in (('@ header 'extern) as Scope)
+        k as:= Symbol
+        let match? start end = ('match? filter (k as string))
+        if match?
+            let T = ('typeof v)
+            'add-function bindings k T
+
     bindings
 
 do
-    let gen-header-type-info
+    let gen-header-type-info TypeStorage StorageKind HeaderTypeInfo
     locals;
