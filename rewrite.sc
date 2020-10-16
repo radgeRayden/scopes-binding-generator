@@ -132,9 +132,22 @@ struct HeaderBindings
                 merge finish
                     TypeStorage sym
                         StorageKind.TypeReference (Symbol (tostring T))
+
             let super = ('superof T)
             match super
             case CStruct
+                let FieldArray = (elementof StorageKind.Tuple.Type 0)
+                local fields : FieldArray
+                for el in ('elements T)
+                    let name fT = ('keyof el)
+                    let fT-name = ('get-typename self fT)
+                    this-function self fT-name fT
+                    'append fields
+                        tupleof
+                            field-name = name
+                            T = fT-name
+                TypeStorage sym
+                    StorageKind.Tuple (deref fields)
             case CEnum
             case CUnion
             default
