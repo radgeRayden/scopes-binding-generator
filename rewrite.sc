@@ -35,6 +35,8 @@ enum StorageKind
     Tuple : (Array (tuple (field-name = Symbol) (T = Symbol)))
     Enum : (Array (tuple (field-name = Symbol) (constant = u64)))
     Union : (Array (tuple (variant = Symbol) (T = Symbol)))
+    # can be used for opaque, or builtin types, or simply to avoid redefining types
+    # where necessary.
     TypeReference : Symbol
 
 struct TypeStorage
@@ -44,104 +46,88 @@ struct TypeStorage
 struct HeaderBindings
     typenames : (Map Symbol hash)
     typename-lookup : (Map hash Symbol)
-    defined-types : (Map Symbol TypeStorage)
     # topologically sorted array of storage types
     storages : (Array TypeStorage)
+    # easy lookup, has to be set whenever storages is appended.
+    storage-lookup : (Map Symbol TypeStorage)
 
-fn type-builtin? (T)
-    """"Test whether T is one of the default language types.
-    va-lfold false
-        inline (__ current computed)
-            computed or (T == current)
-        _ i8 u8 i16 u16 i32 u32 i64 u64 f16 f32 f64 void
-
-fn get-typename (T bindings)
-    if (type-builtin? T)
-        tostring T
-    else
-        try
-            tostring
-                'get bindings.typename-lookup (hash T)
-        else
-            "Unknown"
-
-fn walk-type (sym T bindings)
-    try
-        # have we defined this already?
-        # we must lookup by symbol because a lot of typedefs are aliases to
-        # builtin types.
-        let defined =
-            'get bindings.defined-types sym
-        return
-            TypeStorage defined.name
-                StorageKind.TypeReference (tostring defined.name)
-    else
-        # go on, then
+    fn add-typename (self sym T)
+        'set self.typenames sym (hash T)
+        'set self.typename-lookup (hash T) sym
         ;
-    if (type-builtin? T)
-        return
-            TypeStorage (Symbol (tostring T)) (StorageKind.Native (tostring T))
 
-    let super = ('superof T)
-    let stkind =
-        match super
-        case function
-            # functions are never defined outside of pointers, so we can skip adding
-            # it to our list. However we might still want to add its dependencies.
-            StorageKind.Opaque;
-        case (or real integer)
-            if (type-builtin? T)
-                StorageKind.Native (tostring ('storageof T))
-            else
-                # honestly not sure what to do here. I suspect this branch never hits.
-                error "unexpected typedef aliasing"
-        case CStruct
-            if ('opaque? T)
-                StorageKind.Opaque;
-            else
-                StorageKind.Composite (list)
-        case CUnion
-            if ('opaque? T)
-                StorageKind.Opaque;
-            else
-                StorageKind.Composite (list)
-        case CEnum
-            if ('opaque? T)
-                StorageKind.Opaque;
-            else
-                StorageKind.Composite (list)
-        case pointer
-            let innerT = ('element@ T 0)
-            copy
-                (this-function (Symbol (get-typename innerT bindings)) innerT bindings) . storage
-            # if (type-builtin? innerT)
-            #     StorageKind.Pointer (tostring innerT)
-            # elseif ('function-pointer? T)
-            #     let retT = ('return-type innerT)
-            #     let farglist = (list (get-typename retT bindings))
-            #     StorageKind.Function
-            #         fold (args = farglist) for el in ('elements innerT)
-            #             el as:= type
-            #             args .. (list (get-typename el bindings))
+    fn add-storage (self sym T)
+        raising Error
+        try
+            # have we defined this already?
+            # we must lookup by symbol because a lot of typedefs are aliases to
+            # builtin types.
+            let defined =
+                'get self.storage-lookup sym
+            return
+                TypeStorage defined.name
+                    StorageKind.TypeReference defined.name
+        else
+            # go on, then
+            ;
+        # let super = ('superof T)
+        # let stkind =
+        #     match super
+        #     case function
+        #         # functions are never defined outside of pointers, so we can skip adding
+        #         # it to our list. However we might still want to add its dependencies.
+        #         local args : (Array StorageKind)
+        #         'append args
+        #             copy
+        #                 (this-function (get-typename T bindings) ('return-type T) bindings) . storage
+        #         for el in ('elements T)
+        #             'append args
+        #                 copy
+        #                     (this-function (get-typename el bindings) el bindings) . storage
+        #         return
+        #             TypeStorage 'Unknown (StorageKind.Function (Rc.wrap (deref args)))
+        #     case (or real integer)
+        #         if (type-builtin? T)
+        #             StorageKind.Native (Symbol (tostring ('storageof T)))
+        #         else
+        #             # honestly not sure what to do here. I suspect this branch never hits.
+        #             error "unexpected typedef aliasing"
+        #     case CStruct
+        #         StorageKind.Opaque;
+        #         # if ('opaque? T)
+        #         #     StorageKind.Opaque;
+        #         # else
+        #         #     StorageKind.Composite;
+        #     case CUnion
+        #         StorageKind.Opaque;
+        #         # if ('opaque? T)
+        #         #     StorageKind.Opaque;
+        #         # else
+        #         #     StorageKind.Composite;
+        #     case CEnum
+        #         StorageKind.Opaque;
+        #         # if ('opaque? T)
+        #         #     StorageKind.Opaque;
+        #         # else
+        #         #     StorageKind.Composite;
+        #     case pointer
+        #         let innerT = ('element@ T 0)
+        #         let newST =
+        #             copy
+        #                 (this-function (get-typename innerT bindings) innerT bindings) . storage
+        #         StorageKind.Pointer (Rc.wrap newST)
+        #     default
+        #         StorageKind.Opaque;
 
-            # else
-            #     let tname =
-            #         try
-            #             'get bindings.typename-lookup (hash innerT)
-            #         except (ex)
-            #             error "opaque pointer to unknown typename"
-            #     StorageKind.Pointer (tostring tname)
-        default
-            StorageKind.Opaque;
+        # let TS =
+        #     TypeStorage
+        #         name = sym
+        #         storage = stkind
 
-    let TS =
-        TypeStorage
-            name = sym
-            storage = stkind
-
-    'set bindings.defined-types sym (copy TS)
-    'append bindings.storages (copy TS)
-    TS
+        # 'set bindings.defined-types sym (copy TS)
+        # 'append bindings.storages (copy TS)
+        # # if we got here, this is a type that can be referenced.
+        TypeStorage sym (StorageKind.TypeReference sym)
 
 fn import-bindings (includestr opt)
     sc_import_c "bindings.c" includestr opt (Scope)
@@ -158,8 +144,7 @@ fn gen-bindings-object (includestr opt filter)
                 let match? start end = ('match? filter (k as string))
                 if match?
                     let T = (v as type)
-                    'set bindings.typenames (k as Symbol) (hash T)
-                    'set bindings.typename-lookup (hash T) (k as Symbol)
+                    'add-typename bindings k T
         _ 'typedef 'enum 'struct 'union
     # recursively define types
     va-map
@@ -169,7 +154,7 @@ fn gen-bindings-object (includestr opt filter)
                 let match? start end = ('match? filter (k as string))
                 if match?
                     let T = (v as type)
-                    walk-type (k as Symbol) T bindings
+                    'add-storage bindings (k as Symbol) T
         _ 'typedef 'enum 'struct 'union
 
     bindings
