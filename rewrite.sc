@@ -107,6 +107,12 @@ struct HeaderBindings
                         StorageKind.FunctionPointer
                             retT = ret-sym
                             params = (deref params)
+           
+            if ('opaque? T)
+                merge finish
+                    TypeStorage sym
+                        StorageKind.TypeReference sym
+
             TypeStorage 'Unknown
                 StorageKind.TypeReference
                     'Unknown
@@ -116,7 +122,6 @@ struct HeaderBindings
         'append self.storages (copy TS)
         'set self.storage-lookup TS.name (copy TS)
         ;
-        # TypeStorage sym (StorageKind.TypeReference sym)
 
 fn import-bindings (includestr opt)
     sc_import_c "bindings.c" includestr opt (Scope)
@@ -128,7 +133,10 @@ fn gen-bindings-object (includestr opt filter)
     # insert builtin types first as references
     va-map
         inline (T)
-            'add-typename bindings (Symbol (tostring T)) T
+            let sym = (Symbol (tostring T))
+            'set bindings.storage-lookup sym
+                Rc.wrap
+                    TypeStorage sym (StorageKind.TypeReference sym)
         _ i8 u8 i16 u16 i32 u32 i64 u64 f32 f64 bool
 
     # collect typenames
