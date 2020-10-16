@@ -153,11 +153,11 @@ struct HeaderTypeInfo
                 # FIXME: uncertain if this always holds. It's a workaround because
                 # I haven't yet found a way to directly unbox as i32.
                 # they seem to be always in order!
-                for i k v in (enumerate ('symbols T))
+                for k v in ('symbols T)
                     'append fields
                         tupleof
                             field-name = k
-                            constant = i
+                            constant = ((sc_const_int_extract v) as i32)
                 TypeStorage sym
                     StorageKind.Enum (deref fields)
             case CUnion
