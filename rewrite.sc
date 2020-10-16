@@ -40,7 +40,7 @@ enum StorageKind
     Pointer : (mutable? = bool) (T = Symbol)
     FunctionPointer : (retT = Symbol) (params = (Array Symbol))
     Tuple : (Array (tuple (field-name = Symbol) (T = Symbol)))
-    Enum : (Array (tuple (field-name = Symbol) (constant = u64)))
+    Enum : (Array (tuple (field-name = Symbol) (constant = i32)))
     Union : (Array (tuple (variant = Symbol) (T = Symbol)))
     # can be used for opaque, or builtin types, or simply to avoid redefining types
     # where necessary.
@@ -149,6 +149,18 @@ struct HeaderBindings
                 TypeStorage sym
                     StorageKind.Tuple (deref fields)
             case CEnum
+                let FieldArray = (elementof StorageKind.Enum.Type 0)
+                local fields : FieldArray
+                # FIXME: uncertain if this always holds. It's a workaround because
+                # I haven't yet found a way to directly unbox as i32.
+                # they seem to be always in order!
+                for i k v in (enumerate ('symbols T))
+                    'append fields
+                        tupleof
+                            field-name = k
+                            constant = i
+                TypeStorage sym
+                    StorageKind.Enum (deref fields)
             case CUnion
             default
                 error (.. "unknown type kind: " (tostring T) " < " (tostring super))
