@@ -151,9 +151,6 @@ struct HeaderTypeInfo
             case CEnum
                 let FieldArray = (elementof StorageKind.Enum.Type 0)
                 local fields : FieldArray
-                # FIXME: uncertain if this always holds. It's a workaround because
-                # I haven't yet found a way to directly unbox as i32.
-                # they seem to be always in order!
                 for k v in ('symbols T)
                     'append fields
                         tupleof
