@@ -58,4 +58,17 @@ for st in bindings.storages
     print
         f"${gen-type-definition st bindings}"
 
+for st in bindings.functions
+    dispatch st.storage
+    case FunctionPointer (retT params)
+        let params =
+            fold (result = "") for p in params
+                result .. (tostring p) .. " "
+        let fndef =
+            f"(function ${retT} ${params})"
+        print
+            f"let ${st.name} = (extern '${st.name} ${fndef})"
+    default
+        error "expected function pointer"
+
 print "none"
