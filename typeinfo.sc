@@ -61,16 +61,22 @@ struct HeaderTypeInfo
     functions : (Array TypeStorage)
 
     fn get-typename (self T)
+        returning Symbol
         # prefer to use builtin typenames when possible, otherwise
         # it'll just use the last defined alias, which isn't good.
         if (type-builtin? T)
             Symbol (tostring T)
         else
             try
-                'get self.typename-lookup (hash T)
+                dupe ('get self.typename-lookup (hash T))
             else
-                # FIXME: generate typenames when necessary
-                'Unknown
+                # TODO: generate all typenames we need
+                if ('pointer? T)
+                    let prefix = (? ('writable? T) "mutable@" "@")
+                    let innerT = (this-function self ('element@ T 0))
+                    Symbol f"${prefix}<${innerT}>"
+                else
+                    'Unknown
 
     fn add-typename (self sym T)
         'set self.typenames sym (hash T)
@@ -174,12 +180,14 @@ struct HeaderTypeInfo
 
         let f = ('element@ ('storageof T) 0)
         let retT = ('return-type f)
-        # FIXME: deal with pointers properly
         let ret-sym = ('get-typename self retT)
+        'add-storage self ret-sym retT
 
         local params : (Array Symbol)
         for param in ('elements f)
-            'append params ('get-typename self param)
+            let p-sym = ('get-typename self param)
+            'add-storage self p-sym param
+            'append params p-sym
 
         'append self.functions
             TypeStorage sym
