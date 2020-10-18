@@ -59,8 +59,9 @@ for st in bindings.storages
         f"${gen-type-definition st bindings}"
 
 for st in bindings.functions
-    dispatch st.storage
-    case FunctionPointer (retT params)
+    let SK = bindgen.StorageKind
+    if (('literal st.storage) == SK.FunctionPointer.Literal)
+        let retT params = ('unsafe-extract-payload st.storage SK.FunctionPointer.Type)
         let params =
             fold (result = "") for p in params
                 result .. (tostring p) .. " "
@@ -69,7 +70,7 @@ for st in bindings.functions
         let flags = (global-flag-non-writable | global-flag-non-readable)
         print
             f"let ${st.name} = (sc_global_new '${st.name} ${fndef} ${flags} unnamed)"
-    default
+    else
         error "expected function pointer"
 
 print "none"
