@@ -7,32 +7,87 @@ let bindings =
         '()
         "^(WGPU|wgpu_)"
 
-for st in bindings.storages
-    print st.name st.storage
-        dispatch st.storage
-        case TypeReference (T)
-            tostring T
-        case Pointer (mutable? T)
-            let mutable-mod = (? mutable? "mutable " "")
-            f"(${mutable-mod}pointer ${tostring T})"
-        default
-            ""
+fn emit-typename (tname)
+    """"Creates a new typename, effectively forward declaring the type.
+    io-write! f""""let ${tname.name} = (sc_typename_type "${tname.name}" ${tname.super})
 
-for f in bindings.functions
-    print f.name f.storage
-    using bindgen
-    assert (('literal f.storage) == StorageKind.FunctionPointer.Literal)
-    dispatch f.storage
+# for tname in bindings.typenames
+#     emit-typename tname
+
+print "run-stage;"
+
+fn gen-type-definition (TS bindings)
+    let name = TS.name
+    dispatch TS.storage
+    case Pointer (mutable? T)
+        let prefix = (? mutable? "mutable" "")
+        f"(${prefix}@ ${T})"
     case FunctionPointer (retT params)
-        io-write! (.. (tostring retT) " <- (")
-        for i p in (enumerate params)
-            if (i < ((countof params) - 1))
-                io-write! (.. (tostring p) " ")
-            else
-                io-write! (tostring p)
-        io-write! ")\n"
-
+        let params =
+            fold (result = "") for p in params
+                result .. (tostring p) .. " "
+        f"(@ (function ${retT} ${params}))"
+    case Tuple (fields)
+        let fields =
+            fold (result = "") for f in fields
+                # check for self reference
+                try
+                    let ft = ('get bindings.storage-lookup f.T)
+                    dispatch ft.storage
+                    case Pointer (mutable? T)
+                        if (T == name)
+                            .. result f"(${f.field-name} = (pointer this-type))"
+                        else
+                            .. result f"(${f.field-name} = ${f.T})"
+                    default
+                        .. result f"(${f.field-name} = ${f.T})"
+                else
+                    .. result f"(${f.field-name} = ${f.T})"
+        f"(tuple ${fields})"
     default
-        ;
+        "(storageof Nothing)"
+
+for st in bindings.storages
+    try
+        # if it doesn't exist in the map, then it's an alias
+        let tname = ('get bindings.typename-sym-lookup st.name)
+        print
+            f"typedef ${st.name} < ${tname.super} : ${gen-type-definition st bindings}"
+    else
+        print f"let ${st.name} = ${gen-type-definition st bindings}"
+       
+
+
+print "none"
+
+
+
+# for st in bindings.storages
+#     print st.name st.storage
+#         dispatch st.storage
+#         case TypeReference (T)
+#             tostring T
+#         case Pointer (mutable? T)
+#             let mutable-mod = (? mutable? "mutable " "")
+#             f"(${mutable-mod}pointer ${tostring T})"
+#         default
+#             ""
+
+# for f in bindings.functions
+#     print f.name f.storage
+#     using bindgen
+#     assert (('literal f.storage) == StorageKind.FunctionPointer.Literal)
+#     dispatch f.storage
+#     case FunctionPointer (retT params)
+#         io-write! (.. (tostring retT) " <- (")
+#         for i p in (enumerate params)
+#             if (i < ((countof params) - 1))
+#                 io-write! (.. (tostring p) " ")
+#             else
+#                 io-write! (tostring p)
+#         io-write! ")\n"
+
+#     default
+#         ;
 
 none
