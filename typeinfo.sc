@@ -66,7 +66,8 @@ struct Typename
                     a.super == b.super
 
 struct HeaderTypeInfo
-    typenames : (Array Typename)
+    # is a Map to enforce no collisions
+    typenames : (Map Typename hash)
     typename-sym-lookup : (Map Symbol Typename)
     typename-type-lookup : (Map hash Typename)
     # topologically sorted array of storage types
@@ -95,7 +96,7 @@ struct HeaderTypeInfo
 
     fn add-typename (self sym T)
         let super = (Symbol (tostring ('superof T)))
-        'append self.typenames (Typename sym super)
+        'set self.typenames (Typename sym super) (hash T)
         'set self.typename-type-lookup (hash T) (Typename sym super)
         'set self.typename-sym-lookup sym (Typename sym super)
         ;
