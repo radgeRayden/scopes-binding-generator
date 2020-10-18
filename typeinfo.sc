@@ -51,9 +51,23 @@ struct TypeStorage
     name : Symbol
     storage : StorageKind
 
+struct Typename
+    name : Symbol
+    super : Symbol
+
+    inline __hash (self)
+        hash (hash self.name) (hash self.super)
+
+    inline __== (cls other-cls)
+        static-if ((cls == this-type) and (other-cls == this-type))
+            inline (a b)
+                and
+                    a.name == b.name
+                    a.super == b.super
+
 struct HeaderTypeInfo
-    typenames : (Map Symbol hash)
-    typename-lookup : (Map hash Symbol)
+    typenames : (Map Typename hash)
+    typename-lookup : (Map hash Typename)
     # topologically sorted array of storage types
     storages : (Array (Rc TypeStorage))
     # easy lookup, has to be set whenever storages is appended.
@@ -68,7 +82,7 @@ struct HeaderTypeInfo
             Symbol (tostring T)
         else
             try
-                dupe ('get self.typename-lookup (hash T))
+                dupe (('get self.typename-lookup (hash T)) . name)
             else
                 # TODO: generate all typenames we need
                 if ('pointer? T)
@@ -79,8 +93,9 @@ struct HeaderTypeInfo
                     'Unknown
 
     fn add-typename (self sym T)
-        'set self.typenames sym (hash T)
-        'set self.typename-lookup (hash T) sym
+        let super = (Symbol (tostring ('superof T)))
+        'set self.typenames (Typename sym super) (hash T)
+        'set self.typename-lookup (hash T) (Typename sym super)
         ;
 
     fn add-storage (self sym T)
