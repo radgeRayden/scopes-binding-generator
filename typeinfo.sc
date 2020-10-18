@@ -66,8 +66,9 @@ struct Typename
                     a.super == b.super
 
 struct HeaderTypeInfo
-    typenames : (Map Typename hash)
-    typename-lookup : (Map hash Typename)
+    typenames : (Array Typename)
+    typename-sym-lookup : (Map Symbol Typename)
+    typename-type-lookup : (Map hash Typename)
     # topologically sorted array of storage types
     storages : (Array (Rc TypeStorage))
     # easy lookup, has to be set whenever storages is appended.
@@ -82,7 +83,7 @@ struct HeaderTypeInfo
             Symbol (tostring T)
         else
             try
-                dupe (('get self.typename-lookup (hash T)) . name)
+                dupe (('get self.typename-type-lookup (hash T)) . name)
             else
                 # TODO: generate all typenames we need
                 if ('pointer? T)
@@ -94,8 +95,9 @@ struct HeaderTypeInfo
 
     fn add-typename (self sym T)
         let super = (Symbol (tostring ('superof T)))
-        'set self.typenames (Typename sym super) (hash T)
-        'set self.typename-lookup (hash T) (Typename sym super)
+        'append self.typenames (Typename sym super)
+        'set self.typename-type-lookup (hash T) (Typename sym super)
+        'set self.typename-sym-lookup sym (Typename sym super)
         ;
 
     fn add-storage (self sym T)
@@ -105,6 +107,8 @@ struct HeaderTypeInfo
         # builtin types.
         if ('in? self.storage-lookup sym)
             try
+                # TODO: if storage is pending, it means we're in a cycle. Might
+                # be useful to indicate here that it needs a fwd declaration.
                 'get self.storage-lookup sym
                 return;
             else
@@ -258,5 +262,5 @@ fn gen-header-type-info (includestr opt filter)
     bindings
 
 do
-    let gen-header-type-info TypeStorage StorageKind HeaderTypeInfo
+    let gen-header-type-info TypeStorage StorageKind HeaderTypeInfo Typename
     locals;
