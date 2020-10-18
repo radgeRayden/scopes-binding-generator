@@ -11,8 +11,8 @@ fn emit-typename (tname)
     """"Creates a new typename, effectively forward declaring the type.
     io-write! f""""let ${tname.name} = (sc_typename_type "${tname.name}" ${tname.super})
 
-# for tname in bindings.typenames
-#     emit-typename tname
+for tname in bindings.typenames
+    emit-typename tname
 
 print "run-stage;"
 
@@ -30,20 +30,8 @@ fn gen-type-definition (TS bindings)
     case Tuple (fields)
         let fields =
             fold (result = "") for f in fields
-                # check for self reference
-                try
-                    let ft = ('get bindings.storage-lookup f.T)
-                    dispatch ft.storage
-                    case Pointer (mutable? T)
-                        if (T == name)
-                            .. result f"(${f.field-name} = (pointer this-type))"
-                        else
-                            .. result f"(${f.field-name} = ${f.T})"
-                    default
-                        .. result f"(${f.field-name} = ${f.T})"
-                else
-                    .. result f"(${f.field-name} = ${f.T})"
-        f"(tuple ${fields})"
+                .. result f"(${f.field-name} = ('storageof ${f.T}))"
+        f"(tuple.type ${fields})"
     default
         "(storageof Nothing)"
 
@@ -52,7 +40,7 @@ for st in bindings.storages
         # if it doesn't exist in the map, then it's an alias
         let tname = ('get bindings.typename-sym-lookup st.name)
         print
-            f"typedef ${st.name} < ${tname.super} : ${gen-type-definition st bindings}"
+            f"'set-plain-storage ${st.name} ${gen-type-definition st bindings}"
     else
         print f"let ${st.name} = ${gen-type-definition st bindings}"
        
