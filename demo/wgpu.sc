@@ -17,65 +17,45 @@ for tname in bindings.typenames
 print "run-stage;"
 
 fn gen-type-definition (TS bindings)
-    let name = TS.name
+    inline wrap (storage)
+        let name = TS.name
+        let alias? = (not ('in? bindings.typename-sym-lookup name))
+        if alias?
+            f"let ${name} = ${storage}"
+        else
+            f"sc_typename_type_set_storage ${name} ${storage} typename-flag-plain"
+
     dispatch TS.storage
     case Pointer (mutable? T)
         let prefix = (? mutable? "mutable" "")
-        f"(${prefix}@ ${T})"
+        wrap f"(${prefix}@ ${T})"
     case FunctionPointer (retT params)
         let params =
             fold (result = "") for p in params
                 result .. (tostring p) .. " "
-        f"(@ (function ${retT} ${params}))"
+        wrap f"(@ (function ${retT} ${params}))"
     case Tuple (fields)
         let fields =
             fold (result = "") for f in fields
                 .. result f"(${f.field-name} = ${f.T})"
-        f"(tuple.type ${fields})"
+        wrap f"(tuple.type ${fields})"
+    case Enum (fields)
+        let head = (.. (wrap i32) "\n")
+        fold (result = head) for f in fields
+            let field =
+                interpolate "sc_type_set_symbol ${TS.name} '${f.field-name} ${f.constant}\n"
+            .. result field
+    case Union (fields)
+        error "not yet implemented"
+    case TypeReference (ref)
+        f"let ${TS.name} = ${ref}"
+    case Opaque ()
+        f"sc_typename_type_set_opaque ${TS.name}"
     default
-        "(storageof Nothing)"
+        unreachable;
 
 for st in bindings.storages
-    try
-        # if it doesn't exist in the map, then it's an alias
-        let tname = ('get bindings.typename-sym-lookup st.name)
-        print
-            f"'set-plain-storage ${st.name} ${gen-type-definition st bindings}"
-    else
-        print f"let ${st.name} = ${gen-type-definition st bindings}"
-       
-
+    print
+        f"${gen-type-definition st bindings}"
 
 print "none"
-
-
-
-# for st in bindings.storages
-#     print st.name st.storage
-#         dispatch st.storage
-#         case TypeReference (T)
-#             tostring T
-#         case Pointer (mutable? T)
-#             let mutable-mod = (? mutable? "mutable " "")
-#             f"(${mutable-mod}pointer ${tostring T})"
-#         default
-#             ""
-
-# for f in bindings.functions
-#     print f.name f.storage
-#     using bindgen
-#     assert (('literal f.storage) == StorageKind.FunctionPointer.Literal)
-#     dispatch f.storage
-#     case FunctionPointer (retT params)
-#         io-write! (.. (tostring retT) " <- (")
-#         for i p in (enumerate params)
-#             if (i < ((countof params) - 1))
-#                 io-write! (.. (tostring p) " ")
-#             else
-#                 io-write! (tostring p)
-#         io-write! ")\n"
-
-#     default
-#         ;
-
-none
