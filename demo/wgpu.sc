@@ -30,7 +30,7 @@ fn gen-type-definition (TS bindings)
     case Tuple (fields)
         let fields =
             fold (result = "") for f in fields
-                .. result f"(${f.field-name} = ('storageof ${f.T}))"
+                .. result f"(${f.field-name} = ${f.T})"
         f"(tuple.type ${fields})"
     default
         "(storageof Nothing)"
