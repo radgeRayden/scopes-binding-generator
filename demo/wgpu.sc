@@ -14,8 +14,6 @@ fn emit-typename (tname)
 for tname in bindings.typenames
     emit-typename tname
 
-print "run-stage;"
-
 fn gen-type-definition (TS bindings)
     inline wrap (storage)
         let name = TS.name
@@ -27,13 +25,15 @@ fn gen-type-definition (TS bindings)
 
     dispatch TS.storage
     case Pointer (mutable? T)
-        let prefix = (? mutable? "mutable" "")
-        wrap f"(${prefix}@ ${T})"
+        if mutable?
+            wrap f"('mutable (pointer.type ${T}))"
+        else
+            wrap f"(pointer.type ${T})"
     case FunctionPointer (retT params)
         let params =
             fold (result = "") for p in params
                 result .. (tostring p) .. " "
-        wrap f"(@ (function ${retT} ${params}))"
+        wrap f"(pointer.type (function.type ${retT} ${params}))"
     case Tuple (fields)
         let fields =
             fold (result = "") for f in fields
@@ -65,9 +65,10 @@ for st in bindings.functions
             fold (result = "") for p in params
                 result .. (tostring p) .. " "
         let fndef =
-            f"(function ${retT} ${params})"
+            f"(function.type ${retT} ${params})"
+        let flags = (global-flag-non-writable | global-flag-non-readable)
         print
-            f"let ${st.name} = (extern '${st.name} ${fndef})"
+            f"let ${st.name} = (sc_global_new '${st.name} ${fndef} ${flags} unnamed)"
     default
         error "expected function pointer"
 
