@@ -11,6 +11,8 @@ fn emit-typename (tname)
     """"Creates a new typename, effectively forward declaring the type.
     io-write! f""""let ${tname.name} = (sc_typename_type "${tname.name}" ${tname.super})
 
+print "let tuple-constructor-buffer = (malloc-array type 128)"
+
 for tname in bindings.typenames
     emit-typename tname
 
@@ -35,10 +37,13 @@ fn gen-type-definition (TS bindings)
                 result .. (tostring p) .. " "
         wrap f"(pointer.type (function.type ${retT} ${params}))"
     case Tuple (fields)
+        let count = (countof fields)
         let fields =
-            fold (result = "") for f in fields
-                .. result f"(${f.field-name} = ${f.T})"
-        wrap f"(tuple.type ${fields})"
+            fold (result = "") for i f in (enumerate fields)
+                .. result
+                    f"store (sc_key_type '${f.field-name} ${f.T}) (getelementptr tuple-constructor-buffer ${i})"
+                    "\n"
+        fields .. (wrap f"(sc_tuple_type ${count} tuple-constructor-buffer)")
     case Enum (fields)
         let head = (.. (wrap i32) "\n")
         fold (result = head) for f in fields
@@ -73,4 +78,5 @@ for st in bindings.functions
     else
         error "expected function pointer"
 
+print "free tuple-constructor-buffer"
 print "none"
