@@ -4,7 +4,6 @@ using import Array
 using import enum
 using import Rc
 
-import .cjson
 using import radlib.stringtools
 using import itertools
 
@@ -216,12 +215,9 @@ struct HeaderTypeInfo
                     params = (deref params)
         ;
 
-
-
-fn gen-header-type-info (includestr opt filter)
+fn gen-header-type-info (include-scope)
     local bindings = (HeaderTypeInfo)
-    let header =
-        sc_import_c "bindings.c" includestr opt (Scope)
+    let header = include-scope
 
     # insert builtin types first as references
     va-map
@@ -237,28 +233,22 @@ fn gen-header-type-info (includestr opt filter)
         inline (subscope)
             for k v in (('@ header subscope) as Scope)
                 k as:= Symbol
-                let match? start end = ('match? filter (k as string))
-                if match?
-                    let T = (v as type)
-                    'add-typename bindings k T
+                let T = (v as type)
+                'add-typename bindings k T
         _ 'typedef 'enum 'struct 'union
     # recursively define types
     va-map
         inline (subscope)
             for k v in (('@ header subscope) as Scope)
                 k as:= Symbol
-                let match? start end = ('match? filter (k as string))
-                if match?
-                    let T = (v as type)
-                    'add-storage bindings (k as Symbol) T
+                let T = (v as type)
+                'add-storage bindings (k as Symbol) T
         _ 'typedef 'enum 'struct 'union
 
     for k v in (('@ header 'extern) as Scope)
         k as:= Symbol
-        let match? start end = ('match? filter (k as string))
-        if match?
-            let T = ('typeof v)
-            'add-function bindings k T
+        let T = ('typeof v)
+        'add-function bindings k T
 
     bindings
 
