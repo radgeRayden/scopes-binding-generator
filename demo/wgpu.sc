@@ -15,6 +15,7 @@ fn gen-pointer-type (T mutable?)
     let flag = (? mutable? (bxor pointer-flag-non-writable -1:u64) pointer-flag-non-writable)
     f"(sc_pointer_type ${T} ${flag}:u64 unnamed)"
 
+# FIXME: should first go through the exports to verify the maximum tuple/function size
 print "let type-buffer = (malloc-array type 128)"
 
 for tname in bindings.typenames
