@@ -45,6 +45,20 @@ fn add-storage-definition (storage-array TS tinfo)
     cjson.AddItemToArray storage-array stdef
 
 fn add-function-definition (function-array TS tinfo)
+    let stdef = (cjson.CreateObject)
+    cjson.AddStringToObject stdef "name" (tostring TS.name)
+    cjson.AddStringToObject stdef "kind" "function-pointer"
+
+    let SK = typeinfo.StorageKind
+    # FIXME: I think these can be other kinds of globals as well
+    assert (('literal TS.storage) == SK.FunctionPointer.Literal)
+    let retT params = ('unsafe-extract-payload TS.storage SK.FunctionPointer.Type)
+    cjson.AddStringToObject stdef "return-type" (tostring retT)
+    let _params = (cjson.AddArrayToObject stdef "parameters")
+    for p in params
+        cjson.AddItemToArray _params
+            cjson.CreateString (tostring p)
+    cjson.AddItemToArray function-array stdef
 
 fn gen-bindings-JSON (scope)
     let metadata = (typeinfo.gen-header-type-info scope)
