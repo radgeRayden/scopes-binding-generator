@@ -37,10 +37,13 @@ fn add-storage-definition (storage-array TS tinfo)
             cjson.AddItemToArray _fields field
     case Union (fields)
         error "not yet implemented"
+    case TypeReference (ref)
+        cjson.AddStringToObject stdef "kind" "alias"
+        cjson.AddStringToObject stdef "type" (tostring ref)
     case Opaque ()
         cjson.AddStringToObject stdef "kind" "opaque"
     default
-        unreachable;
+        error "not yet implemented"
 
     cjson.AddItemToArray storage-array stdef
 
