@@ -114,4 +114,6 @@ print "do"
 print "    let"
 for tname in bindings.typenames
     print f"        ${tname.name}"
+for ext in bindings.functions
+    print f"        ${ext.name}"
 print "    locals;"
