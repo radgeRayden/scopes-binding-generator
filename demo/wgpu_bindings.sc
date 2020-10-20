@@ -140,15 +140,15 @@ let WGPUDepthStencilStateDescriptor = (sc_typename_type "WGPUDepthStencilStateDe
 let WGPUSamplerId = (sc_typename_type "WGPUSamplerId" integer)
 let WGPUFeatures = (sc_typename_type "WGPUFeatures" integer)
 let WGPUBufferSize = (sc_typename_type "WGPUBufferSize" integer)
-let WGPUNonZeroU64 = u64
-let WGPUOption_NonZeroU32 = u64
-let WGPUOption_NonZeroU64 = u64
-let WGPUOption_AdapterId = u64
-let WGPUOption_BufferId = u64
-let WGPUOption_SamplerId = u64
-let WGPUOption_SurfaceId = u64
-let WGPUOption_TextureViewId = u64
-let WGPUOption_BufferSize = u64
+sc_typename_type_set_storage WGPUNonZeroU64 u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_NonZeroU32 u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_NonZeroU64 u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_AdapterId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_BufferId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_SamplerId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_SurfaceId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_TextureViewId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_BufferSize u64 typename-flag-plain
 let @<WGPUChainedStruct> = (sc_pointer_type WGPUChainedStruct 2:u64 unnamed)
 store (sc_key_type 'next @<WGPUChainedStruct>) (getelementptr type-buffer 0)
 store (sc_key_type 's_type u32) (getelementptr type-buffer 1)
@@ -158,8 +158,8 @@ sc_type_set_symbol WGPUAddressMode 'WGPUAddressMode_ClampToEdge 0
 sc_type_set_symbol WGPUAddressMode 'WGPUAddressMode_Repeat 1
 sc_type_set_symbol WGPUAddressMode 'WGPUAddressMode_MirrorRepeat 2
 
-let WGPUBackend = u8
-let WGPUBindingType = u32
+sc_typename_type_set_storage WGPUBackend u8 typename-flag-plain
+sc_typename_type_set_storage WGPUBindingType u32 typename-flag-plain
 sc_typename_type_set_storage WGPUBlendFactor i32 typename-flag-plain
 sc_type_set_symbol WGPUBlendFactor 'WGPUBlendFactor_Zero 0
 sc_type_set_symbol WGPUBlendFactor 'WGPUBlendFactor_One 1
@@ -188,7 +188,7 @@ sc_type_set_symbol WGPUBufferMapAsyncStatus 'WGPUBufferMapAsyncStatus_Error 1
 sc_type_set_symbol WGPUBufferMapAsyncStatus 'WGPUBufferMapAsyncStatus_Unknown 2
 sc_type_set_symbol WGPUBufferMapAsyncStatus 'WGPUBufferMapAsyncStatus_ContextLost 3
 
-let WGPUCDeviceType = u8
+sc_typename_type_set_storage WGPUCDeviceType u8 typename-flag-plain
 sc_typename_type_set_storage WGPUCompareFunction i32 typename-flag-plain
 sc_type_set_symbol WGPUCompareFunction 'WGPUCompareFunction_Undefined 0
 sc_type_set_symbol WGPUCompareFunction 'WGPUCompareFunction_Never 1
@@ -250,7 +250,7 @@ sc_type_set_symbol WGPUPrimitiveTopology 'WGPUPrimitiveTopology_LineStrip 2
 sc_type_set_symbol WGPUPrimitiveTopology 'WGPUPrimitiveTopology_TriangleList 3
 sc_type_set_symbol WGPUPrimitiveTopology 'WGPUPrimitiveTopology_TriangleStrip 4
 
-let WGPUSType = u32
+sc_typename_type_set_storage WGPUSType u32 typename-flag-plain
 sc_typename_type_set_storage WGPUStencilOperation i32 typename-flag-plain
 sc_type_set_symbol WGPUStencilOperation 'WGPUStencilOperation_Keep 0
 sc_type_set_symbol WGPUStencilOperation 'WGPUStencilOperation_Zero 1
@@ -371,9 +371,9 @@ sc_type_set_symbol WGPUVertexFormat 'WGPUVertexFormat_Int4 29
 sc_typename_type_set_opaque WGPUComputePass
 sc_typename_type_set_opaque WGPURenderBundleEncoder
 sc_typename_type_set_opaque WGPURenderPass
-let WGPUId_Adapter_Dummy = u64
-let WGPUAdapterId = u64
-let WGPUFeatures = u64
+sc_typename_type_set_storage WGPUId_Adapter_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUAdapterId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUFeatures u64 typename-flag-plain
 let mutable@<i8> = (sc_pointer_type i8 18446744073709551613:u64 unnamed)
 store (sc_key_type 'name mutable@<i8>) (getelementptr type-buffer 0)
 store (sc_key_type 'name_length u64) (getelementptr type-buffer 1)
@@ -384,26 +384,26 @@ store (sc_key_type 'backend u8) (getelementptr type-buffer 5)
 sc_typename_type_set_storage WGPUCAdapterInfo (sc_tuple_type 6 type-buffer) typename-flag-plain
 store (sc_key_type 'max_bind_groups u32) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUCLimits (sc_tuple_type 1 type-buffer) typename-flag-plain
-let WGPUId_Device_Dummy = u64
-let WGPUDeviceId = u64
-let WGPUId_BindGroup_Dummy = u64
-let WGPUBindGroupId = u64
-let WGPUId_BindGroupLayout_Dummy = u64
-let WGPUBindGroupLayoutId = u64
-let WGPUId_Buffer_Dummy = u64
-let WGPUBufferId = u64
-let WGPUBufferAddress = u64
-let WGPUBufferSize = u64
+sc_typename_type_set_storage WGPUId_Device_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUDeviceId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_BindGroup_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBindGroupId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_BindGroupLayout_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBindGroupLayoutId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Buffer_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBufferId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBufferAddress u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBufferSize u64 typename-flag-plain
 let mutable@<u8> = (sc_pointer_type u8 18446744073709551613:u64 unnamed)
 store mutable@<u8> (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUBufferMapCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
-let WGPUId_CommandBuffer_Dummy = u64
-let WGPUCommandBufferId = u64
-let WGPUCommandEncoderId = u64
+sc_typename_type_set_storage WGPUId_CommandBuffer_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUCommandBufferId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUCommandEncoderId u64 typename-flag-plain
 store (sc_key_type 'todo u32) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUComputePassDescriptor (sc_tuple_type 1 type-buffer) typename-flag-plain
-let WGPUId_TextureView_Dummy = u64
-let WGPUTextureViewId = u64
+sc_typename_type_set_storage WGPUId_TextureView_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUTextureViewId u64 typename-flag-plain
 store (sc_key_type 'r f64) (getelementptr type-buffer 0)
 store (sc_key_type 'g f64) (getelementptr type-buffer 1)
 store (sc_key_type 'b f64) (getelementptr type-buffer 2)
@@ -453,8 +453,8 @@ sc_typename_type_set_storage WGPUTextureDataLayout (sc_tuple_type 3 type-buffer)
 store (sc_key_type 'buffer u64) (getelementptr type-buffer 0)
 store (sc_key_type 'layout WGPUTextureDataLayout) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUBufferCopyView (sc_tuple_type 2 type-buffer) typename-flag-plain
-let WGPUId_Texture_Dummy = u64
-let WGPUTextureId = u64
+sc_typename_type_set_storage WGPUId_Texture_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUTextureId u64 typename-flag-plain
 store (sc_key_type 'x u32) (getelementptr type-buffer 0)
 store (sc_key_type 'y u32) (getelementptr type-buffer 1)
 store (sc_key_type 'z u32) (getelementptr type-buffer 2)
@@ -470,11 +470,11 @@ sc_typename_type_set_storage WGPUExtent3d (sc_tuple_type 3 type-buffer) typename
 store (sc_key_type 'todo u32) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUCommandBufferDescriptor (sc_tuple_type 1 type-buffer) typename-flag-plain
 sc_typename_type_set_storage WGPURawString (sc_pointer_type i8 2:u64 unnamed) typename-flag-plain
-let WGPUDynamicOffset = u32
-let WGPUId_ComputePipeline_Dummy = u64
-let WGPUComputePipelineId = u64
-let WGPUId_Surface = u64
-let WGPUSurfaceId = u64
+sc_typename_type_set_storage WGPUDynamicOffset u32 typename-flag-plain
+sc_typename_type_set_storage WGPUId_ComputePipeline_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUComputePipelineId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Surface u64 typename-flag-plain
+sc_typename_type_set_storage WGPUSurfaceId u64 typename-flag-plain
 sc_typename_type_set_storage WGPULabel (sc_pointer_type i8 2:u64 unnamed) typename-flag-plain
 store (sc_key_type 'binding u32) (getelementptr type-buffer 0)
 store (sc_key_type 'buffer u64) (getelementptr type-buffer 1)
@@ -489,7 +489,7 @@ store (sc_key_type 'layout u64) (getelementptr type-buffer 1)
 store (sc_key_type 'entries @<WGPUBindGroupEntry>) (getelementptr type-buffer 2)
 store (sc_key_type 'entries_length u64) (getelementptr type-buffer 3)
 sc_typename_type_set_storage WGPUBindGroupDescriptor (sc_tuple_type 4 type-buffer) typename-flag-plain
-let WGPUShaderStage = u32
+sc_typename_type_set_storage WGPUShaderStage u32 typename-flag-plain
 store (sc_key_type 'binding u32) (getelementptr type-buffer 0)
 store (sc_key_type 'visibility u32) (getelementptr type-buffer 1)
 store (sc_key_type 'ty u32) (getelementptr type-buffer 2)
@@ -506,7 +506,7 @@ store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 store (sc_key_type 'entries @<WGPUBindGroupLayoutEntry>) (getelementptr type-buffer 1)
 store (sc_key_type 'entries_length u64) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPUBindGroupLayoutDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
-let WGPUBufferUsage = u32
+sc_typename_type_set_storage WGPUBufferUsage u32 typename-flag-plain
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 store (sc_key_type 'size u64) (getelementptr type-buffer 1)
 store (sc_key_type 'usage u32) (getelementptr type-buffer 2)
@@ -514,10 +514,10 @@ store (sc_key_type 'mapped_at_creation bool) (getelementptr type-buffer 3)
 sc_typename_type_set_storage WGPUBufferDescriptor (sc_tuple_type 4 type-buffer) typename-flag-plain
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUCommandEncoderDescriptor (sc_tuple_type 1 type-buffer) typename-flag-plain
-let WGPUId_PipelineLayout_Dummy = u64
-let WGPUPipelineLayoutId = u64
-let WGPUId_ShaderModule_Dummy = u64
-let WGPUShaderModuleId = u64
+sc_typename_type_set_storage WGPUId_PipelineLayout_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUPipelineLayoutId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_ShaderModule_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUShaderModuleId u64 typename-flag-plain
 store (sc_key_type 'module u64) (getelementptr type-buffer 0)
 store (sc_key_type 'entry_point WGPULabel) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUProgrammableStageDescriptor (sc_tuple_type 2 type-buffer) typename-flag-plain
@@ -536,8 +536,8 @@ store (sc_key_type 'color_formats_length u64) (getelementptr type-buffer 2)
 store (sc_key_type 'depth_stencil_format @<WGPUTextureFormat>) (getelementptr type-buffer 3)
 store (sc_key_type 'sample_count u32) (getelementptr type-buffer 4)
 sc_typename_type_set_storage WGPURenderBundleEncoderDescriptor (sc_tuple_type 5 type-buffer) typename-flag-plain
-let WGPUId_RenderPipeline_Dummy = u64
-let WGPURenderPipelineId = u64
+sc_typename_type_set_storage WGPUId_RenderPipeline_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPURenderPipelineId u64 typename-flag-plain
 store (sc_key_type 'front_face WGPUFrontFace) (getelementptr type-buffer 0)
 store (sc_key_type 'cull_mode WGPUCullMode) (getelementptr type-buffer 1)
 store (sc_key_type 'depth_bias i32) (getelementptr type-buffer 2)
@@ -548,7 +548,7 @@ store (sc_key_type 'src_factor WGPUBlendFactor) (getelementptr type-buffer 0)
 store (sc_key_type 'dst_factor WGPUBlendFactor) (getelementptr type-buffer 1)
 store (sc_key_type 'operation WGPUBlendOperation) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPUBlendDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
-let WGPUColorWrite = u32
+sc_typename_type_set_storage WGPUColorWrite u32 typename-flag-plain
 store (sc_key_type 'format WGPUTextureFormat) (getelementptr type-buffer 0)
 store (sc_key_type 'alpha_blend WGPUBlendDescriptor) (getelementptr type-buffer 1)
 store (sc_key_type 'color_blend WGPUBlendDescriptor) (getelementptr type-buffer 2)
@@ -567,7 +567,7 @@ store (sc_key_type 'stencil_back WGPUStencilStateFaceDescriptor) (getelementptr 
 store (sc_key_type 'stencil_read_mask u32) (getelementptr type-buffer 5)
 store (sc_key_type 'stencil_write_mask u32) (getelementptr type-buffer 6)
 sc_typename_type_set_storage WGPUDepthStencilStateDescriptor (sc_tuple_type 7 type-buffer) typename-flag-plain
-let WGPUShaderLocation = u32
+sc_typename_type_set_storage WGPUShaderLocation u32 typename-flag-plain
 store (sc_key_type 'offset u64) (getelementptr type-buffer 0)
 store (sc_key_type 'format WGPUVertexFormat) (getelementptr type-buffer 1)
 store (sc_key_type 'shader_location u32) (getelementptr type-buffer 2)
@@ -600,8 +600,8 @@ store (sc_key_type 'sample_count u32) (getelementptr type-buffer 9)
 store (sc_key_type 'sample_mask u32) (getelementptr type-buffer 10)
 store (sc_key_type 'alpha_to_coverage_enabled bool) (getelementptr type-buffer 11)
 sc_typename_type_set_storage WGPURenderPipelineDescriptor (sc_tuple_type 12 type-buffer) typename-flag-plain
-let WGPUId_Sampler_Dummy = u64
-let WGPUSamplerId = u64
+sc_typename_type_set_storage WGPUId_Sampler_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUSamplerId u64 typename-flag-plain
 store (sc_key_type 'next_in_chain @<WGPUChainedStruct>) (getelementptr type-buffer 0)
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 1)
 store (sc_key_type 'address_mode_u WGPUAddressMode) (getelementptr type-buffer 2)
@@ -618,9 +618,9 @@ let @<u32> = (sc_pointer_type u32 2:u64 unnamed)
 store (sc_key_type 'bytes @<u32>) (getelementptr type-buffer 0)
 store (sc_key_type 'length u64) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUShaderSource (sc_tuple_type 2 type-buffer) typename-flag-plain
-let WGPUId_SwapChain_Dummy = u64
-let WGPUSwapChainId = u64
-let WGPUTextureUsage = u32
+sc_typename_type_set_storage WGPUId_SwapChain_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUSwapChainId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUTextureUsage u32 typename-flag-plain
 store (sc_key_type 'usage u32) (getelementptr type-buffer 0)
 store (sc_key_type 'format WGPUTextureFormat) (getelementptr type-buffer 1)
 store (sc_key_type 'width u32) (getelementptr type-buffer 2)
@@ -635,15 +635,15 @@ store (sc_key_type 'dimension WGPUTextureDimension) (getelementptr type-buffer 4
 store (sc_key_type 'format WGPUTextureFormat) (getelementptr type-buffer 5)
 store (sc_key_type 'usage u32) (getelementptr type-buffer 6)
 sc_typename_type_set_storage WGPUTextureDescriptor (sc_tuple_type 7 type-buffer) typename-flag-plain
-let WGPUQueueId = u64
-let WGPUId_RenderBundle = u64
-let WGPURenderBundleId = u64
+sc_typename_type_set_storage WGPUQueueId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_RenderBundle u64 typename-flag-plain
+sc_typename_type_set_storage WGPURenderBundleId u64 typename-flag-plain
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPURenderBundleDescriptor_Label (sc_tuple_type 1 type-buffer) typename-flag-plain
 store (sc_key_type 'power_preference WGPUPowerPreference) (getelementptr type-buffer 0)
 store (sc_key_type 'compatible_surface u64) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPURequestAdapterOptions (sc_tuple_type 2 type-buffer) typename-flag-plain
-let WGPUBackendBit = u32
+sc_typename_type_set_storage WGPUBackendBit u32 typename-flag-plain
 let @<void> = (sc_pointer_type void 2:u64 unnamed)
 store @<void> (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPURequestAdapterCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain

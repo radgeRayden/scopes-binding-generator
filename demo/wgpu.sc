@@ -85,7 +85,7 @@ fn gen-type-definition (TS bindings)
     case Union (fields)
         error "not yet implemented"
     case TypeReference (ref)
-        f"let ${TS.name} = ${ref}"
+        wrap ref
     case Opaque ()
         f"sc_typename_type_set_opaque ${TS.name}"
     default
