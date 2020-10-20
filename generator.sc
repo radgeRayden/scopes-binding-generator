@@ -6,6 +6,7 @@ import .typeinfo
 
 fn add-storage-definition (storage-array TS tinfo)
     let stdef = (cjson.CreateObject)
+    cjson.AddStringToObject stdef "typename" (tostring TS.name)
     dispatch TS.storage
     case Pointer (mutable? T)
         cjson.AddStringToObject stdef "kind" "pointer"
@@ -18,8 +19,28 @@ fn add-storage-definition (storage-array TS tinfo)
         for p in params
             cjson.AddItemToArray _params
                 cjson.CreateString (tostring p)
+    case Tuple (fields)
+        cjson.AddStringToObject stdef "kind" "struct"
+        let _fields = (cjson.AddArrayToObject stdef "fields")
+        for f in fields
+            let field = (cjson.CreateObject)
+            cjson.AddStringToObject field "name" (tostring f.field-name)
+            cjson.AddStringToObject field "type" (tostring f.T)
+            cjson.AddItemToArray _fields field
+    case Enum (fields)
+        cjson.AddStringToObject stdef "kind" "enum"
+        let _fields = (cjson.AddArrayToObject stdef "fields")
+        for f in fields
+            let field = (cjson.CreateObject)
+            cjson.AddStringToObject field "name" (tostring f.field-name)
+            cjson.AddStringToObject field "constant" (tostring f.constant)
+            cjson.AddItemToArray _fields field
+    case Union (fields)
+        error "not yet implemented"
+    case Opaque ()
+        cjson.AddStringToObject stdef "kind" "opaque"
     default
-        ;
+        unreachable;
 
     cjson.AddItemToArray storage-array stdef
 
