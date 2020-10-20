@@ -235,7 +235,7 @@ fn gen-header-type-info (include-scope)
                 k as:= Symbol
                 let T = (v as type)
                 'add-typename bindings k T
-        _ 'typedef 'enum 'struct 'union
+        _ 'enum 'struct 'union 'typedef
     # recursively define types
     va-map
         inline (subscope)
@@ -243,7 +243,7 @@ fn gen-header-type-info (include-scope)
                 k as:= Symbol
                 let T = (v as type)
                 'add-storage bindings (k as Symbol) T
-        _ 'typedef 'enum 'struct 'union
+        _ 'enum 'struct 'union 'typedef
 
     for k v in (('@ header 'extern) as Scope)
         k as:= Symbol

@@ -2,8 +2,8 @@ let type-buffer = (alloca-array type 128)
 let WGPUShaderSource = (sc_typename_type "WGPUShaderSource" CStruct)
 let WGPURasterizationStateDescriptor = (sc_typename_type "WGPURasterizationStateDescriptor" CStruct)
 let WGPUBindGroupId = (sc_typename_type "WGPUBindGroupId" integer)
-let WGPUCAdapterInfo = (sc_typename_type "WGPUCAdapterInfo" CStruct)
 let WGPUDeviceId = (sc_typename_type "WGPUDeviceId" integer)
+let WGPUCAdapterInfo = (sc_typename_type "WGPUCAdapterInfo" CStruct)
 let WGPUBindGroupLayoutEntry = (sc_typename_type "WGPUBindGroupLayoutEntry" CStruct)
 let WGPURenderBundleEncoderDescriptor = (sc_typename_type "WGPURenderBundleEncoderDescriptor" CStruct)
 let WGPUCommandEncoderDescriptor = (sc_typename_type "WGPUCommandEncoderDescriptor" CStruct)
@@ -11,8 +11,8 @@ let WGPURenderPipelineId = (sc_typename_type "WGPURenderPipelineId" integer)
 let WGPURequestAdapterCallback = (sc_typename_type "WGPURequestAdapterCallback" pointer)
 let WGPUBackendBit = (sc_typename_type "WGPUBackendBit" integer)
 let WGPUId_SwapChain_Dummy = (sc_typename_type "WGPUId_SwapChain_Dummy" integer)
-let WGPURenderPassDepthStencilAttachmentDescriptor = (sc_typename_type "WGPURenderPassDepthStencilAttachmentDescriptor" CStruct)
 let WGPUNonZeroU64 = (sc_typename_type "WGPUNonZeroU64" integer)
+let WGPURenderPassDepthStencilAttachmentDescriptor = (sc_typename_type "WGPURenderPassDepthStencilAttachmentDescriptor" CStruct)
 let WGPUChainedStruct = (sc_typename_type "WGPUChainedStruct" CStruct)
 let WGPUId_BindGroup_Dummy = (sc_typename_type "WGPUId_BindGroup_Dummy" integer)
 let WGPUTextureDimension = (sc_typename_type "WGPUTextureDimension" CEnum)
@@ -21,8 +21,8 @@ let WGPULogCallback = (sc_typename_type "WGPULogCallback" pointer)
 let WGPUId_Sampler_Dummy = (sc_typename_type "WGPUId_Sampler_Dummy" integer)
 let WGPUFilterMode = (sc_typename_type "WGPUFilterMode" CEnum)
 let WGPUSwapChainId = (sc_typename_type "WGPUSwapChainId" integer)
-let WGPUTextureViewDimension = (sc_typename_type "WGPUTextureViewDimension" CEnum)
 let WGPUCDeviceType = (sc_typename_type "WGPUCDeviceType" integer)
+let WGPUTextureViewDimension = (sc_typename_type "WGPUTextureViewDimension" CEnum)
 let WGPUId_Device_Dummy = (sc_typename_type "WGPUId_Device_Dummy" integer)
 let WGPUSwapChainOutput = (sc_typename_type "WGPUSwapChainOutput" CStruct)
 let WGPUCommandBufferDescriptor = (sc_typename_type "WGPUCommandBufferDescriptor" CStruct)
@@ -33,17 +33,17 @@ let WGPURenderBundleEncoderId = (sc_typename_type "WGPURenderBundleEncoderId" po
 let WGPUStencilStateFaceDescriptor = (sc_typename_type "WGPUStencilStateFaceDescriptor" CStruct)
 let WGPUCompareFunction = (sc_typename_type "WGPUCompareFunction" CEnum)
 let WGPUQueueId = (sc_typename_type "WGPUQueueId" integer)
-let WGPUTextureCopyView = (sc_typename_type "WGPUTextureCopyView" CStruct)
 let WGPUOption_AdapterId = (sc_typename_type "WGPUOption_AdapterId" integer)
+let WGPUTextureCopyView = (sc_typename_type "WGPUTextureCopyView" CStruct)
 let WGPUVertexBufferLayoutDescriptor = (sc_typename_type "WGPUVertexBufferLayoutDescriptor" CStruct)
 let WGPUOption_SurfaceId = (sc_typename_type "WGPUOption_SurfaceId" integer)
 let WGPUBindingType = (sc_typename_type "WGPUBindingType" CEnum)
-let WGPUOption_SamplerId = (sc_typename_type "WGPUOption_SamplerId" integer)
 let WGPUBindGroupDescriptor = (sc_typename_type "WGPUBindGroupDescriptor" CStruct)
+let WGPUOption_SamplerId = (sc_typename_type "WGPUOption_SamplerId" integer)
 let WGPUDynamicOffset = (sc_typename_type "WGPUDynamicOffset" integer)
 let WGPUSamplerDescriptor = (sc_typename_type "WGPUSamplerDescriptor" CStruct)
-let WGPUInputStepMode = (sc_typename_type "WGPUInputStepMode" CEnum)
 let WGPUVertexFormat = (sc_typename_type "WGPUVertexFormat" CEnum)
+let WGPUInputStepMode = (sc_typename_type "WGPUInputStepMode" CEnum)
 let WGPUOption_NonZeroU64 = (sc_typename_type "WGPUOption_NonZeroU64" integer)
 let WGPUTextureAspect = (sc_typename_type "WGPUTextureAspect" CEnum)
 let WGPURenderPassColorAttachmentDescriptor = (sc_typename_type "WGPURenderPassColorAttachmentDescriptor" CStruct)
@@ -61,8 +61,8 @@ let WGPUBindGroupLayoutDescriptor = (sc_typename_type "WGPUBindGroupLayoutDescri
 let WGPUPassChannel_f32 = (sc_typename_type "WGPUPassChannel_f32" CStruct)
 let WGPURenderPassColorAttachmentDescriptorBase_TextureViewId = (sc_typename_type "WGPURenderPassColorAttachmentDescriptorBase_TextureViewId" CStruct)
 let WGPUPresentMode = (sc_typename_type "WGPUPresentMode" CEnum)
-let WGPUBindGroupEntry = (sc_typename_type "WGPUBindGroupEntry" CStruct)
 let WGPUAdapterId = (sc_typename_type "WGPUAdapterId" integer)
+let WGPUBindGroupEntry = (sc_typename_type "WGPUBindGroupEntry" CStruct)
 let WGPUId_RenderBundle = (sc_typename_type "WGPUId_RenderBundle" integer)
 let WGPURawString = (sc_typename_type "WGPURawString" pointer)
 let WGPUTextureId = (sc_typename_type "WGPUTextureId" integer)
@@ -88,8 +88,8 @@ let WGPUIndexFormat = (sc_typename_type "WGPUIndexFormat" CEnum)
 let WGPUBufferDescriptor = (sc_typename_type "WGPUBufferDescriptor" CStruct)
 let WGPUBufferId = (sc_typename_type "WGPUBufferId" integer)
 let WGPUBufferAddress = (sc_typename_type "WGPUBufferAddress" integer)
-let WGPUId_Surface = (sc_typename_type "WGPUId_Surface" integer)
 let WGPUVertexAttributeDescriptor = (sc_typename_type "WGPUVertexAttributeDescriptor" CStruct)
+let WGPUId_Surface = (sc_typename_type "WGPUId_Surface" integer)
 let WGPUPrimitiveTopology = (sc_typename_type "WGPUPrimitiveTopology" CEnum)
 let WGPUComputePassDescriptor = (sc_typename_type "WGPUComputePassDescriptor" CStruct)
 let WGPUBlendFactor = (sc_typename_type "WGPUBlendFactor" CEnum)
@@ -100,15 +100,15 @@ let WGPURenderPipelineDescriptor = (sc_typename_type "WGPURenderPipelineDescript
 let WGPUAddressMode = (sc_typename_type "WGPUAddressMode" CEnum)
 let WGPUAnisotropicSamplerDescriptorExt = (sc_typename_type "WGPUAnisotropicSamplerDescriptorExt" CStruct)
 let WGPUStoreOp = (sc_typename_type "WGPUStoreOp" CEnum)
-let WGPUTextureComponentType = (sc_typename_type "WGPUTextureComponentType" CEnum)
-let WGPUBufferUsage = (sc_typename_type "WGPUBufferUsage" integer)
 let WGPUPipelineLayoutDescriptor = (sc_typename_type "WGPUPipelineLayoutDescriptor" CStruct)
 let WGPURequestAdapterOptions = (sc_typename_type "WGPURequestAdapterOptions" CStruct)
+let WGPUTextureComponentType = (sc_typename_type "WGPUTextureComponentType" CEnum)
+let WGPUBufferUsage = (sc_typename_type "WGPUBufferUsage" integer)
 let WGPUId_RenderPipeline_Dummy = (sc_typename_type "WGPUId_RenderPipeline_Dummy" integer)
 let WGPUCLimits = (sc_typename_type "WGPUCLimits" CStruct)
-let WGPUId_BindGroupLayout_Dummy = (sc_typename_type "WGPUId_BindGroupLayout_Dummy" integer)
 let WGPUColor = (sc_typename_type "WGPUColor" CStruct)
 let WGPUPassChannel_Color = (sc_typename_type "WGPUPassChannel_Color" CStruct)
+let WGPUId_BindGroupLayout_Dummy = (sc_typename_type "WGPUId_BindGroupLayout_Dummy" integer)
 let WGPUColorWrite = (sc_typename_type "WGPUColorWrite" integer)
 let WGPUId_Adapter_Dummy = (sc_typename_type "WGPUId_Adapter_Dummy" integer)
 let WGPUOption_BufferId = (sc_typename_type "WGPUOption_BufferId" integer)
@@ -117,12 +117,12 @@ let WGPUOption_TextureViewId = (sc_typename_type "WGPUOption_TextureViewId" inte
 let WGPUComputePass = (sc_typename_type "WGPUComputePass" CStruct)
 let WGPUVertexStateDescriptor = (sc_typename_type "WGPUVertexStateDescriptor" CStruct)
 let WGPUPipelineLayoutId = (sc_typename_type "WGPUPipelineLayoutId" integer)
-let WGPUId_TextureView_Dummy = (sc_typename_type "WGPUId_TextureView_Dummy" integer)
 let WGPUBufferCopyView = (sc_typename_type "WGPUBufferCopyView" CStruct)
 let WGPUId_CommandBuffer_Dummy = (sc_typename_type "WGPUId_CommandBuffer_Dummy" integer)
+let WGPUId_TextureView_Dummy = (sc_typename_type "WGPUId_TextureView_Dummy" integer)
 let WGPUTextureDataLayout = (sc_typename_type "WGPUTextureDataLayout" CStruct)
-let WGPUId_PipelineLayout_Dummy = (sc_typename_type "WGPUId_PipelineLayout_Dummy" integer)
 let WGPURenderBundleEncoder = (sc_typename_type "WGPURenderBundleEncoder" CStruct)
+let WGPUId_PipelineLayout_Dummy = (sc_typename_type "WGPUId_PipelineLayout_Dummy" integer)
 let WGPUId_ShaderModule_Dummy = (sc_typename_type "WGPUId_ShaderModule_Dummy" integer)
 let WGPUBackend = (sc_typename_type "WGPUBackend" CEnum)
 let WGPUProgrammableStageDescriptor = (sc_typename_type "WGPUProgrammableStageDescriptor" CStruct)
@@ -133,33 +133,37 @@ let WGPURenderBundleId = (sc_typename_type "WGPURenderBundleId" integer)
 let WGPUExtent3d = (sc_typename_type "WGPUExtent3d" CStruct)
 let WGPUShaderModuleId = (sc_typename_type "WGPUShaderModuleId" integer)
 let WGPUOrigin3d = (sc_typename_type "WGPUOrigin3d" CStruct)
-let WGPUFrontFace = (sc_typename_type "WGPUFrontFace" CEnum)
 let WGPUColorStateDescriptor = (sc_typename_type "WGPUColorStateDescriptor" CStruct)
+let WGPUFrontFace = (sc_typename_type "WGPUFrontFace" CEnum)
 let WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId = (sc_typename_type "WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId" CStruct)
 let WGPUDepthStencilStateDescriptor = (sc_typename_type "WGPUDepthStencilStateDescriptor" CStruct)
 let WGPUSamplerId = (sc_typename_type "WGPUSamplerId" integer)
 let WGPUFeatures = (sc_typename_type "WGPUFeatures" integer)
 let WGPUBufferSize = (sc_typename_type "WGPUBufferSize" integer)
-sc_typename_type_set_storage WGPUNonZeroU64 u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_NonZeroU32 u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_NonZeroU64 u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_AdapterId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_BufferId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_SamplerId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_SurfaceId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_TextureViewId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUOption_BufferSize u64 typename-flag-plain
-let @<WGPUChainedStruct> = (sc_pointer_type WGPUChainedStruct 2:u64 unnamed)
-store (sc_key_type 'next @<WGPUChainedStruct>) (getelementptr type-buffer 0)
-store (sc_key_type 's_type u32) (getelementptr type-buffer 1)
-sc_typename_type_set_storage WGPUChainedStruct (sc_tuple_type 2 type-buffer) typename-flag-plain
 sc_typename_type_set_storage WGPUAddressMode i32 typename-flag-plain
 sc_type_set_symbol WGPUAddressMode 'WGPUAddressMode_ClampToEdge 0
 sc_type_set_symbol WGPUAddressMode 'WGPUAddressMode_Repeat 1
 sc_type_set_symbol WGPUAddressMode 'WGPUAddressMode_MirrorRepeat 2
 
-sc_typename_type_set_storage WGPUBackend u8 typename-flag-plain
-sc_typename_type_set_storage WGPUBindingType u32 typename-flag-plain
+sc_typename_type_set_storage WGPUBackend i32 typename-flag-plain
+sc_type_set_symbol WGPUBackend 'WGPUBackend_Empty 0
+sc_type_set_symbol WGPUBackend 'WGPUBackend_Vulkan 1
+sc_type_set_symbol WGPUBackend 'WGPUBackend_Metal 2
+sc_type_set_symbol WGPUBackend 'WGPUBackend_Dx12 3
+sc_type_set_symbol WGPUBackend 'WGPUBackend_Dx11 4
+sc_type_set_symbol WGPUBackend 'WGPUBackend_Gl 5
+sc_type_set_symbol WGPUBackend 'WGPUBackend_BrowserWebGpu 6
+
+sc_typename_type_set_storage WGPUBindingType i32 typename-flag-plain
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_UniformBuffer 0
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_StorageBuffer 1
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_ReadonlyStorageBuffer 2
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_Sampler 3
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_ComparisonSampler 4
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_SampledTexture 5
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_ReadonlyStorageTexture 6
+sc_type_set_symbol WGPUBindingType 'WGPUBindingType_WriteonlyStorageTexture 7
+
 sc_typename_type_set_storage WGPUBlendFactor i32 typename-flag-plain
 sc_type_set_symbol WGPUBlendFactor 'WGPUBlendFactor_Zero 0
 sc_type_set_symbol WGPUBlendFactor 'WGPUBlendFactor_One 1
@@ -188,7 +192,13 @@ sc_type_set_symbol WGPUBufferMapAsyncStatus 'WGPUBufferMapAsyncStatus_Error 1
 sc_type_set_symbol WGPUBufferMapAsyncStatus 'WGPUBufferMapAsyncStatus_Unknown 2
 sc_type_set_symbol WGPUBufferMapAsyncStatus 'WGPUBufferMapAsyncStatus_ContextLost 3
 
-sc_typename_type_set_storage WGPUCDeviceType u8 typename-flag-plain
+sc_typename_type_set_storage WGPUCDeviceType i32 typename-flag-plain
+sc_type_set_symbol WGPUCDeviceType 'WGPUCDeviceType_Other 0
+sc_type_set_symbol WGPUCDeviceType 'WGPUCDeviceType_IntegratedGpu 1
+sc_type_set_symbol WGPUCDeviceType 'WGPUCDeviceType_DiscreteGpu 2
+sc_type_set_symbol WGPUCDeviceType 'WGPUCDeviceType_VirtualGpu 3
+sc_type_set_symbol WGPUCDeviceType 'WGPUCDeviceType_Cpu 4
+
 sc_typename_type_set_storage WGPUCompareFunction i32 typename-flag-plain
 sc_type_set_symbol WGPUCompareFunction 'WGPUCompareFunction_Undefined 0
 sc_type_set_symbol WGPUCompareFunction 'WGPUCompareFunction_Never 1
@@ -250,7 +260,17 @@ sc_type_set_symbol WGPUPrimitiveTopology 'WGPUPrimitiveTopology_LineStrip 2
 sc_type_set_symbol WGPUPrimitiveTopology 'WGPUPrimitiveTopology_TriangleList 3
 sc_type_set_symbol WGPUPrimitiveTopology 'WGPUPrimitiveTopology_TriangleStrip 4
 
-sc_typename_type_set_storage WGPUSType u32 typename-flag-plain
+sc_typename_type_set_storage WGPUSType i32 typename-flag-plain
+sc_type_set_symbol WGPUSType 'WGPUSType_Invalid 0
+sc_type_set_symbol WGPUSType 'WGPUSType_SurfaceDescriptorFromMetalLayer 1
+sc_type_set_symbol WGPUSType 'WGPUSType_SurfaceDescriptorFromWindowsHWND 2
+sc_type_set_symbol WGPUSType 'WGPUSType_SurfaceDescriptorFromXlib 3
+sc_type_set_symbol WGPUSType 'WGPUSType_SurfaceDescriptorFromHTMLCanvasId 4
+sc_type_set_symbol WGPUSType 'WGPUSType_ShaderModuleSPIRVDescriptor 5
+sc_type_set_symbol WGPUSType 'WGPUSType_ShaderModuleWGSLDescriptor 6
+sc_type_set_symbol WGPUSType 'WGPUSType_AnisotropicFiltering 268435456
+sc_type_set_symbol WGPUSType 'WGPUSType_Force32 2147483647
+
 sc_typename_type_set_storage WGPUStencilOperation i32 typename-flag-plain
 sc_type_set_symbol WGPUStencilOperation 'WGPUStencilOperation_Keep 0
 sc_type_set_symbol WGPUStencilOperation 'WGPUStencilOperation_Zero 1
@@ -368,12 +388,13 @@ sc_type_set_symbol WGPUVertexFormat 'WGPUVertexFormat_Int2 27
 sc_type_set_symbol WGPUVertexFormat 'WGPUVertexFormat_Int3 28
 sc_type_set_symbol WGPUVertexFormat 'WGPUVertexFormat_Int4 29
 
+let @<WGPUChainedStruct> = (sc_pointer_type WGPUChainedStruct 2:u64 unnamed)
+store (sc_key_type 'next @<WGPUChainedStruct>) (getelementptr type-buffer 0)
+store (sc_key_type 's_type u32) (getelementptr type-buffer 1)
+sc_typename_type_set_storage WGPUChainedStruct (sc_tuple_type 2 type-buffer) typename-flag-plain
 sc_typename_type_set_opaque WGPUComputePass
 sc_typename_type_set_opaque WGPURenderBundleEncoder
 sc_typename_type_set_opaque WGPURenderPass
-sc_typename_type_set_storage WGPUId_Adapter_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUAdapterId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUFeatures u64 typename-flag-plain
 let mutable@<i8> = (sc_pointer_type i8 18446744073709551613:u64 unnamed)
 store (sc_key_type 'name mutable@<i8>) (getelementptr type-buffer 0)
 store (sc_key_type 'name_length u64) (getelementptr type-buffer 1)
@@ -384,26 +405,8 @@ store (sc_key_type 'backend u8) (getelementptr type-buffer 5)
 sc_typename_type_set_storage WGPUCAdapterInfo (sc_tuple_type 6 type-buffer) typename-flag-plain
 store (sc_key_type 'max_bind_groups u32) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUCLimits (sc_tuple_type 1 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUId_Device_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUDeviceId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUId_BindGroup_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUBindGroupId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUId_BindGroupLayout_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUBindGroupLayoutId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUId_Buffer_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUBufferId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUBufferAddress u64 typename-flag-plain
-sc_typename_type_set_storage WGPUBufferSize u64 typename-flag-plain
-let mutable@<u8> = (sc_pointer_type u8 18446744073709551613:u64 unnamed)
-store mutable@<u8> (getelementptr type-buffer 1)
-sc_typename_type_set_storage WGPUBufferMapCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
-sc_typename_type_set_storage WGPUId_CommandBuffer_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUCommandBufferId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUCommandEncoderId u64 typename-flag-plain
 store (sc_key_type 'todo u32) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUComputePassDescriptor (sc_tuple_type 1 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUId_TextureView_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUTextureViewId u64 typename-flag-plain
 store (sc_key_type 'r f64) (getelementptr type-buffer 0)
 store (sc_key_type 'g f64) (getelementptr type-buffer 1)
 store (sc_key_type 'b f64) (getelementptr type-buffer 2)
@@ -418,10 +421,6 @@ store (sc_key_type 'attachment u64) (getelementptr type-buffer 0)
 store (sc_key_type 'resolve_target u64) (getelementptr type-buffer 1)
 store (sc_key_type 'channel WGPUPassChannel_Color) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPURenderPassColorAttachmentDescriptorBase_TextureViewId (sc_tuple_type 3 type-buffer) typename-flag-plain
-store (sc_key_type 'attachment u64) (getelementptr type-buffer 0)
-store (sc_key_type 'resolve_target u64) (getelementptr type-buffer 1)
-store (sc_key_type 'channel WGPUPassChannel_Color) (getelementptr type-buffer 2)
-sc_typename_type_set_storage WGPURenderPassColorAttachmentDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
 store (sc_key_type 'load_op WGPULoadOp) (getelementptr type-buffer 0)
 store (sc_key_type 'store_op WGPUStoreOp) (getelementptr type-buffer 1)
 store (sc_key_type 'clear_value f32) (getelementptr type-buffer 2)
@@ -437,14 +436,18 @@ store (sc_key_type 'depth WGPUPassChannel_f32) (getelementptr type-buffer 1)
 store (sc_key_type 'stencil WGPUPassChannel_u32) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId (sc_tuple_type 3 type-buffer) typename-flag-plain
 store (sc_key_type 'attachment u64) (getelementptr type-buffer 0)
+store (sc_key_type 'resolve_target u64) (getelementptr type-buffer 1)
+store (sc_key_type 'channel WGPUPassChannel_Color) (getelementptr type-buffer 2)
+sc_typename_type_set_storage WGPURenderPassColorAttachmentDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
+let @<WGPURenderPassColorAttachmentDescriptor> = (sc_pointer_type WGPURenderPassColorAttachmentDescriptor 2:u64 unnamed)
+store (sc_key_type 'attachment u64) (getelementptr type-buffer 0)
 store (sc_key_type 'depth WGPUPassChannel_f32) (getelementptr type-buffer 1)
 store (sc_key_type 'stencil WGPUPassChannel_u32) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPURenderPassDepthStencilAttachmentDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
-let @<WGPURenderPassColorAttachmentDescriptorBase_TextureViewId> = (sc_pointer_type WGPURenderPassColorAttachmentDescriptorBase_TextureViewId 2:u64 unnamed)
-let @<WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId> = (sc_pointer_type WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId 2:u64 unnamed)
-store (sc_key_type 'color_attachments @<WGPURenderPassColorAttachmentDescriptorBase_TextureViewId>) (getelementptr type-buffer 0)
+let @<WGPURenderPassDepthStencilAttachmentDescriptor> = (sc_pointer_type WGPURenderPassDepthStencilAttachmentDescriptor 2:u64 unnamed)
+store (sc_key_type 'color_attachments @<WGPURenderPassColorAttachmentDescriptor>) (getelementptr type-buffer 0)
 store (sc_key_type 'color_attachments_length u64) (getelementptr type-buffer 1)
-store (sc_key_type 'depth_stencil_attachment @<WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId>) (getelementptr type-buffer 2)
+store (sc_key_type 'depth_stencil_attachment @<WGPURenderPassDepthStencilAttachmentDescriptor>) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPURenderPassDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
 store (sc_key_type 'offset u64) (getelementptr type-buffer 0)
 store (sc_key_type 'bytes_per_row u32) (getelementptr type-buffer 1)
@@ -453,8 +456,6 @@ sc_typename_type_set_storage WGPUTextureDataLayout (sc_tuple_type 3 type-buffer)
 store (sc_key_type 'buffer u64) (getelementptr type-buffer 0)
 store (sc_key_type 'layout WGPUTextureDataLayout) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUBufferCopyView (sc_tuple_type 2 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUId_Texture_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUTextureId u64 typename-flag-plain
 store (sc_key_type 'x u32) (getelementptr type-buffer 0)
 store (sc_key_type 'y u32) (getelementptr type-buffer 1)
 store (sc_key_type 'z u32) (getelementptr type-buffer 2)
@@ -469,13 +470,6 @@ store (sc_key_type 'depth u32) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPUExtent3d (sc_tuple_type 3 type-buffer) typename-flag-plain
 store (sc_key_type 'todo u32) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUCommandBufferDescriptor (sc_tuple_type 1 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPURawString (sc_pointer_type i8 2:u64 unnamed) typename-flag-plain
-sc_typename_type_set_storage WGPUDynamicOffset u32 typename-flag-plain
-sc_typename_type_set_storage WGPUId_ComputePipeline_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUComputePipelineId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUId_Surface u64 typename-flag-plain
-sc_typename_type_set_storage WGPUSurfaceId u64 typename-flag-plain
-sc_typename_type_set_storage WGPULabel (sc_pointer_type i8 2:u64 unnamed) typename-flag-plain
 store (sc_key_type 'binding u32) (getelementptr type-buffer 0)
 store (sc_key_type 'buffer u64) (getelementptr type-buffer 1)
 store (sc_key_type 'offset u64) (getelementptr type-buffer 2)
@@ -483,13 +477,13 @@ store (sc_key_type 'size u64) (getelementptr type-buffer 3)
 store (sc_key_type 'sampler u64) (getelementptr type-buffer 4)
 store (sc_key_type 'texture_view u64) (getelementptr type-buffer 5)
 sc_typename_type_set_storage WGPUBindGroupEntry (sc_tuple_type 6 type-buffer) typename-flag-plain
+sc_typename_type_set_storage WGPULabel (sc_pointer_type i8 2:u64 unnamed) typename-flag-plain
 let @<WGPUBindGroupEntry> = (sc_pointer_type WGPUBindGroupEntry 2:u64 unnamed)
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 store (sc_key_type 'layout u64) (getelementptr type-buffer 1)
 store (sc_key_type 'entries @<WGPUBindGroupEntry>) (getelementptr type-buffer 2)
 store (sc_key_type 'entries_length u64) (getelementptr type-buffer 3)
 sc_typename_type_set_storage WGPUBindGroupDescriptor (sc_tuple_type 4 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUShaderStage u32 typename-flag-plain
 store (sc_key_type 'binding u32) (getelementptr type-buffer 0)
 store (sc_key_type 'visibility u32) (getelementptr type-buffer 1)
 store (sc_key_type 'ty u32) (getelementptr type-buffer 2)
@@ -506,7 +500,6 @@ store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 store (sc_key_type 'entries @<WGPUBindGroupLayoutEntry>) (getelementptr type-buffer 1)
 store (sc_key_type 'entries_length u64) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPUBindGroupLayoutDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUBufferUsage u32 typename-flag-plain
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 store (sc_key_type 'size u64) (getelementptr type-buffer 1)
 store (sc_key_type 'usage u32) (getelementptr type-buffer 2)
@@ -514,10 +507,6 @@ store (sc_key_type 'mapped_at_creation bool) (getelementptr type-buffer 3)
 sc_typename_type_set_storage WGPUBufferDescriptor (sc_tuple_type 4 type-buffer) typename-flag-plain
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPUCommandEncoderDescriptor (sc_tuple_type 1 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUId_PipelineLayout_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUPipelineLayoutId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUId_ShaderModule_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUShaderModuleId u64 typename-flag-plain
 store (sc_key_type 'module u64) (getelementptr type-buffer 0)
 store (sc_key_type 'entry_point WGPULabel) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUProgrammableStageDescriptor (sc_tuple_type 2 type-buffer) typename-flag-plain
@@ -528,7 +517,6 @@ let @<u64> = (sc_pointer_type u64 2:u64 unnamed)
 store (sc_key_type 'bind_group_layouts @<u64>) (getelementptr type-buffer 0)
 store (sc_key_type 'bind_group_layouts_length u64) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUPipelineLayoutDescriptor (sc_tuple_type 2 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPURenderBundleEncoderId (sc_pointer_type WGPURenderBundleEncoder 18446744073709551613:u64 unnamed) typename-flag-plain
 let @<WGPUTextureFormat> = (sc_pointer_type WGPUTextureFormat 2:u64 unnamed)
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 store (sc_key_type 'color_formats @<WGPUTextureFormat>) (getelementptr type-buffer 1)
@@ -536,8 +524,6 @@ store (sc_key_type 'color_formats_length u64) (getelementptr type-buffer 2)
 store (sc_key_type 'depth_stencil_format @<WGPUTextureFormat>) (getelementptr type-buffer 3)
 store (sc_key_type 'sample_count u32) (getelementptr type-buffer 4)
 sc_typename_type_set_storage WGPURenderBundleEncoderDescriptor (sc_tuple_type 5 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUId_RenderPipeline_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPURenderPipelineId u64 typename-flag-plain
 store (sc_key_type 'front_face WGPUFrontFace) (getelementptr type-buffer 0)
 store (sc_key_type 'cull_mode WGPUCullMode) (getelementptr type-buffer 1)
 store (sc_key_type 'depth_bias i32) (getelementptr type-buffer 2)
@@ -548,7 +534,6 @@ store (sc_key_type 'src_factor WGPUBlendFactor) (getelementptr type-buffer 0)
 store (sc_key_type 'dst_factor WGPUBlendFactor) (getelementptr type-buffer 1)
 store (sc_key_type 'operation WGPUBlendOperation) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPUBlendDescriptor (sc_tuple_type 3 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUColorWrite u32 typename-flag-plain
 store (sc_key_type 'format WGPUTextureFormat) (getelementptr type-buffer 0)
 store (sc_key_type 'alpha_blend WGPUBlendDescriptor) (getelementptr type-buffer 1)
 store (sc_key_type 'color_blend WGPUBlendDescriptor) (getelementptr type-buffer 2)
@@ -567,7 +552,6 @@ store (sc_key_type 'stencil_back WGPUStencilStateFaceDescriptor) (getelementptr 
 store (sc_key_type 'stencil_read_mask u32) (getelementptr type-buffer 5)
 store (sc_key_type 'stencil_write_mask u32) (getelementptr type-buffer 6)
 sc_typename_type_set_storage WGPUDepthStencilStateDescriptor (sc_tuple_type 7 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUShaderLocation u32 typename-flag-plain
 store (sc_key_type 'offset u64) (getelementptr type-buffer 0)
 store (sc_key_type 'format WGPUVertexFormat) (getelementptr type-buffer 1)
 store (sc_key_type 'shader_location u32) (getelementptr type-buffer 2)
@@ -600,8 +584,6 @@ store (sc_key_type 'sample_count u32) (getelementptr type-buffer 9)
 store (sc_key_type 'sample_mask u32) (getelementptr type-buffer 10)
 store (sc_key_type 'alpha_to_coverage_enabled bool) (getelementptr type-buffer 11)
 sc_typename_type_set_storage WGPURenderPipelineDescriptor (sc_tuple_type 12 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUId_Sampler_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUSamplerId u64 typename-flag-plain
 store (sc_key_type 'next_in_chain @<WGPUChainedStruct>) (getelementptr type-buffer 0)
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 1)
 store (sc_key_type 'address_mode_u WGPUAddressMode) (getelementptr type-buffer 2)
@@ -618,9 +600,6 @@ let @<u32> = (sc_pointer_type u32 2:u64 unnamed)
 store (sc_key_type 'bytes @<u32>) (getelementptr type-buffer 0)
 store (sc_key_type 'length u64) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUShaderSource (sc_tuple_type 2 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUId_SwapChain_Dummy u64 typename-flag-plain
-sc_typename_type_set_storage WGPUSwapChainId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUTextureUsage u32 typename-flag-plain
 store (sc_key_type 'usage u32) (getelementptr type-buffer 0)
 store (sc_key_type 'format WGPUTextureFormat) (getelementptr type-buffer 1)
 store (sc_key_type 'width u32) (getelementptr type-buffer 2)
@@ -635,20 +614,11 @@ store (sc_key_type 'dimension WGPUTextureDimension) (getelementptr type-buffer 4
 store (sc_key_type 'format WGPUTextureFormat) (getelementptr type-buffer 5)
 store (sc_key_type 'usage u32) (getelementptr type-buffer 6)
 sc_typename_type_set_storage WGPUTextureDescriptor (sc_tuple_type 7 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUQueueId u64 typename-flag-plain
-sc_typename_type_set_storage WGPUId_RenderBundle u64 typename-flag-plain
-sc_typename_type_set_storage WGPURenderBundleId u64 typename-flag-plain
 store (sc_key_type 'label WGPULabel) (getelementptr type-buffer 0)
 sc_typename_type_set_storage WGPURenderBundleDescriptor_Label (sc_tuple_type 1 type-buffer) typename-flag-plain
 store (sc_key_type 'power_preference WGPUPowerPreference) (getelementptr type-buffer 0)
 store (sc_key_type 'compatible_surface u64) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPURequestAdapterOptions (sc_tuple_type 2 type-buffer) typename-flag-plain
-sc_typename_type_set_storage WGPUBackendBit u32 typename-flag-plain
-let @<void> = (sc_pointer_type void 2:u64 unnamed)
-store @<void> (getelementptr type-buffer 1)
-sc_typename_type_set_storage WGPURequestAdapterCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
-store WGPULabel (getelementptr type-buffer 1)
-sc_typename_type_set_storage WGPULogCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
 store (sc_key_type 'status WGPUSwapChainStatus) (getelementptr type-buffer 0)
 store (sc_key_type 'view_id u64) (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUSwapChainOutput (sc_tuple_type 2 type-buffer) typename-flag-plain
@@ -665,6 +635,69 @@ store (sc_key_type 'next_in_chain @<WGPUChainedStruct>) (getelementptr type-buff
 store (sc_key_type 's_type u32) (getelementptr type-buffer 1)
 store (sc_key_type 'anisotropic_clamp u8) (getelementptr type-buffer 2)
 sc_typename_type_set_storage WGPUAnisotropicSamplerDescriptorExt (sc_tuple_type 3 type-buffer) typename-flag-plain
+sc_typename_type_set_storage WGPUNonZeroU64 u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_NonZeroU32 u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_NonZeroU64 u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_AdapterId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_BufferId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_SamplerId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_SurfaceId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_TextureViewId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUOption_BufferSize u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Adapter_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUAdapterId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUFeatures u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Device_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUDeviceId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_BindGroup_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBindGroupId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_BindGroupLayout_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBindGroupLayoutId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Buffer_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBufferId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBufferAddress u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBufferSize u64 typename-flag-plain
+let mutable@<u8> = (sc_pointer_type u8 18446744073709551613:u64 unnamed)
+store mutable@<u8> (getelementptr type-buffer 1)
+sc_typename_type_set_storage WGPUBufferMapCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
+sc_typename_type_set_storage WGPUId_CommandBuffer_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUCommandBufferId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUCommandEncoderId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_TextureView_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUTextureViewId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Texture_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUTextureId u64 typename-flag-plain
+sc_typename_type_set_storage WGPURawString (sc_pointer_type i8 2:u64 unnamed) typename-flag-plain
+sc_typename_type_set_storage WGPUDynamicOffset u32 typename-flag-plain
+sc_typename_type_set_storage WGPUId_ComputePipeline_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUComputePipelineId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Surface u64 typename-flag-plain
+sc_typename_type_set_storage WGPUSurfaceId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUShaderStage u32 typename-flag-plain
+sc_typename_type_set_storage WGPUBufferUsage u32 typename-flag-plain
+sc_typename_type_set_storage WGPUId_PipelineLayout_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUPipelineLayoutId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_ShaderModule_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUShaderModuleId u64 typename-flag-plain
+sc_typename_type_set_storage WGPURenderBundleEncoderId (sc_pointer_type WGPURenderBundleEncoder 18446744073709551613:u64 unnamed) typename-flag-plain
+sc_typename_type_set_storage WGPUId_RenderPipeline_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPURenderPipelineId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUColorWrite u32 typename-flag-plain
+sc_typename_type_set_storage WGPUShaderLocation u32 typename-flag-plain
+sc_typename_type_set_storage WGPUId_Sampler_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUSamplerId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_SwapChain_Dummy u64 typename-flag-plain
+sc_typename_type_set_storage WGPUSwapChainId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUTextureUsage u32 typename-flag-plain
+sc_typename_type_set_storage WGPUQueueId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUId_RenderBundle u64 typename-flag-plain
+sc_typename_type_set_storage WGPURenderBundleId u64 typename-flag-plain
+sc_typename_type_set_storage WGPUBackendBit u32 typename-flag-plain
+let @<void> = (sc_pointer_type void 2:u64 unnamed)
+store @<void> (getelementptr type-buffer 1)
+sc_typename_type_set_storage WGPURequestAdapterCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
+store WGPULabel (getelementptr type-buffer 1)
+sc_typename_type_set_storage WGPULogCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
 let mutable@<WGPUCAdapterInfo> = (sc_pointer_type WGPUCAdapterInfo 18446744073709551613:u64 unnamed)
 let @<WGPUCLimits> = (sc_pointer_type WGPUCLimits 2:u64 unnamed)
 let mutable@<WGPUComputePass> = (sc_pointer_type WGPUComputePass 18446744073709551613:u64 unnamed)
@@ -1067,8 +1100,8 @@ do
         WGPUShaderSource
         WGPURasterizationStateDescriptor
         WGPUBindGroupId
-        WGPUCAdapterInfo
         WGPUDeviceId
+        WGPUCAdapterInfo
         WGPUBindGroupLayoutEntry
         WGPURenderBundleEncoderDescriptor
         WGPUCommandEncoderDescriptor
@@ -1076,8 +1109,8 @@ do
         WGPURequestAdapterCallback
         WGPUBackendBit
         WGPUId_SwapChain_Dummy
-        WGPURenderPassDepthStencilAttachmentDescriptor
         WGPUNonZeroU64
+        WGPURenderPassDepthStencilAttachmentDescriptor
         WGPUChainedStruct
         WGPUId_BindGroup_Dummy
         WGPUTextureDimension
@@ -1086,8 +1119,8 @@ do
         WGPUId_Sampler_Dummy
         WGPUFilterMode
         WGPUSwapChainId
-        WGPUTextureViewDimension
         WGPUCDeviceType
+        WGPUTextureViewDimension
         WGPUId_Device_Dummy
         WGPUSwapChainOutput
         WGPUCommandBufferDescriptor
@@ -1098,17 +1131,17 @@ do
         WGPUStencilStateFaceDescriptor
         WGPUCompareFunction
         WGPUQueueId
-        WGPUTextureCopyView
         WGPUOption_AdapterId
+        WGPUTextureCopyView
         WGPUVertexBufferLayoutDescriptor
         WGPUOption_SurfaceId
         WGPUBindingType
-        WGPUOption_SamplerId
         WGPUBindGroupDescriptor
+        WGPUOption_SamplerId
         WGPUDynamicOffset
         WGPUSamplerDescriptor
-        WGPUInputStepMode
         WGPUVertexFormat
+        WGPUInputStepMode
         WGPUOption_NonZeroU64
         WGPUTextureAspect
         WGPURenderPassColorAttachmentDescriptor
@@ -1126,8 +1159,8 @@ do
         WGPUPassChannel_f32
         WGPURenderPassColorAttachmentDescriptorBase_TextureViewId
         WGPUPresentMode
-        WGPUBindGroupEntry
         WGPUAdapterId
+        WGPUBindGroupEntry
         WGPUId_RenderBundle
         WGPURawString
         WGPUTextureId
@@ -1153,8 +1186,8 @@ do
         WGPUBufferDescriptor
         WGPUBufferId
         WGPUBufferAddress
-        WGPUId_Surface
         WGPUVertexAttributeDescriptor
+        WGPUId_Surface
         WGPUPrimitiveTopology
         WGPUComputePassDescriptor
         WGPUBlendFactor
@@ -1165,15 +1198,15 @@ do
         WGPUAddressMode
         WGPUAnisotropicSamplerDescriptorExt
         WGPUStoreOp
-        WGPUTextureComponentType
-        WGPUBufferUsage
         WGPUPipelineLayoutDescriptor
         WGPURequestAdapterOptions
+        WGPUTextureComponentType
+        WGPUBufferUsage
         WGPUId_RenderPipeline_Dummy
         WGPUCLimits
-        WGPUId_BindGroupLayout_Dummy
         WGPUColor
         WGPUPassChannel_Color
+        WGPUId_BindGroupLayout_Dummy
         WGPUColorWrite
         WGPUId_Adapter_Dummy
         WGPUOption_BufferId
@@ -1182,12 +1215,12 @@ do
         WGPUComputePass
         WGPUVertexStateDescriptor
         WGPUPipelineLayoutId
-        WGPUId_TextureView_Dummy
         WGPUBufferCopyView
         WGPUId_CommandBuffer_Dummy
+        WGPUId_TextureView_Dummy
         WGPUTextureDataLayout
-        WGPUId_PipelineLayout_Dummy
         WGPURenderBundleEncoder
+        WGPUId_PipelineLayout_Dummy
         WGPUId_ShaderModule_Dummy
         WGPUBackend
         WGPUProgrammableStageDescriptor
@@ -1198,8 +1231,8 @@ do
         WGPUExtent3d
         WGPUShaderModuleId
         WGPUOrigin3d
-        WGPUFrontFace
         WGPUColorStateDescriptor
+        WGPUFrontFace
         WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId
         WGPUDepthStencilStateDescriptor
         WGPUSamplerId

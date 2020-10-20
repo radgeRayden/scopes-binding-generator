@@ -1,57 +1,6 @@
 {
-	"typenames":	["WGPUShaderSource", "WGPURasterizationStateDescriptor", "WGPUBindGroupId", "WGPUCAdapterInfo", "WGPUDeviceId", "WGPUBindGroupLayoutEntry", "WGPURenderBundleEncoderDescriptor", "WGPUCommandEncoderDescriptor", "WGPURenderPipelineId", "WGPURequestAdapterCallback", "WGPUBackendBit", "WGPUId_SwapChain_Dummy", "WGPURenderPassDepthStencilAttachmentDescriptor", "WGPUNonZeroU64", "WGPUChainedStruct", "WGPUId_BindGroup_Dummy", "WGPUTextureDimension", "WGPUSwapChainDescriptor", "WGPULogCallback", "WGPUId_Sampler_Dummy", "WGPUFilterMode", "WGPUSwapChainId", "WGPUTextureViewDimension", "WGPUCDeviceType", "WGPUId_Device_Dummy", "WGPUSwapChainOutput", "WGPUCommandBufferDescriptor", "WGPUId_Texture_Dummy", "WGPULabel", "WGPUCullMode", "WGPURenderBundleEncoderId", "WGPUStencilStateFaceDescriptor", "WGPUCompareFunction", "WGPUQueueId", "WGPUTextureCopyView", "WGPUOption_AdapterId", "WGPUVertexBufferLayoutDescriptor", "WGPUOption_SurfaceId", "WGPUBindingType", "WGPUOption_SamplerId", "WGPUBindGroupDescriptor", "WGPUDynamicOffset", "WGPUSamplerDescriptor", "WGPUInputStepMode", "WGPUVertexFormat", "WGPUOption_NonZeroU64", "WGPUTextureAspect", "WGPURenderPassColorAttachmentDescriptor", "WGPUOption_NonZeroU32", "WGPUTextureViewDescriptor", "WGPUSurfaceId", "WGPUTextureViewId", "WGPULoadOp", "WGPURenderPassDescriptor", "WGPUCommandBufferId", "WGPURenderPass", "WGPUBindGroupLayoutId", "WGPUComputePipelineDescriptor", "WGPUBindGroupLayoutDescriptor", "WGPUPassChannel_f32", "WGPURenderPassColorAttachmentDescriptorBase_TextureViewId", "WGPUPresentMode", "WGPUBindGroupEntry", "WGPUAdapterId", "WGPUId_RenderBundle", "WGPURawString", "WGPUTextureId", "WGPUSwapChainStatus", "WGPUBufferMapCallback", "WGPUBlendOperation", "WGPUTextureDescriptor", "WGPUShaderLocation", "WGPUSType", "WGPUComputePipelineId", "WGPUCommandEncoderId", "WGPUTextureFormat", "WGPUId_Buffer_Dummy", "WGPUCDeviceType", "WGPUPassChannel_u32", "WGPUBackend", "WGPUOption_BufferSize", "WGPUStencilOperation", "WGPUTextureUsage", "WGPUShaderStage", "WGPUBufferMapAsyncStatus", "WGPUIndexFormat", "WGPUBufferDescriptor", "WGPUBufferId", "WGPUBufferAddress", "WGPUId_Surface", "WGPUVertexAttributeDescriptor", "WGPUPrimitiveTopology", "WGPUComputePassDescriptor", "WGPUBlendFactor", "WGPUId_ComputePipeline_Dummy", "WGPULogLevel", "WGPUBlendDescriptor", "WGPURenderPipelineDescriptor", "WGPUAddressMode", "WGPUAnisotropicSamplerDescriptorExt", "WGPUStoreOp", "WGPUTextureComponentType", "WGPUBufferUsage", "WGPUPipelineLayoutDescriptor", "WGPURequestAdapterOptions", "WGPUId_RenderPipeline_Dummy", "WGPUCLimits", "WGPUId_BindGroupLayout_Dummy", "WGPUColor", "WGPUPassChannel_Color", "WGPUColorWrite", "WGPUId_Adapter_Dummy", "WGPUOption_BufferId", "WGPUSType", "WGPUOption_TextureViewId", "WGPUComputePass", "WGPUVertexStateDescriptor", "WGPUPipelineLayoutId", "WGPUId_TextureView_Dummy", "WGPUBufferCopyView", "WGPUId_CommandBuffer_Dummy", "WGPUTextureDataLayout", "WGPUId_PipelineLayout_Dummy", "WGPURenderBundleEncoder", "WGPUId_ShaderModule_Dummy", "WGPUBackend", "WGPUProgrammableStageDescriptor", "WGPUBindingType", "WGPUPowerPreference", "WGPURenderBundleDescriptor_Label", "WGPURenderBundleId", "WGPUExtent3d", "WGPUShaderModuleId", "WGPUOrigin3d", "WGPUFrontFace", "WGPUColorStateDescriptor", "WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId", "WGPUDepthStencilStateDescriptor", "WGPUSamplerId", "WGPUFeatures", "WGPUBufferSize"],
+	"typenames":	["WGPUShaderSource", "WGPURasterizationStateDescriptor", "WGPUBindGroupId", "WGPUDeviceId", "WGPUCAdapterInfo", "WGPUBindGroupLayoutEntry", "WGPURenderBundleEncoderDescriptor", "WGPUCommandEncoderDescriptor", "WGPURenderPipelineId", "WGPURequestAdapterCallback", "WGPUBackendBit", "WGPUId_SwapChain_Dummy", "WGPUNonZeroU64", "WGPURenderPassDepthStencilAttachmentDescriptor", "WGPUChainedStruct", "WGPUId_BindGroup_Dummy", "WGPUTextureDimension", "WGPUSwapChainDescriptor", "WGPULogCallback", "WGPUId_Sampler_Dummy", "WGPUFilterMode", "WGPUSwapChainId", "WGPUCDeviceType", "WGPUTextureViewDimension", "WGPUId_Device_Dummy", "WGPUSwapChainOutput", "WGPUCommandBufferDescriptor", "WGPUId_Texture_Dummy", "WGPULabel", "WGPUCullMode", "WGPURenderBundleEncoderId", "WGPUStencilStateFaceDescriptor", "WGPUCompareFunction", "WGPUQueueId", "WGPUOption_AdapterId", "WGPUTextureCopyView", "WGPUVertexBufferLayoutDescriptor", "WGPUOption_SurfaceId", "WGPUBindingType", "WGPUBindGroupDescriptor", "WGPUOption_SamplerId", "WGPUDynamicOffset", "WGPUSamplerDescriptor", "WGPUVertexFormat", "WGPUInputStepMode", "WGPUOption_NonZeroU64", "WGPUTextureAspect", "WGPURenderPassColorAttachmentDescriptor", "WGPUOption_NonZeroU32", "WGPUTextureViewDescriptor", "WGPUSurfaceId", "WGPUTextureViewId", "WGPULoadOp", "WGPURenderPassDescriptor", "WGPUCommandBufferId", "WGPURenderPass", "WGPUBindGroupLayoutId", "WGPUComputePipelineDescriptor", "WGPUBindGroupLayoutDescriptor", "WGPUPassChannel_f32", "WGPURenderPassColorAttachmentDescriptorBase_TextureViewId", "WGPUPresentMode", "WGPUAdapterId", "WGPUBindGroupEntry", "WGPUId_RenderBundle", "WGPURawString", "WGPUTextureId", "WGPUSwapChainStatus", "WGPUBufferMapCallback", "WGPUBlendOperation", "WGPUTextureDescriptor", "WGPUShaderLocation", "WGPUSType", "WGPUComputePipelineId", "WGPUCommandEncoderId", "WGPUTextureFormat", "WGPUId_Buffer_Dummy", "WGPUCDeviceType", "WGPUPassChannel_u32", "WGPUBackend", "WGPUOption_BufferSize", "WGPUStencilOperation", "WGPUTextureUsage", "WGPUShaderStage", "WGPUBufferMapAsyncStatus", "WGPUIndexFormat", "WGPUBufferDescriptor", "WGPUBufferId", "WGPUBufferAddress", "WGPUVertexAttributeDescriptor", "WGPUId_Surface", "WGPUPrimitiveTopology", "WGPUComputePassDescriptor", "WGPUBlendFactor", "WGPUId_ComputePipeline_Dummy", "WGPULogLevel", "WGPUBlendDescriptor", "WGPURenderPipelineDescriptor", "WGPUAddressMode", "WGPUAnisotropicSamplerDescriptorExt", "WGPUStoreOp", "WGPUPipelineLayoutDescriptor", "WGPURequestAdapterOptions", "WGPUTextureComponentType", "WGPUBufferUsage", "WGPUId_RenderPipeline_Dummy", "WGPUCLimits", "WGPUColor", "WGPUPassChannel_Color", "WGPUId_BindGroupLayout_Dummy", "WGPUColorWrite", "WGPUId_Adapter_Dummy", "WGPUOption_BufferId", "WGPUSType", "WGPUOption_TextureViewId", "WGPUComputePass", "WGPUVertexStateDescriptor", "WGPUPipelineLayoutId", "WGPUBufferCopyView", "WGPUId_CommandBuffer_Dummy", "WGPUId_TextureView_Dummy", "WGPUTextureDataLayout", "WGPURenderBundleEncoder", "WGPUId_PipelineLayout_Dummy", "WGPUId_ShaderModule_Dummy", "WGPUBackend", "WGPUProgrammableStageDescriptor", "WGPUBindingType", "WGPUPowerPreference", "WGPURenderBundleDescriptor_Label", "WGPURenderBundleId", "WGPUExtent3d", "WGPUShaderModuleId", "WGPUOrigin3d", "WGPUColorStateDescriptor", "WGPUFrontFace", "WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId", "WGPUDepthStencilStateDescriptor", "WGPUSamplerId", "WGPUFeatures", "WGPUBufferSize"],
 	"storages":	[{
-			"typename":	"WGPUNonZeroU64",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_NonZeroU32",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_NonZeroU64",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_AdapterId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_BufferId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_SamplerId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_SurfaceId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_TextureViewId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUOption_BufferSize",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"@<WGPUChainedStruct>",
-			"kind":	"pointer",
-			"type":	"WGPUChainedStruct",
-			"mutable?":	false
-		}, {
-			"typename":	"WGPUChainedStruct",
-			"kind":	"struct",
-			"fields":	[{
-					"name":	"next",
-					"type":	"@<WGPUChainedStruct>"
-				}, {
-					"name":	"s_type",
-					"type":	"u32"
-				}]
-		}, {
 			"typename":	"WGPUAddressMode",
 			"kind":	"enum",
 			"fields":	[{
@@ -66,12 +15,57 @@
 				}]
 		}, {
 			"typename":	"WGPUBackend",
-			"kind":	"alias",
-			"type":	"u8"
+			"kind":	"enum",
+			"fields":	[{
+					"name":	"WGPUBackend_Empty",
+					"constant":	"0"
+				}, {
+					"name":	"WGPUBackend_Vulkan",
+					"constant":	"1"
+				}, {
+					"name":	"WGPUBackend_Metal",
+					"constant":	"2"
+				}, {
+					"name":	"WGPUBackend_Dx12",
+					"constant":	"3"
+				}, {
+					"name":	"WGPUBackend_Dx11",
+					"constant":	"4"
+				}, {
+					"name":	"WGPUBackend_Gl",
+					"constant":	"5"
+				}, {
+					"name":	"WGPUBackend_BrowserWebGpu",
+					"constant":	"6"
+				}]
 		}, {
 			"typename":	"WGPUBindingType",
-			"kind":	"alias",
-			"type":	"u32"
+			"kind":	"enum",
+			"fields":	[{
+					"name":	"WGPUBindingType_UniformBuffer",
+					"constant":	"0"
+				}, {
+					"name":	"WGPUBindingType_StorageBuffer",
+					"constant":	"1"
+				}, {
+					"name":	"WGPUBindingType_ReadonlyStorageBuffer",
+					"constant":	"2"
+				}, {
+					"name":	"WGPUBindingType_Sampler",
+					"constant":	"3"
+				}, {
+					"name":	"WGPUBindingType_ComparisonSampler",
+					"constant":	"4"
+				}, {
+					"name":	"WGPUBindingType_SampledTexture",
+					"constant":	"5"
+				}, {
+					"name":	"WGPUBindingType_ReadonlyStorageTexture",
+					"constant":	"6"
+				}, {
+					"name":	"WGPUBindingType_WriteonlyStorageTexture",
+					"constant":	"7"
+				}]
 		}, {
 			"typename":	"WGPUBlendFactor",
 			"kind":	"enum",
@@ -152,8 +146,23 @@
 				}]
 		}, {
 			"typename":	"WGPUCDeviceType",
-			"kind":	"alias",
-			"type":	"u8"
+			"kind":	"enum",
+			"fields":	[{
+					"name":	"WGPUCDeviceType_Other",
+					"constant":	"0"
+				}, {
+					"name":	"WGPUCDeviceType_IntegratedGpu",
+					"constant":	"1"
+				}, {
+					"name":	"WGPUCDeviceType_DiscreteGpu",
+					"constant":	"2"
+				}, {
+					"name":	"WGPUCDeviceType_VirtualGpu",
+					"constant":	"3"
+				}, {
+					"name":	"WGPUCDeviceType_Cpu",
+					"constant":	"4"
+				}]
 		}, {
 			"typename":	"WGPUCompareFunction",
 			"kind":	"enum",
@@ -317,8 +326,35 @@
 				}]
 		}, {
 			"typename":	"WGPUSType",
-			"kind":	"alias",
-			"type":	"u32"
+			"kind":	"enum",
+			"fields":	[{
+					"name":	"WGPUSType_Invalid",
+					"constant":	"0"
+				}, {
+					"name":	"WGPUSType_SurfaceDescriptorFromMetalLayer",
+					"constant":	"1"
+				}, {
+					"name":	"WGPUSType_SurfaceDescriptorFromWindowsHWND",
+					"constant":	"2"
+				}, {
+					"name":	"WGPUSType_SurfaceDescriptorFromXlib",
+					"constant":	"3"
+				}, {
+					"name":	"WGPUSType_SurfaceDescriptorFromHTMLCanvasId",
+					"constant":	"4"
+				}, {
+					"name":	"WGPUSType_ShaderModuleSPIRVDescriptor",
+					"constant":	"5"
+				}, {
+					"name":	"WGPUSType_ShaderModuleWGSLDescriptor",
+					"constant":	"6"
+				}, {
+					"name":	"WGPUSType_AnisotropicFiltering",
+					"constant":	"268435456"
+				}, {
+					"name":	"WGPUSType_Force32",
+					"constant":	"2147483647"
+				}]
 		}, {
 			"typename":	"WGPUStencilOperation",
 			"kind":	"enum",
@@ -653,6 +689,21 @@
 					"constant":	"29"
 				}]
 		}, {
+			"typename":	"@<WGPUChainedStruct>",
+			"kind":	"pointer",
+			"type":	"WGPUChainedStruct",
+			"mutable?":	false
+		}, {
+			"typename":	"WGPUChainedStruct",
+			"kind":	"struct",
+			"fields":	[{
+					"name":	"next",
+					"type":	"@<WGPUChainedStruct>"
+				}, {
+					"name":	"s_type",
+					"type":	"u32"
+				}]
+		}, {
 			"typename":	"WGPUComputePass",
 			"kind":	"opaque"
 		}, {
@@ -661,18 +712,6 @@
 		}, {
 			"typename":	"WGPURenderPass",
 			"kind":	"opaque"
-		}, {
-			"typename":	"WGPUId_Adapter_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUAdapterId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUFeatures",
-			"kind":	"alias",
-			"type":	"u64"
 		}, {
 			"typename":	"mutable@<i8>",
 			"kind":	"pointer",
@@ -708,82 +747,12 @@
 					"type":	"u32"
 				}]
 		}, {
-			"typename":	"WGPUId_Device_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUDeviceId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUId_BindGroup_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUBindGroupId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUId_BindGroupLayout_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUBindGroupLayoutId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUId_Buffer_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUBufferId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUBufferAddress",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUBufferSize",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"mutable@<u8>",
-			"kind":	"pointer",
-			"type":	"u8",
-			"mutable?":	true
-		}, {
-			"typename":	"WGPUBufferMapCallback",
-			"kind":	"function-pointer",
-			"return-type":	"void",
-			"parameters":	["WGPUBufferMapAsyncStatus", "mutable@<u8>"]
-		}, {
-			"typename":	"WGPUId_CommandBuffer_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUCommandBufferId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUCommandEncoderId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
 			"typename":	"WGPUComputePassDescriptor",
 			"kind":	"struct",
 			"fields":	[{
 					"name":	"todo",
 					"type":	"u32"
 				}]
-		}, {
-			"typename":	"WGPUId_TextureView_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUTextureViewId",
-			"kind":	"alias",
-			"type":	"u64"
 		}, {
 			"typename":	"WGPUColor",
 			"kind":	"struct",
@@ -818,19 +787,6 @@
 				}]
 		}, {
 			"typename":	"WGPURenderPassColorAttachmentDescriptorBase_TextureViewId",
-			"kind":	"struct",
-			"fields":	[{
-					"name":	"attachment",
-					"type":	"u64"
-				}, {
-					"name":	"resolve_target",
-					"type":	"u64"
-				}, {
-					"name":	"channel",
-					"type":	"WGPUPassChannel_Color"
-				}]
-		}, {
-			"typename":	"WGPURenderPassColorAttachmentDescriptor",
 			"kind":	"struct",
 			"fields":	[{
 					"name":	"attachment",
@@ -888,6 +844,24 @@
 					"type":	"WGPUPassChannel_u32"
 				}]
 		}, {
+			"typename":	"WGPURenderPassColorAttachmentDescriptor",
+			"kind":	"struct",
+			"fields":	[{
+					"name":	"attachment",
+					"type":	"u64"
+				}, {
+					"name":	"resolve_target",
+					"type":	"u64"
+				}, {
+					"name":	"channel",
+					"type":	"WGPUPassChannel_Color"
+				}]
+		}, {
+			"typename":	"@<WGPURenderPassColorAttachmentDescriptor>",
+			"kind":	"pointer",
+			"type":	"WGPURenderPassColorAttachmentDescriptor",
+			"mutable?":	false
+		}, {
 			"typename":	"WGPURenderPassDepthStencilAttachmentDescriptor",
 			"kind":	"struct",
 			"fields":	[{
@@ -901,27 +875,22 @@
 					"type":	"WGPUPassChannel_u32"
 				}]
 		}, {
-			"typename":	"@<WGPURenderPassColorAttachmentDescriptorBase_TextureViewId>",
+			"typename":	"@<WGPURenderPassDepthStencilAttachmentDescriptor>",
 			"kind":	"pointer",
-			"type":	"WGPURenderPassColorAttachmentDescriptorBase_TextureViewId",
-			"mutable?":	false
-		}, {
-			"typename":	"@<WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId>",
-			"kind":	"pointer",
-			"type":	"WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId",
+			"type":	"WGPURenderPassDepthStencilAttachmentDescriptor",
 			"mutable?":	false
 		}, {
 			"typename":	"WGPURenderPassDescriptor",
 			"kind":	"struct",
 			"fields":	[{
 					"name":	"color_attachments",
-					"type":	"@<WGPURenderPassColorAttachmentDescriptorBase_TextureViewId>"
+					"type":	"@<WGPURenderPassColorAttachmentDescriptor>"
 				}, {
 					"name":	"color_attachments_length",
 					"type":	"u64"
 				}, {
 					"name":	"depth_stencil_attachment",
-					"type":	"@<WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId>"
+					"type":	"@<WGPURenderPassDepthStencilAttachmentDescriptor>"
 				}]
 		}, {
 			"typename":	"WGPUTextureDataLayout",
@@ -946,14 +915,6 @@
 					"name":	"layout",
 					"type":	"WGPUTextureDataLayout"
 				}]
-		}, {
-			"typename":	"WGPUId_Texture_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUTextureId",
-			"kind":	"alias",
-			"type":	"u64"
 		}, {
 			"typename":	"WGPUOrigin3d",
 			"kind":	"struct",
@@ -1001,36 +962,6 @@
 					"type":	"u32"
 				}]
 		}, {
-			"typename":	"WGPURawString",
-			"kind":	"pointer",
-			"type":	"i8",
-			"mutable?":	false
-		}, {
-			"typename":	"WGPUDynamicOffset",
-			"kind":	"alias",
-			"type":	"u32"
-		}, {
-			"typename":	"WGPUId_ComputePipeline_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUComputePipelineId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUId_Surface",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUSurfaceId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPULabel",
-			"kind":	"pointer",
-			"type":	"i8",
-			"mutable?":	false
-		}, {
 			"typename":	"WGPUBindGroupEntry",
 			"kind":	"struct",
 			"fields":	[{
@@ -1053,6 +984,11 @@
 					"type":	"u64"
 				}]
 		}, {
+			"typename":	"WGPULabel",
+			"kind":	"pointer",
+			"type":	"i8",
+			"mutable?":	false
+		}, {
 			"typename":	"@<WGPUBindGroupEntry>",
 			"kind":	"pointer",
 			"type":	"WGPUBindGroupEntry",
@@ -1073,10 +1009,6 @@
 					"name":	"entries_length",
 					"type":	"u64"
 				}]
-		}, {
-			"typename":	"WGPUShaderStage",
-			"kind":	"alias",
-			"type":	"u32"
 		}, {
 			"typename":	"WGPUBindGroupLayoutEntry",
 			"kind":	"struct",
@@ -1130,10 +1062,6 @@
 					"type":	"u64"
 				}]
 		}, {
-			"typename":	"WGPUBufferUsage",
-			"kind":	"alias",
-			"type":	"u32"
-		}, {
 			"typename":	"WGPUBufferDescriptor",
 			"kind":	"struct",
 			"fields":	[{
@@ -1156,22 +1084,6 @@
 					"name":	"label",
 					"type":	"WGPULabel"
 				}]
-		}, {
-			"typename":	"WGPUId_PipelineLayout_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUPipelineLayoutId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUId_ShaderModule_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUShaderModuleId",
-			"kind":	"alias",
-			"type":	"u64"
 		}, {
 			"typename":	"WGPUProgrammableStageDescriptor",
 			"kind":	"struct",
@@ -1208,11 +1120,6 @@
 					"type":	"u64"
 				}]
 		}, {
-			"typename":	"WGPURenderBundleEncoderId",
-			"kind":	"pointer",
-			"type":	"WGPURenderBundleEncoder",
-			"mutable?":	true
-		}, {
 			"typename":	"@<WGPUTextureFormat>",
 			"kind":	"pointer",
 			"type":	"WGPUTextureFormat",
@@ -1236,14 +1143,6 @@
 					"name":	"sample_count",
 					"type":	"u32"
 				}]
-		}, {
-			"typename":	"WGPUId_RenderPipeline_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPURenderPipelineId",
-			"kind":	"alias",
-			"type":	"u64"
 		}, {
 			"typename":	"WGPURasterizationStateDescriptor",
 			"kind":	"struct",
@@ -1276,10 +1175,6 @@
 					"name":	"operation",
 					"type":	"WGPUBlendOperation"
 				}]
-		}, {
-			"typename":	"WGPUColorWrite",
-			"kind":	"alias",
-			"type":	"u32"
 		}, {
 			"typename":	"WGPUColorStateDescriptor",
 			"kind":	"struct",
@@ -1337,10 +1232,6 @@
 					"name":	"stencil_write_mask",
 					"type":	"u32"
 				}]
-		}, {
-			"typename":	"WGPUShaderLocation",
-			"kind":	"alias",
-			"type":	"u32"
 		}, {
 			"typename":	"WGPUVertexAttributeDescriptor",
 			"kind":	"struct",
@@ -1454,14 +1345,6 @@
 					"type":	"bool"
 				}]
 		}, {
-			"typename":	"WGPUId_Sampler_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUSamplerId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
 			"typename":	"WGPUSamplerDescriptor",
 			"kind":	"struct",
 			"fields":	[{
@@ -1514,18 +1397,6 @@
 					"type":	"u64"
 				}]
 		}, {
-			"typename":	"WGPUId_SwapChain_Dummy",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUSwapChainId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUTextureUsage",
-			"kind":	"alias",
-			"type":	"u32"
-		}, {
 			"typename":	"WGPUSwapChainDescriptor",
 			"kind":	"struct",
 			"fields":	[{
@@ -1570,18 +1441,6 @@
 					"type":	"u32"
 				}]
 		}, {
-			"typename":	"WGPUQueueId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPUId_RenderBundle",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
-			"typename":	"WGPURenderBundleId",
-			"kind":	"alias",
-			"type":	"u64"
-		}, {
 			"typename":	"WGPURenderBundleDescriptor_Label",
 			"kind":	"struct",
 			"fields":	[{
@@ -1598,25 +1457,6 @@
 					"name":	"compatible_surface",
 					"type":	"u64"
 				}]
-		}, {
-			"typename":	"WGPUBackendBit",
-			"kind":	"alias",
-			"type":	"u32"
-		}, {
-			"typename":	"@<void>",
-			"kind":	"pointer",
-			"type":	"void",
-			"mutable?":	false
-		}, {
-			"typename":	"WGPURequestAdapterCallback",
-			"kind":	"function-pointer",
-			"return-type":	"void",
-			"parameters":	["u64", "@<void>"]
-		}, {
-			"typename":	"WGPULogCallback",
-			"kind":	"function-pointer",
-			"return-type":	"void",
-			"parameters":	["i32", "WGPULabel"]
 		}, {
 			"typename":	"WGPUSwapChainOutput",
 			"kind":	"struct",
@@ -1668,6 +1508,253 @@
 					"name":	"anisotropic_clamp",
 					"type":	"u8"
 				}]
+		}, {
+			"typename":	"WGPUNonZeroU64",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_NonZeroU32",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_NonZeroU64",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_AdapterId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_BufferId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_SamplerId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_SurfaceId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_TextureViewId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUOption_BufferSize",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_Adapter_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUAdapterId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUFeatures",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_Device_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUDeviceId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_BindGroup_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUBindGroupId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_BindGroupLayout_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUBindGroupLayoutId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_Buffer_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUBufferId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUBufferAddress",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUBufferSize",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"mutable@<u8>",
+			"kind":	"pointer",
+			"type":	"u8",
+			"mutable?":	true
+		}, {
+			"typename":	"WGPUBufferMapCallback",
+			"kind":	"function-pointer",
+			"return-type":	"void",
+			"parameters":	["WGPUBufferMapAsyncStatus", "mutable@<u8>"]
+		}, {
+			"typename":	"WGPUId_CommandBuffer_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUCommandBufferId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUCommandEncoderId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_TextureView_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUTextureViewId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_Texture_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUTextureId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPURawString",
+			"kind":	"pointer",
+			"type":	"i8",
+			"mutable?":	false
+		}, {
+			"typename":	"WGPUDynamicOffset",
+			"kind":	"alias",
+			"type":	"u32"
+		}, {
+			"typename":	"WGPUId_ComputePipeline_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUComputePipelineId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_Surface",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUSurfaceId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUShaderStage",
+			"kind":	"alias",
+			"type":	"u32"
+		}, {
+			"typename":	"WGPUBufferUsage",
+			"kind":	"alias",
+			"type":	"u32"
+		}, {
+			"typename":	"WGPUId_PipelineLayout_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUPipelineLayoutId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_ShaderModule_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUShaderModuleId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPURenderBundleEncoderId",
+			"kind":	"pointer",
+			"type":	"WGPURenderBundleEncoder",
+			"mutable?":	true
+		}, {
+			"typename":	"WGPUId_RenderPipeline_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPURenderPipelineId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUColorWrite",
+			"kind":	"alias",
+			"type":	"u32"
+		}, {
+			"typename":	"WGPUShaderLocation",
+			"kind":	"alias",
+			"type":	"u32"
+		}, {
+			"typename":	"WGPUId_Sampler_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUSamplerId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_SwapChain_Dummy",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUSwapChainId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUTextureUsage",
+			"kind":	"alias",
+			"type":	"u32"
+		}, {
+			"typename":	"WGPUQueueId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUId_RenderBundle",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPURenderBundleId",
+			"kind":	"alias",
+			"type":	"u64"
+		}, {
+			"typename":	"WGPUBackendBit",
+			"kind":	"alias",
+			"type":	"u32"
+		}, {
+			"typename":	"@<void>",
+			"kind":	"pointer",
+			"type":	"void",
+			"mutable?":	false
+		}, {
+			"typename":	"WGPURequestAdapterCallback",
+			"kind":	"function-pointer",
+			"return-type":	"void",
+			"parameters":	["u64", "@<void>"]
+		}, {
+			"typename":	"WGPULogCallback",
+			"kind":	"function-pointer",
+			"return-type":	"void",
+			"parameters":	["i32", "WGPULabel"]
 		}, {
 			"typename":	"mutable@<WGPUCAdapterInfo>",
 			"kind":	"pointer",
