@@ -65,7 +65,7 @@ struct Typename
                     a.super == b.super
 
 enum Constant
-    Int : (integer 128 false)
+    Int : u64 u64
     Real : f64
     String : string
     Composite : Symbol # reference
@@ -227,7 +227,24 @@ struct HeaderTypeInfo
         ;
 
     fn define-constant (self sym value)
-        print sym value (typeof value)
+        let u128 = (integer 128)
+        let T = (typeof value)
+        static-if (T < integer)
+            # we store integers as two u64 chunks of a u128, which should cover
+            # all integer types available in C that I know of, or at least the most
+            # likely to be used.
+            let v = (value as u128)
+            let high low =
+                do
+                    let left right =
+                        v & (((~ 0:u64) as u128) << 64)
+                        v & ((~ 0:u64) as u128)
+                    _ (itrunc (left >> 64) u64) (itrunc right u64)
+            'set self.constants sym
+                ConstantInitializer
+                    type = ('get-typename self T)
+                    Constant.Int high low
+
         # 'set self.constants sym value
 
 fn serialize-constants (header-tinfo scope)
