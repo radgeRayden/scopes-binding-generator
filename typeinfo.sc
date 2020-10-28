@@ -64,6 +64,16 @@ struct Typename
                     a.name == b.name
                     a.super == b.super
 
+enum Constant
+    Int : (integer 128 false)
+    Real : f64
+    String : string
+    Composite : Symbol # reference
+
+struct ConstantInitializer
+    type : Symbol
+    args : (Array Constant)
+
 struct HeaderTypeInfo
     # is a Map to enforce no collisions
     typenames : (Map Typename hash)
@@ -74,6 +84,7 @@ struct HeaderTypeInfo
     # easy lookup, has to be set whenever storages is appended.
     storage-lookup : (Map Symbol (Rc TypeStorage))
     functions : (Array TypeStorage)
+    constants : (Map Symbol ConstantInitializer)
 
     fn get-typename (self T)
         returning Symbol
