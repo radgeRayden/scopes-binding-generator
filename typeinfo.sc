@@ -104,14 +104,14 @@ struct HeaderTypeInfo
                 else
                     'Unknown
 
-    fn add-typename (self sym T)
+    fn define-typename (self sym T)
         let super = (Symbol (tostring ('superof T)))
         'set self.typenames (Typename sym super) (hash T)
         'set self.typename-type-lookup (hash T) (Typename sym super)
         'set self.typename-sym-lookup sym (Typename sym super)
         ;
 
-    fn add-storage (self sym T)
+    fn define-storage (self sym T)
         raising Error
         # have we defined this already?
         # we must lookup by symbol because a lot of typedefs are aliases to
@@ -204,19 +204,19 @@ struct HeaderTypeInfo
         'set self.storage-lookup TS.name (copy TS)
         ;
 
-    fn add-function (self sym T)
+    fn define-function (self sym T)
         if (not ('function-pointer? T))
             error f"type ${T} is not a function"
 
         let f = ('element@ ('storageof T) 0)
         let retT = ('return-type f)
         let ret-sym = ('get-typename self retT)
-        'add-storage self ret-sym retT
+        'define-storage self ret-sym retT
 
         local params : (Array Symbol)
         for param in ('elements f)
             let p-sym = ('get-typename self param)
-            'add-storage self p-sym param
+            'define-storage self p-sym param
             'append params p-sym
 
         'append self.functions
@@ -245,7 +245,7 @@ fn gen-header-type-info (include-scope)
             for k v in (('@ header subscope) as Scope)
                 k as:= Symbol
                 let T = (v as type)
-                'add-typename bindings k T
+                'define-typename bindings k T
         _ 'enum 'struct 'union 'typedef
     # recursively define types
     va-map
@@ -253,13 +253,13 @@ fn gen-header-type-info (include-scope)
             for k v in (('@ header subscope) as Scope)
                 k as:= Symbol
                 let T = (v as type)
-                'add-storage bindings (k as Symbol) T
+                'define-storage bindings (k as Symbol) T
         _ 'enum 'struct 'union 'typedef
 
     for k v in (('@ header 'extern) as Scope)
         k as:= Symbol
         let T = ('typeof v)
-        'add-function bindings k T
+        'define-function bindings k T
 
     bindings
 
