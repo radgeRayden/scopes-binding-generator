@@ -226,6 +226,31 @@ struct HeaderTypeInfo
                     params = (deref params)
         ;
 
+    fn define-constant (self sym value)
+        print sym value (typeof value)
+        # 'set self.constants sym value
+
+fn serialize-constants (header-tinfo scope)
+    """"Generates and calls a function that calls HeaderTypeInfo.define-constant
+        for every value in a scope. The runtime compilation allows us to correctly
+        unbox constants and inspect their values.
+    inline gen-expr (arg)
+        fold (expr = (sc_expression_new)) for k v in scope
+            sc_expression_append expr
+                spice-quote
+                    HeaderTypeInfo.define-constant arg k v
+            expr
+    let wrapf =
+        spice-quote
+            fn "constants" (bindings)
+                [(gen-expr bindings)]
+    let T = (& (typeof header-tinfo))
+    local types = (arrayof type T)
+    let f = (sc_typify_template wrapf 1 &types)
+    call
+        (compile f) as (pointer (function void (viewof T 1)))
+        header-tinfo
+
 fn gen-header-type-info (include-scope)
     local bindings = (HeaderTypeInfo)
     let header = include-scope
@@ -260,6 +285,8 @@ fn gen-header-type-info (include-scope)
         k as:= Symbol
         let T = ('typeof v)
         'define-function bindings k T
+
+    serialize-constants (view bindings) (('@ header 'define) as Scope)
 
     bindings
 
