@@ -45,6 +45,40 @@ fn gen-type-definition (storage bindings)
                     interpolate "store ${p} (getelementptr type-buffer ${i})\n"
         let fndef = f"(sc_function_type ${retT} ${count} type-buffer)"
         params* .. (wrap f"${gen-pointer-type fndef false}")
+    case "struct"
+        let fields =
+            (cjson.GetObjectItem storage "fields")
+        let count = (cjson.GetArraySize fields)
+        let fields* =
+            fold (result = "") for i f in (enumerate (json-array->generator fields))
+                let field-name =
+                    string (cjson.GetStringValue (cjson.GetObjectItem f "name"))
+                let fT =
+                    string (cjson.GetStringValue (cjson.GetObjectItem f "type"))
+                .. result
+                    f"store (sc_key_type '${field-name} ${fT}) (getelementptr type-buffer ${i})"
+                    "\n"
+        fields* .. (wrap f"(sc_tuple_type ${count} type-buffer)")
+    case "enum"
+        let fields =
+            (cjson.GetObjectItem storage "fields")
+        let head = (.. (wrap i32) "\n")
+        fold (result = head) for f in (json-array->generator fields)
+            let field-name =
+                string (cjson.GetStringValue (cjson.GetObjectItem f "name"))
+            let constant =
+                string (cjson.GetStringValue (cjson.GetObjectItem f "constant"))
+            let field =
+                interpolate "sc_type_set_symbol ${name} '${field-name} ${constant}\n"
+            .. result field
+    case "union"
+        error "NYI"
+    case "alias"
+        let ref =
+            string (cjson.GetStringValue (cjson.GetObjectItem storage "type"))
+        wrap ref
+    case "opaque"
+        f"sc_typename_type_set_opaque ${name}"
     default
         ""
 
