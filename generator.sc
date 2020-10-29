@@ -4,7 +4,7 @@
 import .cjson
 import .typeinfo
 
-fn add-storage-definition (storage-array TS tinfo)
+fn emit-storage-definition (storage-array TS tinfo)
     let stdef = (cjson.CreateObject)
     cjson.AddStringToObject stdef "typename" (tostring TS.name)
     dispatch TS.storage
@@ -47,7 +47,7 @@ fn add-storage-definition (storage-array TS tinfo)
 
     cjson.AddItemToArray storage-array stdef
 
-fn add-function-definition (function-array TS tinfo)
+fn emit-function-definition (function-array TS tinfo)
     let stdef = (cjson.CreateObject)
     cjson.AddStringToObject stdef "name" (tostring TS.name)
     cjson.AddStringToObject stdef "kind" "function-pointer"
@@ -73,10 +73,10 @@ fn gen-bindings-JSON (scope)
         cjson.AddItemToArray typenames (cjson.CreateString ((tostring tname.name) as rawstring))
 
     for ts in metadata.storages
-        add-storage-definition storages ts metadata
+        emit-storage-definition storages ts metadata
 
     for ts in metadata.functions
-        add-function-definition externs ts metadata
+        emit-function-definition externs ts metadata
 
     bindings
 
