@@ -72,7 +72,7 @@ enum Constant
 
 struct ConstantInitializer
     type : Symbol
-    args : (Array Constant)
+    args : (Array (tuple (type = Symbol) Constant))
 
 struct HeaderTypeInfo
     # is a Map to enforce no collisions
@@ -230,7 +230,7 @@ struct HeaderTypeInfo
         let u128 = (integer 128)
         let T = (typeof value)
         let tname = ('get-typename self T)
-        local const-arr = ((Array Constant))
+        local const-arr = ((Array (tuple (type = Symbol) Constant)))
         static-if (T < integer)
             # we store integers as two u64 chunks of a u128, which should cover
             # all integer types available in C that I know of, or at least the most
@@ -242,14 +242,21 @@ struct HeaderTypeInfo
                         v & (((~ 0:u64) as u128) << 64)
                         v & ((~ 0:u64) as u128)
                     _ (itrunc (left >> 64) u64) (itrunc right u64)
-            'append const-arr (Constant.Int high low)
+            'append const-arr
+                tupleof
+                    type = tname
+                    Constant.Int high low
             'set self.constants sym
                 ConstantInitializer
                     type = tname
                     const-arr
 
         elseif (T < real)
-            'append const-arr (Constant.Real (value as f64))
+            'append const-arr
+                tupleof
+                    type = tname
+                    Constant.Real (value as f64)
+
             'set self.constants sym
                 ConstantInitializer
                     type = tname
