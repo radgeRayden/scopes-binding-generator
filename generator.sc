@@ -63,12 +63,25 @@ fn emit-function-definition (function-array TS tinfo)
             cjson.CreateString (tostring p)
     cjson.AddItemToArray function-array stdef
 
+fn emit-constant-definition (constant-array name initializer tinfo)
+    let const-def = (cjson.CreateObject)
+    cjson.AddStringToObject const-def "name" (tostring name)
+    cjson.AddStringToObject const-def "type" (tostring initializer.type)
+    let args = (cjson.AddArrayToObject const-def "args")
+    for arg in initializer.args
+        let obj = (cjson.CreateObject)
+        cjson.AddStringToObject obj "type" (tostring arg.type)
+        cjson.AddItemToArray args obj
+    cjson.AddItemToArray constant-array const-def
+
 fn gen-bindings-JSON (scope)
     let metadata = (typeinfo.gen-header-type-info scope)
     let bindings = (cjson.CreateObject)
     let typenames = (cjson.AddArrayToObject bindings "typenames")
     let storages = (cjson.AddArrayToObject bindings "storages")
     let externs = (cjson.AddArrayToObject bindings "externs")
+    let defines = (cjson.AddArrayToObject bindings "defines")
+
     for tname in metadata.typenames
         cjson.AddItemToArray typenames (cjson.CreateString ((tostring tname.name) as rawstring))
 
@@ -77,6 +90,9 @@ fn gen-bindings-JSON (scope)
 
     for ts in metadata.functions
         emit-function-definition externs ts metadata
+
+    for k v in metadata.constants
+        emit-constant-definition defines k v metadata
 
     bindings
 
