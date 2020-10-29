@@ -24,7 +24,7 @@ do
         locals;
     vvv bind define
     do
-        using header.define
+        using header.define filter type-filter
         locals;
 
     let extern-filter = "^wgpu_"

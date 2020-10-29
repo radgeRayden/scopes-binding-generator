@@ -2411,5 +2411,48 @@
 			"kind":	"function-pointer",
 			"return-type":	"void",
 			"parameters":	["u64"]
+		}],
+	"defines":	[{
+			"name":	"WGPUMAX_ANISOTROPY",
+			"type":	"i32",
+			"args":	[{
+					"type":	"i32",
+					"value":	"16"
+				}]
+		}, {
+			"name":	"WGPUCOPY_BYTES_PER_ROW_ALIGNMENT",
+			"type":	"i32",
+			"args":	[{
+					"type":	"i32",
+					"value":	"256"
+				}]
+		}, {
+			"name":	"WGPUMAX_COLOR_TARGETS",
+			"type":	"i32",
+			"args":	[{
+					"type":	"i32",
+					"value":	"4"
+				}]
+		}, {
+			"name":	"WGPUMAX_MIP_LEVELS",
+			"type":	"i32",
+			"args":	[{
+					"type":	"i32",
+					"value":	"16"
+				}]
+		}, {
+			"name":	"WGPUMAX_VERTEX_BUFFERS",
+			"type":	"i32",
+			"args":	[{
+					"type":	"i32",
+					"value":	"16"
+				}]
+		}, {
+			"name":	"WGPUDESIRED_NUM_FRAMES",
+			"type":	"i32",
+			"args":	[{
+					"type":	"i32",
+					"value":	"3"
+				}]
 		}]
 }

@@ -64,8 +64,9 @@ struct Typename
                     a.name == b.name
                     a.super == b.super
 
+let u128 = (integer 128)
 enum Constant
-    Int : u64 u64
+    Int : u128
     Real : f64
     String : string
     Composite : Symbol # reference
@@ -227,25 +228,17 @@ struct HeaderTypeInfo
         ;
 
     fn define-constant (self sym value)
-        let u128 = (integer 128)
         let T = (typeof value)
         let tname = ('get-typename self T)
         local const-arr = ((Array (tuple (type = Symbol) Constant)))
         static-if (T < integer)
-            # we store integers as two u64 chunks of a u128, which should cover
+            # we store integers as a u128, which should cover
             # all integer types available in C that I know of, or at least the most
             # likely to be used.
-            let v = (value as u128)
-            let high low =
-                do
-                    let left right =
-                        v & (((~ 0:u64) as u128) << 64)
-                        v & ((~ 0:u64) as u128)
-                    _ (itrunc (left >> 64) u64) (itrunc right u64)
             'append const-arr
                 tupleof
                     type = tname
-                    Constant.Int high low
+                    Constant.Int (value as u128)
             'set self.constants sym
                 ConstantInitializer
                     type = tname

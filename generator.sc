@@ -67,10 +67,22 @@ fn emit-constant-definition (constant-array name initializer tinfo)
     let const-def = (cjson.CreateObject)
     cjson.AddStringToObject const-def "name" (tostring name)
     cjson.AddStringToObject const-def "type" (tostring initializer.type)
+
     let args = (cjson.AddArrayToObject const-def "args")
     for arg in initializer.args
         let obj = (cjson.CreateObject)
         cjson.AddStringToObject obj "type" (tostring arg.type)
+        let const = (extractvalue arg 1)
+
+        dispatch const
+        case Int (v)
+            # we serialize as string to avoid precision issues
+            cjson.AddStringToObject obj "value" (dec v)
+        case Real (v)
+            cjson.AddNumberToObject obj "value" v
+        default
+            error "NYI"
+
         cjson.AddItemToArray args obj
     cjson.AddItemToArray constant-array const-def
 
