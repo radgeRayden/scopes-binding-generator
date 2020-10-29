@@ -144,6 +144,22 @@ fn from-JSON (jsondata)
     for f in (json-array->generator externs)
         emit-extern-fn f
 
+    print "do"
+    print "    let"
+    for tname in (json-array->generator typenames)
+        let name =
+            string
+                cjson.GetStringValue
+                    cjson.GetObjectItem tname "name"
+        print f"        ${name}"
+    for ext in (json-array->generator externs)
+        let name =
+            string
+                cjson.GetStringValue
+                    cjson.GetObjectItem ext "name"
+        print f"        ${name}"
+    print "    locals;"
+
 fn from-include-scope (scope)
     import .generator
     from-JSON
