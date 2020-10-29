@@ -19,9 +19,9 @@ fn gen-pointer-type (T mutable?)
 fn emit-type-definition (storage bindings)
     let name = (string (cjson.GetStringValue (cjson.GetObjectItem storage "typename")))
     let kind = (string (cjson.GetStringValue (cjson.GetObjectItem storage "kind")))
+    let typenames = (cjson.GetObjectItem bindings "typenames")
 
     inline wrap (def)
-        let typenames = (cjson.GetObjectItem bindings "typenames")
         let alias? = (not (cjson.HasObjectItem typenames name))
         if alias?
             f"let ${name} = ${def}"
@@ -63,7 +63,8 @@ fn emit-type-definition (storage bindings)
     case "enum"
         let fields =
             (cjson.GetObjectItem storage "fields")
-        let head = (.. (wrap i32) "\n")
+        let head =
+            interpolate "sc_typename_type_set_storage ${name} i32 typename-flag-plain\n"
         fold (result = head) for f in (json-array->generator fields)
             let field-name =
                 string (cjson.GetStringValue (cjson.GetObjectItem f "name"))
