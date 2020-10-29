@@ -1344,4 +1344,10 @@ do
         wgpu_texture_create_view
         wgpu_texture_destroy
         wgpu_texture_view_destroy
+    let WGPUMAX_ANISOTROPY = 16
+    let WGPUCOPY_BYTES_PER_ROW_ALIGNMENT = 256
+    let WGPUMAX_COLOR_TARGETS = 4
+    let WGPUMAX_MIP_LEVELS = 16
+    let WGPUDESIRED_NUM_FRAMES = 3
+    let WGPUMAX_VERTEX_BUFFERS = 16
     locals;

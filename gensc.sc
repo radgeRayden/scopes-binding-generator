@@ -123,6 +123,25 @@ fn emit-extern-fn (fdef)
     let flags = (global-flag-non-writable | global-flag-non-readable)
     print f"let ${name} = (sc_global_new '${name} ${def} ${flags} unnamed)"
 
+fn gen-constant-initializer (T args)
+    match T
+    case (or "i8" "u8" "i16" "u16" "i32" "u32" "i64" "u64")
+        string
+            cjson.GetStringValue
+                cjson.GetObjectItem
+                    cjson.GetArrayItem args 0
+                    "value"
+    # TODO: handle [ui]128
+    case (or "f32" "f64")
+        let v =
+            cjson.GetObjectItem
+                cjson.GetArrayItem args 0
+                "value"
+        assert (cjson.IsNumber v)
+        tostring v.valuedouble
+    default
+        error "NYI"
+
 fn from-JSON (jsondata)
     # FIXME: should first go through the exports to verify the maximum tuple/function size
     print "let type-buffer = (alloca-array type 128)"
@@ -133,6 +152,8 @@ fn from-JSON (jsondata)
     assert (cjson.IsArray storages)
     let externs = (cjson.GetObjectItem jsondata "externs")
     assert (cjson.IsArray externs)
+    let defines = (cjson.GetObjectItem jsondata "defines")
+    assert (cjson.IsArray defines)
 
     for tname in (json-array->generator typenames)
         emit-typename tname
@@ -151,6 +172,18 @@ fn from-JSON (jsondata)
                 cjson.GetStringValue
                     cjson.GetObjectItem ext "name"
         print f"        ${name}"
+
+    for const in (json-array->generator defines)
+        let name =
+            string
+                cjson.GetStringValue
+                    cjson.GetObjectItem const "name"
+        let T =
+            string
+                cjson.GetStringValue
+                    cjson.GetObjectItem const "type"
+        let args = (cjson.GetObjectItem const "args")
+        print f"    let ${name} = ${gen-constant-initializer T args}"
     print "    locals;"
 
 fn from-include-scope (scope)
