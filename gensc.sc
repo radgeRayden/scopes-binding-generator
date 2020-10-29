@@ -137,6 +137,7 @@ fn gen-constant-initializer (T args)
             cjson.GetObjectItem
                 cjson.GetArrayItem args 0
                 "value"
+        # the version of cjson on ubuntu doesn't have GetNumberValue
         assert (cjson.IsNumber v)
         tostring v.valuedouble
     default
