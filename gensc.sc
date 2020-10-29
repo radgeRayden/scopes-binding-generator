@@ -95,6 +95,37 @@ fn emit-typename (tname)
 
     io-write! f""""let ${name} = (sc_typename_type "${name}" ${super})
 
+fn emit-extern-fn (fdef)
+    let name =
+        string
+            cjson.GetStringValue
+                cjson.GetObjectItem fdef "name"
+    let kind =
+        string
+            cjson.GetStringValue
+                cjson.GetObjectItem fdef "kind"
+    assert (kind == "function-pointer") "only function externs are supported at the moment"
+
+
+    let retT =
+        string
+            cjson.GetStringValue
+                cjson.GetObjectItem fdef "return-type"
+    let params =
+        cjson.GetObjectItem fdef "parameters"
+
+    vvv io-write!
+    fold (result = "") for i p in (enumerate (json-array->generator params))
+        let p = (string (cjson.GetStringValue p))
+        result ..
+            interpolate "store ${p} (getelementptr type-buffer ${i})\n"
+
+    let count = (cjson.GetArraySize params)
+    let def =
+        f"(sc_function_type ${retT} ${count} type-buffer)"
+    let flags = (global-flag-non-writable | global-flag-non-readable)
+    print f"let ${name} = (sc_global_new '${name} ${def} ${flags} unnamed)"
+
 fn from-JSON (jsondata)
     # FIXME: should first go through the exports to verify the maximum tuple/function size
     print "let type-buffer = (alloca-array type 128)"
@@ -103,10 +134,15 @@ fn from-JSON (jsondata)
     assert (cjson.IsArray typenames)
     let storages = (cjson.GetObjectItem jsondata "storages")
     assert (cjson.IsArray storages)
+    let externs = (cjson.GetObjectItem jsondata "externs")
+    assert (cjson.IsArray externs)
+
     for tname in (json-array->generator typenames)
         emit-typename tname
     for storage in (json-array->generator storages)
         emit-type-definition storage jsondata
+    for f in (json-array->generator externs)
+        emit-extern-fn f
 
 fn from-include-scope (scope)
     import .generator
