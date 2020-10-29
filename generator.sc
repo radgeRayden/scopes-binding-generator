@@ -95,7 +95,10 @@ fn gen-bindings-JSON (scope)
     let defines = (cjson.AddArrayToObject bindings "defines")
 
     for tname in metadata.typenames
-        cjson.AddItemToArray typenames (cjson.CreateString ((tostring tname.name) as rawstring))
+        let obj = (cjson.CreateObject)
+        cjson.AddStringToObject obj "name" (tostring tname.name)
+        cjson.AddStringToObject obj "super" (tostring tname.super)
+        cjson.AddItemToArray typenames obj
 
     for ts in metadata.storages
         emit-storage-definition storages ts metadata
