@@ -229,6 +229,8 @@ struct HeaderTypeInfo
     fn define-constant (self sym value)
         let u128 = (integer 128)
         let T = (typeof value)
+        let tname = ('get-typename self T)
+        local const-arr = ((Array Constant))
         static-if (T < integer)
             # we store integers as two u64 chunks of a u128, which should cover
             # all integer types available in C that I know of, or at least the most
@@ -240,12 +242,18 @@ struct HeaderTypeInfo
                         v & (((~ 0:u64) as u128) << 64)
                         v & ((~ 0:u64) as u128)
                     _ (itrunc (left >> 64) u64) (itrunc right u64)
+            'append const-arr (Constant.Int high low)
             'set self.constants sym
                 ConstantInitializer
-                    type = ('get-typename self T)
-                    Constant.Int high low
+                    type = tname
+                    const-arr
 
-        # 'set self.constants sym value
+        elseif (T < real)
+            'append const-arr (Constant.Real (value as f64))
+            'set self.constants sym
+                ConstantInitializer
+                    type = tname
+                    const-arr
 
 fn serialize-constants (header-tinfo scope)
     """"Generates and calls a function that calls HeaderTypeInfo.define-constant
@@ -261,11 +269,11 @@ fn serialize-constants (header-tinfo scope)
         spice-quote
             fn "constants" (bindings)
                 [(gen-expr bindings)]
-    let T = (& (typeof header-tinfo))
+    let T = (mutable (& (typeof header-tinfo)))
     local types = (arrayof type T)
     let f = (sc_typify_template wrapf 1 &types)
     call
-        (compile f) as (pointer (function void (viewof T 1)))
+        (compile f) as (pointer (raises (function void (viewof T 1)) Error))
         header-tinfo
 
 fn gen-header-type-info (include-scope)
