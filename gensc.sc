@@ -87,12 +87,8 @@ fn emit-type-definition (storage bindings)
 fn emit-typename (tname)
     """"Creates a new typename, effectively forward declaring the type.
     let name super =
-        string
-            cjson.GetStringValue
-                cjson.GetObjectItem tname "name"
-        string
-            cjson.GetStringValue
-                cjson.GetObjectItem tname "super"
+        string tname.string
+        string (cjson.GetStringValue tname)
 
     io-write! f""""let ${name} = (sc_typename_type "${name}" ${super})
 
@@ -132,7 +128,7 @@ fn from-JSON (jsondata)
     print "let type-buffer = (alloca-array type 128)"
 
     let typenames = (cjson.GetObjectItem jsondata "typenames")
-    assert (cjson.IsArray typenames)
+    assert (cjson.IsObject typenames)
     let storages = (cjson.GetObjectItem jsondata "storages")
     assert (cjson.IsArray storages)
     let externs = (cjson.GetObjectItem jsondata "externs")
@@ -148,11 +144,7 @@ fn from-JSON (jsondata)
     print "do"
     print "    let"
     for tname in (json-array->generator typenames)
-        let name =
-            string
-                cjson.GetStringValue
-                    cjson.GetObjectItem tname "name"
-        print f"        ${name}"
+        print f"        ${string tname.string}"
     for ext in (json-array->generator externs)
         let name =
             string

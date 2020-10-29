@@ -658,6 +658,7 @@ sc_typename_type_set_storage WGPUBufferId u64 typename-flag-plain
 sc_typename_type_set_storage WGPUBufferAddress u64 typename-flag-plain
 sc_typename_type_set_storage WGPUBufferSize u64 typename-flag-plain
 let mutable@<u8> = (sc_pointer_type u8 18446744073709551613:u64 unnamed)
+store WGPUBufferMapAsyncStatus (getelementptr type-buffer 0)
 store mutable@<u8> (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUBufferMapCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
 sc_typename_type_set_storage WGPUId_CommandBuffer_Dummy u64 typename-flag-plain
@@ -694,8 +695,10 @@ sc_typename_type_set_storage WGPUId_RenderBundle u64 typename-flag-plain
 sc_typename_type_set_storage WGPURenderBundleId u64 typename-flag-plain
 sc_typename_type_set_storage WGPUBackendBit u32 typename-flag-plain
 let @<void> = (sc_pointer_type void 2:u64 unnamed)
+store u64 (getelementptr type-buffer 0)
 store @<void> (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPURequestAdapterCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
+store i32 (getelementptr type-buffer 0)
 store WGPULabel (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPULogCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
 let mutable@<WGPUCAdapterInfo> = (sc_pointer_type WGPUCAdapterInfo 18446744073709551613:u64 unnamed)

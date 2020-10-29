@@ -89,16 +89,13 @@ fn emit-constant-definition (constant-array name initializer tinfo)
 fn gen-bindings-JSON (scope)
     let metadata = (typeinfo.gen-header-type-info scope)
     let bindings = (cjson.CreateObject)
-    let typenames = (cjson.AddArrayToObject bindings "typenames")
+    let typenames = (cjson.AddObjectToObject bindings "typenames")
     let storages = (cjson.AddArrayToObject bindings "storages")
     let externs = (cjson.AddArrayToObject bindings "externs")
     let defines = (cjson.AddArrayToObject bindings "defines")
 
     for tname in metadata.typenames
-        let obj = (cjson.CreateObject)
-        cjson.AddStringToObject obj "name" (tostring tname.name)
-        cjson.AddStringToObject obj "super" (tostring tname.super)
-        cjson.AddItemToArray typenames obj
+        cjson.AddStringToObject typenames (tostring tname.name) (tostring tname.super)
 
     for ts in metadata.storages
         emit-storage-definition storages ts metadata
