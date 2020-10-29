@@ -16,7 +16,7 @@ fn gen-pointer-type (T mutable?)
     let flag = (? (mutable? as bool) (bxor pointer-flag-non-writable -1:u64) pointer-flag-non-writable)
     f"(sc_pointer_type ${T} ${flag}:u64 unnamed)"
 
-fn gen-type-definition (storage bindings)
+fn emit-type-definition (storage bindings)
     let name = (string (cjson.GetStringValue (cjson.GetObjectItem storage "typename")))
     let kind = (string (cjson.GetStringValue (cjson.GetObjectItem storage "kind")))
 
@@ -28,6 +28,7 @@ fn gen-type-definition (storage bindings)
         else
             f"sc_typename_type_set_storage ${name} ${def} typename-flag-plain"
 
+    vvv print
     match kind
     case "pointer"
         let mutable? = (cjson.IsTrue (cjson.GetObjectItem storage "mutable?"))
@@ -105,7 +106,7 @@ fn from-JSON (jsondata)
     for tname in (json-array->generator typenames)
         emit-typename tname
     for storage in (json-array->generator storages)
-        print (gen-type-definition storage jsondata)
+        emit-type-definition storage jsondata
 
 fn from-include-scope (scope)
     import .generator
