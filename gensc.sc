@@ -21,6 +21,18 @@
 using import radlib.stringtools
 import .cjson
 
+spice get-transformer (transformers sym)
+    transformers as:= Scope
+    sym as:= Symbol
+    try
+        '@ transformers sym
+        `(getattr transformers sym)
+    else
+        spice-quote
+            inline noop (in...)
+                _ in... ()
+run-stage;
+
 inline json-array->generator (arr)
     Generator
         inline "start" ()
@@ -104,13 +116,13 @@ fn emit-type-definition (storage bindings)
     default
         ""
 
-fn emit-typename (tname)
+inline emit-typename (tname tname-transformer)
     """"Creates a new typename, effectively forward declaring the type.
     let name super =
         string tname.string
         string (cjson.GetStringValue tname)
 
-    io-write! f""""let ${name} = (sc_typename_type "${name}" ${super})
+    io-write! f""""let ${name} = (sc_typename_type "${tname-transformer name}" ${super})
 
 fn emit-extern-fn (fdef)
     let name =
@@ -163,10 +175,16 @@ fn gen-constant-initializer (T args)
     default
         error "NYI"
 
-fn from-JSON (jsondata transformers...)
+inline from-JSON (jsondata transformers...)
     """"Takes previously generated JSON bindings data, emitting pure Scopes bindings
         to stdout. Additionally transformers can be passed in a scope.
         See module documentation for the transformers convention.
+
+    let transformers = transformers...
+    let transformers = ((none? transformers) and (Scope) or transformers)
+    let tname-transformer = (get-transformer transformers 'typename-transformer)
+    let symbol-transformer = (get-transformer transformers 'symbol-transformer)
+
     # FIXME: should first go through the exports to verify the maximum tuple/function size
     print "let type-buffer = (alloca-array type 128)"
 
@@ -180,7 +198,7 @@ fn from-JSON (jsondata transformers...)
     assert (cjson.IsArray defines)
 
     for tname in (json-array->generator typenames)
-        emit-typename tname
+        emit-typename tname tname-transformer
     for storage in (json-array->generator storages)
         emit-type-definition storage jsondata
     for f in (json-array->generator externs)
@@ -189,13 +207,14 @@ fn from-JSON (jsondata transformers...)
     print "do"
     print "    let"
     for tname in (json-array->generator typenames)
-        print f"        ${string tname.string}"
+        let tname = (string tname.string)
+        print f"        ${symbol-transformer tname}"
     for ext in (json-array->generator externs)
         let name =
             string
                 cjson.GetStringValue
                     cjson.GetObjectItem ext "name"
-        print f"        ${name}"
+        print f"        ${symbol-transformer name}"
 
     for const in (json-array->generator defines)
         let name =
@@ -207,10 +226,10 @@ fn from-JSON (jsondata transformers...)
                 cjson.GetStringValue
                     cjson.GetObjectItem const "type"
         let args = (cjson.GetObjectItem const "args")
-        print f"    let ${name} = ${gen-constant-initializer T args}"
+        print f"    let ${symbol-transformer name} = ${gen-constant-initializer T args}"
     print "    locals;"
 
-fn from-include-scope (scope transformers...)
+inline from-include-scope (scope transformers...)
     """"Takes an include scope, structured in the same way as what is returned by
         sc_import_c, passes it through the JSON generator then consumes the output,
         emitting pure Scopes bindings to stdout. Additionally transformers can be passed in a
@@ -218,6 +237,7 @@ fn from-include-scope (scope transformers...)
     import .generator
     from-JSON
         generator.gen-bindings-JSON scope
+        transformers...
 
 do
     let from-JSON from-include-scope

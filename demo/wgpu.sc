@@ -37,4 +37,14 @@ do
     unlet header
     locals;
 
-bindgen.from-include-scope wgpu-header
+vvv bind transformers
+do
+    fn symbol-transformer (sym)
+        let match? start end = ('match? "^(wgpu_|WGPU)" sym)
+        if match?
+            rslice sym end
+        else
+            sym
+    locals;
+
+bindgen.from-include-scope wgpu-header transformers
