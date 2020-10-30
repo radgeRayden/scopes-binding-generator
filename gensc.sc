@@ -116,8 +116,17 @@ inline emit-type-definition (storage bindings struct-transformer enum-transforme
         wrap ref
     case "opaque"
         f"sc_typename_type_set_opaque ${name}"
+    case "array"
+        let eT =
+            string (cjson.GetStringValue (cjson.GetObjectItem storage "element-type"))
+        let count = (cjson.GetObjectItem storage "size")
+        # the version of cjson on ubuntu doesn't have GetNumberValue
+        assert (cjson.IsNumber count)
+        let count = count.valuedouble
+        wrap
+            f"(sc_array_type ${eT} ${count as usize})"
     default
-        ""
+        error (.. "NYI: " kind)
 
 inline emit-typename (tname tname-transformer)
     """"Creates a new typename, effectively forward declaring the type.

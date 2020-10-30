@@ -40,6 +40,10 @@ fn emit-storage-definition (storage-array TS tinfo)
         cjson.AddStringToObject stdef "type" (tostring ref)
     case Opaque ()
         cjson.AddStringToObject stdef "kind" "opaque"
+    case Array (T size)
+        cjson.AddStringToObject stdef "kind" "array"
+        cjson.AddStringToObject stdef "element-type" (tostring T)
+        cjson.AddNumberToObject stdef "size" (size as f64)
     default
         error (.. "serialization not yet implemented: " (tostring TS.storage))
 
