@@ -1,3 +1,23 @@
+# gensc.sc
+# --------------------------------------------------------------------------------
+# Generates C to Scopes bindings based on either an include scope or previously
+# generated JSON data. Can apply transformations to various elements of the bindings,
+# such as the names of types or enum fields. The most common operation is removing prefixes.
+#
+# ON TRANSFORMERS
+# ===============
+# The transformers scope may contain the following functions:
+    - typename-transformer
+        Transforms all typenames.
+        string <- (name : string, super : string)
+    - symbol-transformer
+        Transforms the symbols to which all types and values are bound.
+        string <- (string)
+    - struct-field-transformer
+        string <- (string)
+    - enum-field-transformer
+        string <- (string)
+
 using import radlib.stringtools
 import .cjson
 
@@ -143,7 +163,10 @@ fn gen-constant-initializer (T args)
     default
         error "NYI"
 
-fn from-JSON (jsondata)
+fn from-JSON (jsondata transformers...)
+    """"Takes previously generated JSON bindings data, emitting pure Scopes bindings
+        to stdout. Additionally transformers can be passed in a scope.
+        See module documentation for the transformers convention.
     # FIXME: should first go through the exports to verify the maximum tuple/function size
     print "let type-buffer = (alloca-array type 128)"
 
@@ -187,7 +210,11 @@ fn from-JSON (jsondata)
         print f"    let ${name} = ${gen-constant-initializer T args}"
     print "    locals;"
 
-fn from-include-scope (scope)
+fn from-include-scope (scope transformers...)
+    """"Takes an include scope, structured in the same way as what is returned by
+        sc_import_c, passes it through the JSON generator then consumes the output,
+        emitting pure Scopes bindings to stdout. Additionally transformers can be passed in a
+        scope. See module documentation for the transformers convention.
     import .generator
     from-JSON
         generator.gen-bindings-JSON scope
