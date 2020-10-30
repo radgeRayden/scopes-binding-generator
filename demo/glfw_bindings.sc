@@ -46,13 +46,13 @@ store (sc_key_type 'greenBits i32) (getelementptr type-buffer 3)
 store (sc_key_type 'blueBits i32) (getelementptr type-buffer 4)
 store (sc_key_type 'refreshRate i32) (getelementptr type-buffer 5)
 sc_typename_type_set_storage GLFWvidmode (sc_tuple_type 6 type-buffer) typename-flag-plain
-let _gensc_mutable@<u16> = (sc_pointer_type u16 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<u16> = (sc_pointer_type u16 0:u64 unnamed)
 store (sc_key_type 'red _gensc_mutable@<u16>) (getelementptr type-buffer 0)
 store (sc_key_type 'green _gensc_mutable@<u16>) (getelementptr type-buffer 1)
 store (sc_key_type 'blue _gensc_mutable@<u16>) (getelementptr type-buffer 2)
 store (sc_key_type 'size u32) (getelementptr type-buffer 3)
 sc_typename_type_set_storage GLFWgammaramp (sc_tuple_type 4 type-buffer) typename-flag-plain
-let _gensc_mutable@<u8> = (sc_pointer_type u8 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<u8> = (sc_pointer_type u8 0:u64 unnamed)
 store (sc_key_type 'width i32) (getelementptr type-buffer 0)
 store (sc_key_type 'height i32) (getelementptr type-buffer 1)
 store (sc_key_type 'pixels _gensc_mutable@<u8>) (getelementptr type-buffer 2)
@@ -68,7 +68,7 @@ let _gensc_@<i8> = (sc_pointer_type i8 2:u64 unnamed)
 store i32 (getelementptr type-buffer 0)
 store _gensc_@<i8> (getelementptr type-buffer 1)
 sc_typename_type_set_storage GLFWerrorfun (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
-let _gensc_mutable@<GLFWwindow> = (sc_pointer_type GLFWwindow 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<GLFWwindow> = (sc_pointer_type GLFWwindow 0:u64 unnamed)
 store _gensc_mutable@<GLFWwindow> (getelementptr type-buffer 0)
 store i32 (getelementptr type-buffer 1)
 store i32 (getelementptr type-buffer 2)
@@ -127,31 +127,31 @@ store _gensc_mutable@<GLFWwindow> (getelementptr type-buffer 0)
 store u32 (getelementptr type-buffer 1)
 store i32 (getelementptr type-buffer 2)
 sc_typename_type_set_storage GLFWcharmodsfun (sc_pointer_type (sc_function_type void 3 type-buffer) 2:u64 unnamed) typename-flag-plain
-let _gensc_mutable@<_gensc_@<i8>> = (sc_pointer_type _gensc_@<i8> 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<_gensc_@<i8>> = (sc_pointer_type _gensc_@<i8> 0:u64 unnamed)
 store _gensc_mutable@<GLFWwindow> (getelementptr type-buffer 0)
 store i32 (getelementptr type-buffer 1)
 store _gensc_mutable@<_gensc_@<i8>> (getelementptr type-buffer 2)
 sc_typename_type_set_storage GLFWdropfun (sc_pointer_type (sc_function_type void 3 type-buffer) 2:u64 unnamed) typename-flag-plain
-let _gensc_mutable@<GLFWmonitor> = (sc_pointer_type GLFWmonitor 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<GLFWmonitor> = (sc_pointer_type GLFWmonitor 0:u64 unnamed)
 store _gensc_mutable@<GLFWmonitor> (getelementptr type-buffer 0)
 store i32 (getelementptr type-buffer 1)
 sc_typename_type_set_storage GLFWmonitorfun (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
 store i32 (getelementptr type-buffer 0)
 store i32 (getelementptr type-buffer 1)
 sc_typename_type_set_storage GLFWjoystickfun (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
-let _gensc_mutable@<i32> = (sc_pointer_type i32 18446744073709551613:u64 unnamed)
-let _gensc_mutable@<_gensc_mutable@<GLFWmonitor>> = (sc_pointer_type _gensc_mutable@<GLFWmonitor> 18446744073709551613:u64 unnamed)
-let _gensc_mutable@<f32> = (sc_pointer_type f32 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<i32> = (sc_pointer_type i32 0:u64 unnamed)
+let _gensc_mutable@<_gensc_mutable@<GLFWmonitor>> = (sc_pointer_type _gensc_mutable@<GLFWmonitor> 0:u64 unnamed)
+let _gensc_mutable@<f32> = (sc_pointer_type f32 0:u64 unnamed)
 let _gensc_@<void> = (sc_pointer_type void 2:u64 unnamed)
 let _gensc_@<GLFWvidmode> = (sc_pointer_type GLFWvidmode 2:u64 unnamed)
 let _gensc_@<GLFWgammaramp> = (sc_pointer_type GLFWgammaramp 2:u64 unnamed)
 let _gensc_@<GLFWimage> = (sc_pointer_type GLFWimage 2:u64 unnamed)
-let _gensc_mutable@<f64> = (sc_pointer_type f64 18446744073709551613:u64 unnamed)
-let _gensc_mutable@<GLFWcursor> = (sc_pointer_type GLFWcursor 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<f64> = (sc_pointer_type f64 0:u64 unnamed)
+let _gensc_mutable@<GLFWcursor> = (sc_pointer_type GLFWcursor 0:u64 unnamed)
 let _gensc_@<f32> = (sc_pointer_type f32 2:u64 unnamed)
 let _gensc_@<u8> = (sc_pointer_type u8 2:u64 unnamed)
-let _gensc_mutable@<GLFWgamepadstate> = (sc_pointer_type GLFWgamepadstate 18446744073709551613:u64 unnamed)
-let _gensc_mutable@<u32> = (sc_pointer_type u32 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<GLFWgamepadstate> = (sc_pointer_type GLFWgamepadstate 0:u64 unnamed)
+let _gensc_mutable@<u32> = (sc_pointer_type u32 0:u64 unnamed)
 let glfwInit = (sc_global_new 'glfwInit (sc_function_type i32 0 type-buffer) 6 unnamed)
 let glfwTerminate = (sc_global_new 'glfwTerminate (sc_function_type void 0 type-buffer) 6 unnamed)
 store i32 (getelementptr type-buffer 0)
@@ -614,8 +614,8 @@ do
     let GetRequiredInstanceExtensions = glfwGetRequiredInstanceExtensions
     let PRESS = 1
     let KEY_LEFT_SUPER = 343
-    let KEY_F13 = 302
     let KEY_MENU = 348
+    let KEY_F13 = 302
     let FOCUS_ON_SHOW = 131084
     let MAXIMIZED = 131080
     let JOYSTICK_6 = 5
@@ -633,17 +633,17 @@ do
     let KEY_Y = 89
     let INVALID_ENUM = 65539
     let KEY_N = 78
-    let KEY_SEMICOLON = 59
-    let KEY_F9 = 298
     let OPENGL_ES_API = 196610
+    let KEY_F9 = 298
+    let KEY_SEMICOLON = 59
     let HOVERED = 131083
     let KEY_F11 = 300
     let JOYSTICK_15 = 14
     let KEY_UNKNOWN = 340282366920938463463374607431768211455
     let KEY_KP_0 = 320
     let CROSSHAIR_CURSOR = 221187
-    let KEY_2 = 50
     let FLOATING = 131079
+    let KEY_2 = 50
     let MOUSE_BUTTON_7 = 6
     let MOUSE_BUTTON_RIGHT = 1
     let OUT_OF_MEMORY = 65541
@@ -655,19 +655,19 @@ do
     let KEY_F21 = 310
     let GAMEPAD_BUTTON_TRIANGLE = 3
     let ACCUM_BLUE_BITS = 135177
-    let CENTER_CURSOR = 131081
     let OPENGL_CORE_PROFILE = 204801
+    let CENTER_CURSOR = 131081
     let KEY_Q = 81
     let KEY_S = 83
     let ARROW_CURSOR = 221185
     let GAMEPAD_BUTTON_LAST = 14
     let KEY_F10 = 299
-    let FORMAT_UNAVAILABLE = 65545
     let KEY_V = 86
+    let FORMAT_UNAVAILABLE = 65545
     let KEY_APOSTROPHE = 39
     let JOYSTICK_5 = 4
-    let DONT_CARE = 340282366920938463463374607431768211455
     let CONTEXT_NO_ERROR = 139274
+    let DONT_CARE = 340282366920938463463374607431768211455
     let MOD_ALT = 4
     let JOYSTICK_16 = 15
     let GAMEPAD_BUTTON_SQUARE = 2
@@ -679,12 +679,12 @@ do
     let JOYSTICK_2 = 1
     let PLATFORM_ERROR = 65544
     let MOD_CONTROL = 2
-    let JOYSTICK_14 = 13
     let GAMEPAD_BUTTON_X = 2
+    let JOYSTICK_14 = 13
     let SAMPLES = 135181
     let JOYSTICK_7 = 6
-    let KEY_KP_2 = 322
     let DEPTH_BITS = 135173
+    let KEY_KP_2 = 322
     let MOUSE_BUTTON_5 = 4
     let KEY_ENTER = 257
     let KEY_RIGHT_SHIFT = 344
@@ -699,8 +699,8 @@ do
     let KEY_B = 66
     let DOUBLEBUFFER = 135184
     let JOYSTICK_1 = 0
-    let GAMEPAD_BUTTON_DPAD_UP = 11
     let CURSOR_NORMAL = 212993
+    let GAMEPAD_BUTTON_DPAD_UP = 11
     let KEY_F14 = 303
     let OPENGL_PROFILE = 139272
     let KEY_RIGHT_SUPER = 347
@@ -718,21 +718,21 @@ do
     let HAT_UP = 1
     let KEY_6 = 54
     let REFRESH_RATE = 135183
-    let GAMEPAD_BUTTON_A = 0
     let GAMEPAD_BUTTON_BACK = 6
-    let KEY_R = 82
-    let KEY_8 = 56
+    let GAMEPAD_BUTTON_A = 0
     let LOSE_CONTEXT_ON_RESET = 200706
-    let HAT_RIGHT = 2
+    let KEY_8 = 56
+    let KEY_R = 82
     let MOD_CAPS_LOCK = 16
+    let HAT_RIGHT = 2
     let KEY_U = 85
     let KEY_PRINT_SCREEN = 283
     let MOD_NUM_LOCK = 32
     let GAMEPAD_AXIS_RIGHT_X = 2
     let MOUSE_BUTTON_LAST = 7
     let RELEASE_BEHAVIOR_FLUSH = 217089
-    let OPENGL_DEBUG_CONTEXT = 139271
     let COCOA_FRAME_NAME = 143362
+    let OPENGL_DEBUG_CONTEXT = 139271
     let KEY_F16 = 305
     let SRGB_CAPABLE = 135182
     let KEY_D = 68
@@ -752,9 +752,9 @@ do
     let KEY_PAGE_DOWN = 267
     let VERSION_UNAVAILABLE = 65543
     let X11_CLASS_NAME = 147457
+    let KEY_KP_DECIMAL = 330
     let KEY_KP_ADD = 334
     let RELEASE = 0
-    let KEY_KP_DECIMAL = 330
     let KEY_X = 88
     let KEY_I = 73
     let KEY_UP = 265
@@ -769,12 +769,12 @@ do
     let JOYSTICK_8 = 7
     let CLIENT_API = 139265
     let ACCUM_RED_BITS = 135175
-    let KEY_J = 74
     let HAT_CENTERED = 0
+    let KEY_J = 74
     let GAMEPAD_BUTTON_GUIDE = 8
     let HAT_DOWN = 4
-    let MOUSE_BUTTON_1 = 0
     let KEY_KP_6 = 326
+    let MOUSE_BUTTON_1 = 0
     let KEY_F7 = 296
     let KEY_SPACE = 32
     let KEY_M = 77
@@ -785,14 +785,14 @@ do
     let KEY_F8 = 297
     let RESIZABLE = 131075
     let VISIBLE = 131076
-    let KEY_F1 = 290
     let COCOA_RETINA_FRAMEBUFFER = 143361
+    let KEY_F1 = 290
     let CONTEXT_RELEASE_BEHAVIOR = 139273
     let API_UNAVAILABLE = 65542
     let MOUSE_BUTTON_8 = 7
     let NATIVE_CONTEXT_API = 221185
-    let GAMEPAD_BUTTON_RIGHT_THUMB = 10
     let GAMEPAD_BUTTON_START = 7
+    let GAMEPAD_BUTTON_RIGHT_THUMB = 10
     let KEY_LEFT = 263
     let KEY_PAUSE = 284
     let KEY_7 = 55
@@ -811,10 +811,10 @@ do
     let KEY_LEFT_BRACKET = 91
     let KEY_WORLD_2 = 162
     let KEY_TAB = 258
-    let DECORATED = 131077
     let TRUE = 1
-    let KEY_INSERT = 260
+    let DECORATED = 131077
     let OPENGL_API = 196609
+    let KEY_INSERT = 260
     let MOD_SHIFT = 1
     let JOYSTICK_HAT_BUTTONS = 327681
     let VERSION_MAJOR = 3
@@ -822,18 +822,18 @@ do
     let GAMEPAD_BUTTON_B = 1
     let KEY_ESCAPE = 256
     let KEY_F17 = 306
-    let HAT_LEFT = 8
     let KEY_KP_8 = 328
     let OPENGL_FORWARD_COMPAT = 139270
+    let HAT_LEFT = 8
     let GAMEPAD_BUTTON_DPAD_DOWN = 13
-    let MOD_SUPER = 8
     let NO_ROBUSTNESS = 0
+    let MOD_SUPER = 8
     let KEY_KP_MULTIPLY = 332
     let CONNECTED = 262145
     let KEY_LEFT_SHIFT = 340
     let CONTEXT_REVISION = 139268
-    let ALPHA_BITS = 135172
     let IBEAM_CURSOR = 221186
+    let ALPHA_BITS = 135172
     let NO_ERROR = 0
     let KEY_LEFT_CONTROL = 341
     let KEY_F6 = 295
@@ -841,10 +841,10 @@ do
     let GAMEPAD_BUTTON_Y = 3
     let KEY_KP_DIVIDE = 331
     let KEY_DELETE = 261
-    let ACCUM_GREEN_BITS = 135176
     let KEY_RIGHT_CONTROL = 345
-    let KEY_G = 71
+    let ACCUM_GREEN_BITS = 135176
     let KEY_EQUAL = 61
+    let KEY_G = 71
     let JOYSTICK_LAST = 15
     let KEY_H = 72
     let KEY_P = 80
@@ -861,8 +861,8 @@ do
     let SCALE_TO_MONITOR = 139276
     let DISCONNECTED = 262146
     let AUTO_ICONIFY = 131078
-    let KEY_5 = 53
     let KEY_O = 79
+    let KEY_5 = 53
     let NO_WINDOW_CONTEXT = 65546
     let KEY_MINUS = 45
     let FOCUSED = 131073
@@ -878,8 +878,8 @@ do
     let KEY_F3 = 292
     let GAMEPAD_AXIS_LEFT_X = 0
     let GAMEPAD_AXIS_RIGHT_TRIGGER = 5
-    let FALSE = 0
     let CONTEXT_CREATION_API = 139275
+    let FALSE = 0
     let KEY_T = 84
     let OSMESA_CONTEXT_API = 221187
     let VRESIZE_CURSOR = 221190

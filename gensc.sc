@@ -45,7 +45,7 @@ inline json-array->generator (arr)
             self.next
 
 fn gen-pointer-type (T mutable?)
-    let flag = (? (mutable? as bool) (bxor pointer-flag-non-writable -1:u64) pointer-flag-non-writable)
+    let flag = (? (mutable? as bool) 0:u64 pointer-flag-non-writable)
     f"(sc_pointer_type ${T} ${flag}:u64 unnamed)"
 
 inline emit-type-definition (storage bindings struct-transformer enum-transformer)

@@ -403,7 +403,7 @@ sc_typename_type_set_storage WGPUChainedStruct (sc_tuple_type 2 type-buffer) typ
 sc_typename_type_set_opaque WGPUComputePass
 sc_typename_type_set_opaque WGPURenderBundleEncoder
 sc_typename_type_set_opaque WGPURenderPass
-let _gensc_mutable@<i8> = (sc_pointer_type i8 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<i8> = (sc_pointer_type i8 0:u64 unnamed)
 store (sc_key_type 'name _gensc_mutable@<i8>) (getelementptr type-buffer 0)
 store (sc_key_type 'name_length u64) (getelementptr type-buffer 1)
 store (sc_key_type 'vendor u64) (getelementptr type-buffer 2)
@@ -665,7 +665,7 @@ sc_typename_type_set_storage WGPUId_Buffer_Dummy u64 typename-flag-plain
 sc_typename_type_set_storage WGPUBufferId u64 typename-flag-plain
 sc_typename_type_set_storage WGPUBufferAddress u64 typename-flag-plain
 sc_typename_type_set_storage WGPUBufferSize u64 typename-flag-plain
-let _gensc_mutable@<u8> = (sc_pointer_type u8 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<u8> = (sc_pointer_type u8 0:u64 unnamed)
 store WGPUBufferMapAsyncStatus (getelementptr type-buffer 0)
 store _gensc_mutable@<u8> (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPUBufferMapCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
@@ -688,7 +688,7 @@ sc_typename_type_set_storage WGPUId_PipelineLayout_Dummy u64 typename-flag-plain
 sc_typename_type_set_storage WGPUPipelineLayoutId u64 typename-flag-plain
 sc_typename_type_set_storage WGPUId_ShaderModule_Dummy u64 typename-flag-plain
 sc_typename_type_set_storage WGPUShaderModuleId u64 typename-flag-plain
-sc_typename_type_set_storage WGPURenderBundleEncoderId (sc_pointer_type WGPURenderBundleEncoder 18446744073709551613:u64 unnamed) typename-flag-plain
+sc_typename_type_set_storage WGPURenderBundleEncoderId (sc_pointer_type WGPURenderBundleEncoder 0:u64 unnamed) typename-flag-plain
 sc_typename_type_set_storage WGPUId_RenderPipeline_Dummy u64 typename-flag-plain
 sc_typename_type_set_storage WGPURenderPipelineId u64 typename-flag-plain
 sc_typename_type_set_storage WGPUColorWrite u32 typename-flag-plain
@@ -709,17 +709,17 @@ sc_typename_type_set_storage WGPURequestAdapterCallback (sc_pointer_type (sc_fun
 store i32 (getelementptr type-buffer 0)
 store WGPULabel (getelementptr type-buffer 1)
 sc_typename_type_set_storage WGPULogCallback (sc_pointer_type (sc_function_type void 2 type-buffer) 2:u64 unnamed) typename-flag-plain
-let _gensc_mutable@<WGPUCAdapterInfo> = (sc_pointer_type WGPUCAdapterInfo 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<WGPUCAdapterInfo> = (sc_pointer_type WGPUCAdapterInfo 0:u64 unnamed)
 let _gensc_@<WGPUCLimits> = (sc_pointer_type WGPUCLimits 2:u64 unnamed)
-let _gensc_mutable@<WGPUComputePass> = (sc_pointer_type WGPUComputePass 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<WGPUComputePass> = (sc_pointer_type WGPUComputePass 0:u64 unnamed)
 let _gensc_@<WGPUComputePassDescriptor> = (sc_pointer_type WGPUComputePassDescriptor 2:u64 unnamed)
-let _gensc_mutable@<WGPURenderPass> = (sc_pointer_type WGPURenderPass 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<WGPURenderPass> = (sc_pointer_type WGPURenderPass 0:u64 unnamed)
 let _gensc_@<WGPURenderPassDescriptor> = (sc_pointer_type WGPURenderPassDescriptor 2:u64 unnamed)
 let _gensc_@<WGPUBufferCopyView> = (sc_pointer_type WGPUBufferCopyView 2:u64 unnamed)
 let _gensc_@<WGPUTextureCopyView> = (sc_pointer_type WGPUTextureCopyView 2:u64 unnamed)
 let _gensc_@<WGPUExtent3d> = (sc_pointer_type WGPUExtent3d 2:u64 unnamed)
 let _gensc_@<WGPUCommandBufferDescriptor> = (sc_pointer_type WGPUCommandBufferDescriptor 2:u64 unnamed)
-let _gensc_mutable@<_gensc_@<void>> = (sc_pointer_type _gensc_@<void> 18446744073709551613:u64 unnamed)
+let _gensc_mutable@<_gensc_@<void>> = (sc_pointer_type _gensc_@<void> 0:u64 unnamed)
 let _gensc_@<WGPUBindGroupDescriptor> = (sc_pointer_type WGPUBindGroupDescriptor 2:u64 unnamed)
 let _gensc_@<WGPUBindGroupLayoutDescriptor> = (sc_pointer_type WGPUBindGroupLayoutDescriptor 2:u64 unnamed)
 let _gensc_@<WGPUBufferDescriptor> = (sc_pointer_type WGPUBufferDescriptor 2:u64 unnamed)
@@ -1355,6 +1355,6 @@ do
     let COPY_BYTES_PER_ROW_ALIGNMENT = 256
     let MAX_COLOR_TARGETS = 4
     let MAX_MIP_LEVELS = 16
-    let MAX_VERTEX_BUFFERS = 16
     let DESIRED_NUM_FRAMES = 3
+    let MAX_VERTEX_BUFFERS = 16
     locals;
