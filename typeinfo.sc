@@ -103,6 +103,10 @@ struct HeaderTypeInfo
                     let prefix = (? ('writable? T) "mutable@" "@")
                     let innerT = (this-function self ('element@ T 0))
                     Symbol f"${prefix}<${innerT}>"
+                elseif (T < array)
+                    let eT = ('element@ T 0)
+                    let count = ('element-count T)
+                    Symbol f"_gensc_array<${eT}_${count}>"
                 else
                     'Unknown
 
