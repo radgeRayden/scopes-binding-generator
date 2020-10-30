@@ -141,252 +141,252 @@ let WGPUSamplerId = (sc_typename_type "WGPUSamplerId" integer)
 let WGPUFeatures = (sc_typename_type "WGPUFeatures" integer)
 let WGPUBufferSize = (sc_typename_type "WGPUBufferSize" integer)
 sc_typename_type_set_storage WGPUAddressMode i32 typename-flag-plain
-sc_type_set_symbol WGPUAddressMode 'ClampToEdge 0
-sc_type_set_symbol WGPUAddressMode 'Repeat 1
-sc_type_set_symbol WGPUAddressMode 'MirrorRepeat 2
+sc_type_set_symbol WGPUAddressMode 'ClampToEdge `(bitcast 0 WGPUAddressMode)
+sc_type_set_symbol WGPUAddressMode 'Repeat `(bitcast 1 WGPUAddressMode)
+sc_type_set_symbol WGPUAddressMode 'MirrorRepeat `(bitcast 2 WGPUAddressMode)
 
 sc_typename_type_set_storage WGPUBackend i32 typename-flag-plain
-sc_type_set_symbol WGPUBackend 'Empty 0
-sc_type_set_symbol WGPUBackend 'Vulkan 1
-sc_type_set_symbol WGPUBackend 'Metal 2
-sc_type_set_symbol WGPUBackend 'Dx12 3
-sc_type_set_symbol WGPUBackend 'Dx11 4
-sc_type_set_symbol WGPUBackend 'Gl 5
-sc_type_set_symbol WGPUBackend 'BrowserWebGpu 6
+sc_type_set_symbol WGPUBackend 'Empty `(bitcast 0 WGPUBackend)
+sc_type_set_symbol WGPUBackend 'Vulkan `(bitcast 1 WGPUBackend)
+sc_type_set_symbol WGPUBackend 'Metal `(bitcast 2 WGPUBackend)
+sc_type_set_symbol WGPUBackend 'Dx12 `(bitcast 3 WGPUBackend)
+sc_type_set_symbol WGPUBackend 'Dx11 `(bitcast 4 WGPUBackend)
+sc_type_set_symbol WGPUBackend 'Gl `(bitcast 5 WGPUBackend)
+sc_type_set_symbol WGPUBackend 'BrowserWebGpu `(bitcast 6 WGPUBackend)
 
 sc_typename_type_set_storage WGPUBindingType i32 typename-flag-plain
-sc_type_set_symbol WGPUBindingType 'UniformBuffer 0
-sc_type_set_symbol WGPUBindingType 'StorageBuffer 1
-sc_type_set_symbol WGPUBindingType 'ReadonlyStorageBuffer 2
-sc_type_set_symbol WGPUBindingType 'Sampler 3
-sc_type_set_symbol WGPUBindingType 'ComparisonSampler 4
-sc_type_set_symbol WGPUBindingType 'SampledTexture 5
-sc_type_set_symbol WGPUBindingType 'ReadonlyStorageTexture 6
-sc_type_set_symbol WGPUBindingType 'WriteonlyStorageTexture 7
+sc_type_set_symbol WGPUBindingType 'UniformBuffer `(bitcast 0 WGPUBindingType)
+sc_type_set_symbol WGPUBindingType 'StorageBuffer `(bitcast 1 WGPUBindingType)
+sc_type_set_symbol WGPUBindingType 'ReadonlyStorageBuffer `(bitcast 2 WGPUBindingType)
+sc_type_set_symbol WGPUBindingType 'Sampler `(bitcast 3 WGPUBindingType)
+sc_type_set_symbol WGPUBindingType 'ComparisonSampler `(bitcast 4 WGPUBindingType)
+sc_type_set_symbol WGPUBindingType 'SampledTexture `(bitcast 5 WGPUBindingType)
+sc_type_set_symbol WGPUBindingType 'ReadonlyStorageTexture `(bitcast 6 WGPUBindingType)
+sc_type_set_symbol WGPUBindingType 'WriteonlyStorageTexture `(bitcast 7 WGPUBindingType)
 
 sc_typename_type_set_storage WGPUBlendFactor i32 typename-flag-plain
-sc_type_set_symbol WGPUBlendFactor 'Zero 0
-sc_type_set_symbol WGPUBlendFactor 'One 1
-sc_type_set_symbol WGPUBlendFactor 'SrcColor 2
-sc_type_set_symbol WGPUBlendFactor 'OneMinusSrcColor 3
-sc_type_set_symbol WGPUBlendFactor 'SrcAlpha 4
-sc_type_set_symbol WGPUBlendFactor 'OneMinusSrcAlpha 5
-sc_type_set_symbol WGPUBlendFactor 'DstColor 6
-sc_type_set_symbol WGPUBlendFactor 'OneMinusDstColor 7
-sc_type_set_symbol WGPUBlendFactor 'DstAlpha 8
-sc_type_set_symbol WGPUBlendFactor 'OneMinusDstAlpha 9
-sc_type_set_symbol WGPUBlendFactor 'SrcAlphaSaturated 10
-sc_type_set_symbol WGPUBlendFactor 'BlendColor 11
-sc_type_set_symbol WGPUBlendFactor 'OneMinusBlendColor 12
+sc_type_set_symbol WGPUBlendFactor 'Zero `(bitcast 0 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'One `(bitcast 1 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'SrcColor `(bitcast 2 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'OneMinusSrcColor `(bitcast 3 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'SrcAlpha `(bitcast 4 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'OneMinusSrcAlpha `(bitcast 5 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'DstColor `(bitcast 6 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'OneMinusDstColor `(bitcast 7 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'DstAlpha `(bitcast 8 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'OneMinusDstAlpha `(bitcast 9 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'SrcAlphaSaturated `(bitcast 10 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'BlendColor `(bitcast 11 WGPUBlendFactor)
+sc_type_set_symbol WGPUBlendFactor 'OneMinusBlendColor `(bitcast 12 WGPUBlendFactor)
 
 sc_typename_type_set_storage WGPUBlendOperation i32 typename-flag-plain
-sc_type_set_symbol WGPUBlendOperation 'Add 0
-sc_type_set_symbol WGPUBlendOperation 'Subtract 1
-sc_type_set_symbol WGPUBlendOperation 'ReverseSubtract 2
-sc_type_set_symbol WGPUBlendOperation 'Min 3
-sc_type_set_symbol WGPUBlendOperation 'Max 4
+sc_type_set_symbol WGPUBlendOperation 'Add `(bitcast 0 WGPUBlendOperation)
+sc_type_set_symbol WGPUBlendOperation 'Subtract `(bitcast 1 WGPUBlendOperation)
+sc_type_set_symbol WGPUBlendOperation 'ReverseSubtract `(bitcast 2 WGPUBlendOperation)
+sc_type_set_symbol WGPUBlendOperation 'Min `(bitcast 3 WGPUBlendOperation)
+sc_type_set_symbol WGPUBlendOperation 'Max `(bitcast 4 WGPUBlendOperation)
 
 sc_typename_type_set_storage WGPUBufferMapAsyncStatus i32 typename-flag-plain
-sc_type_set_symbol WGPUBufferMapAsyncStatus 'Success 0
-sc_type_set_symbol WGPUBufferMapAsyncStatus 'Error 1
-sc_type_set_symbol WGPUBufferMapAsyncStatus 'Unknown 2
-sc_type_set_symbol WGPUBufferMapAsyncStatus 'ContextLost 3
+sc_type_set_symbol WGPUBufferMapAsyncStatus 'Success `(bitcast 0 WGPUBufferMapAsyncStatus)
+sc_type_set_symbol WGPUBufferMapAsyncStatus 'Error `(bitcast 1 WGPUBufferMapAsyncStatus)
+sc_type_set_symbol WGPUBufferMapAsyncStatus 'Unknown `(bitcast 2 WGPUBufferMapAsyncStatus)
+sc_type_set_symbol WGPUBufferMapAsyncStatus 'ContextLost `(bitcast 3 WGPUBufferMapAsyncStatus)
 
 sc_typename_type_set_storage WGPUCDeviceType i32 typename-flag-plain
-sc_type_set_symbol WGPUCDeviceType 'Other 0
-sc_type_set_symbol WGPUCDeviceType 'IntegratedGpu 1
-sc_type_set_symbol WGPUCDeviceType 'DiscreteGpu 2
-sc_type_set_symbol WGPUCDeviceType 'VirtualGpu 3
-sc_type_set_symbol WGPUCDeviceType 'Cpu 4
+sc_type_set_symbol WGPUCDeviceType 'Other `(bitcast 0 WGPUCDeviceType)
+sc_type_set_symbol WGPUCDeviceType 'IntegratedGpu `(bitcast 1 WGPUCDeviceType)
+sc_type_set_symbol WGPUCDeviceType 'DiscreteGpu `(bitcast 2 WGPUCDeviceType)
+sc_type_set_symbol WGPUCDeviceType 'VirtualGpu `(bitcast 3 WGPUCDeviceType)
+sc_type_set_symbol WGPUCDeviceType 'Cpu `(bitcast 4 WGPUCDeviceType)
 
 sc_typename_type_set_storage WGPUCompareFunction i32 typename-flag-plain
-sc_type_set_symbol WGPUCompareFunction 'Undefined 0
-sc_type_set_symbol WGPUCompareFunction 'Never 1
-sc_type_set_symbol WGPUCompareFunction 'Less 2
-sc_type_set_symbol WGPUCompareFunction 'Equal 3
-sc_type_set_symbol WGPUCompareFunction 'LessEqual 4
-sc_type_set_symbol WGPUCompareFunction 'Greater 5
-sc_type_set_symbol WGPUCompareFunction 'NotEqual 6
-sc_type_set_symbol WGPUCompareFunction 'GreaterEqual 7
-sc_type_set_symbol WGPUCompareFunction 'Always 8
+sc_type_set_symbol WGPUCompareFunction 'Undefined `(bitcast 0 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'Never `(bitcast 1 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'Less `(bitcast 2 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'Equal `(bitcast 3 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'LessEqual `(bitcast 4 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'Greater `(bitcast 5 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'NotEqual `(bitcast 6 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'GreaterEqual `(bitcast 7 WGPUCompareFunction)
+sc_type_set_symbol WGPUCompareFunction 'Always `(bitcast 8 WGPUCompareFunction)
 
 sc_typename_type_set_storage WGPUCullMode i32 typename-flag-plain
-sc_type_set_symbol WGPUCullMode 'None 0
-sc_type_set_symbol WGPUCullMode 'Front 1
-sc_type_set_symbol WGPUCullMode 'Back 2
+sc_type_set_symbol WGPUCullMode 'None `(bitcast 0 WGPUCullMode)
+sc_type_set_symbol WGPUCullMode 'Front `(bitcast 1 WGPUCullMode)
+sc_type_set_symbol WGPUCullMode 'Back `(bitcast 2 WGPUCullMode)
 
 sc_typename_type_set_storage WGPUFilterMode i32 typename-flag-plain
-sc_type_set_symbol WGPUFilterMode 'Nearest 0
-sc_type_set_symbol WGPUFilterMode 'Linear 1
+sc_type_set_symbol WGPUFilterMode 'Nearest `(bitcast 0 WGPUFilterMode)
+sc_type_set_symbol WGPUFilterMode 'Linear `(bitcast 1 WGPUFilterMode)
 
 sc_typename_type_set_storage WGPUFrontFace i32 typename-flag-plain
-sc_type_set_symbol WGPUFrontFace 'Ccw 0
-sc_type_set_symbol WGPUFrontFace 'Cw 1
+sc_type_set_symbol WGPUFrontFace 'Ccw `(bitcast 0 WGPUFrontFace)
+sc_type_set_symbol WGPUFrontFace 'Cw `(bitcast 1 WGPUFrontFace)
 
 sc_typename_type_set_storage WGPUIndexFormat i32 typename-flag-plain
-sc_type_set_symbol WGPUIndexFormat 'Uint16 0
-sc_type_set_symbol WGPUIndexFormat 'Uint32 1
+sc_type_set_symbol WGPUIndexFormat 'Uint16 `(bitcast 0 WGPUIndexFormat)
+sc_type_set_symbol WGPUIndexFormat 'Uint32 `(bitcast 1 WGPUIndexFormat)
 
 sc_typename_type_set_storage WGPUInputStepMode i32 typename-flag-plain
-sc_type_set_symbol WGPUInputStepMode 'Vertex 0
-sc_type_set_symbol WGPUInputStepMode 'Instance 1
+sc_type_set_symbol WGPUInputStepMode 'Vertex `(bitcast 0 WGPUInputStepMode)
+sc_type_set_symbol WGPUInputStepMode 'Instance `(bitcast 1 WGPUInputStepMode)
 
 sc_typename_type_set_storage WGPULoadOp i32 typename-flag-plain
-sc_type_set_symbol WGPULoadOp 'Clear 0
-sc_type_set_symbol WGPULoadOp 'Load 1
+sc_type_set_symbol WGPULoadOp 'Clear `(bitcast 0 WGPULoadOp)
+sc_type_set_symbol WGPULoadOp 'Load `(bitcast 1 WGPULoadOp)
 
 sc_typename_type_set_storage WGPULogLevel i32 typename-flag-plain
-sc_type_set_symbol WGPULogLevel 'Off 0
-sc_type_set_symbol WGPULogLevel 'Error 1
-sc_type_set_symbol WGPULogLevel 'Warn 2
-sc_type_set_symbol WGPULogLevel 'Info 3
-sc_type_set_symbol WGPULogLevel 'Debug 4
-sc_type_set_symbol WGPULogLevel 'Trace 5
+sc_type_set_symbol WGPULogLevel 'Off `(bitcast 0 WGPULogLevel)
+sc_type_set_symbol WGPULogLevel 'Error `(bitcast 1 WGPULogLevel)
+sc_type_set_symbol WGPULogLevel 'Warn `(bitcast 2 WGPULogLevel)
+sc_type_set_symbol WGPULogLevel 'Info `(bitcast 3 WGPULogLevel)
+sc_type_set_symbol WGPULogLevel 'Debug `(bitcast 4 WGPULogLevel)
+sc_type_set_symbol WGPULogLevel 'Trace `(bitcast 5 WGPULogLevel)
 
 sc_typename_type_set_storage WGPUPowerPreference i32 typename-flag-plain
-sc_type_set_symbol WGPUPowerPreference 'Default 0
-sc_type_set_symbol WGPUPowerPreference 'LowPower 1
-sc_type_set_symbol WGPUPowerPreference 'HighPerformance 2
+sc_type_set_symbol WGPUPowerPreference 'Default `(bitcast 0 WGPUPowerPreference)
+sc_type_set_symbol WGPUPowerPreference 'LowPower `(bitcast 1 WGPUPowerPreference)
+sc_type_set_symbol WGPUPowerPreference 'HighPerformance `(bitcast 2 WGPUPowerPreference)
 
 sc_typename_type_set_storage WGPUPresentMode i32 typename-flag-plain
-sc_type_set_symbol WGPUPresentMode 'Immediate 0
-sc_type_set_symbol WGPUPresentMode 'Mailbox 1
-sc_type_set_symbol WGPUPresentMode 'Fifo 2
+sc_type_set_symbol WGPUPresentMode 'Immediate `(bitcast 0 WGPUPresentMode)
+sc_type_set_symbol WGPUPresentMode 'Mailbox `(bitcast 1 WGPUPresentMode)
+sc_type_set_symbol WGPUPresentMode 'Fifo `(bitcast 2 WGPUPresentMode)
 
 sc_typename_type_set_storage WGPUPrimitiveTopology i32 typename-flag-plain
-sc_type_set_symbol WGPUPrimitiveTopology 'PointList 0
-sc_type_set_symbol WGPUPrimitiveTopology 'LineList 1
-sc_type_set_symbol WGPUPrimitiveTopology 'LineStrip 2
-sc_type_set_symbol WGPUPrimitiveTopology 'TriangleList 3
-sc_type_set_symbol WGPUPrimitiveTopology 'TriangleStrip 4
+sc_type_set_symbol WGPUPrimitiveTopology 'PointList `(bitcast 0 WGPUPrimitiveTopology)
+sc_type_set_symbol WGPUPrimitiveTopology 'LineList `(bitcast 1 WGPUPrimitiveTopology)
+sc_type_set_symbol WGPUPrimitiveTopology 'LineStrip `(bitcast 2 WGPUPrimitiveTopology)
+sc_type_set_symbol WGPUPrimitiveTopology 'TriangleList `(bitcast 3 WGPUPrimitiveTopology)
+sc_type_set_symbol WGPUPrimitiveTopology 'TriangleStrip `(bitcast 4 WGPUPrimitiveTopology)
 
 sc_typename_type_set_storage WGPUSType i32 typename-flag-plain
-sc_type_set_symbol WGPUSType 'Invalid 0
-sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromMetalLayer 1
-sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromWindowsHWND 2
-sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromXlib 3
-sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromHTMLCanvasId 4
-sc_type_set_symbol WGPUSType 'ShaderModuleSPIRVDescriptor 5
-sc_type_set_symbol WGPUSType 'ShaderModuleWGSLDescriptor 6
-sc_type_set_symbol WGPUSType 'AnisotropicFiltering 268435456
-sc_type_set_symbol WGPUSType 'Force32 2147483647
+sc_type_set_symbol WGPUSType 'Invalid `(bitcast 0 WGPUSType)
+sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromMetalLayer `(bitcast 1 WGPUSType)
+sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromWindowsHWND `(bitcast 2 WGPUSType)
+sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromXlib `(bitcast 3 WGPUSType)
+sc_type_set_symbol WGPUSType 'SurfaceDescriptorFromHTMLCanvasId `(bitcast 4 WGPUSType)
+sc_type_set_symbol WGPUSType 'ShaderModuleSPIRVDescriptor `(bitcast 5 WGPUSType)
+sc_type_set_symbol WGPUSType 'ShaderModuleWGSLDescriptor `(bitcast 6 WGPUSType)
+sc_type_set_symbol WGPUSType 'AnisotropicFiltering `(bitcast 268435456 WGPUSType)
+sc_type_set_symbol WGPUSType 'Force32 `(bitcast 2147483647 WGPUSType)
 
 sc_typename_type_set_storage WGPUStencilOperation i32 typename-flag-plain
-sc_type_set_symbol WGPUStencilOperation 'Keep 0
-sc_type_set_symbol WGPUStencilOperation 'Zero 1
-sc_type_set_symbol WGPUStencilOperation 'Replace 2
-sc_type_set_symbol WGPUStencilOperation 'Invert 3
-sc_type_set_symbol WGPUStencilOperation 'IncrementClamp 4
-sc_type_set_symbol WGPUStencilOperation 'DecrementClamp 5
-sc_type_set_symbol WGPUStencilOperation 'IncrementWrap 6
-sc_type_set_symbol WGPUStencilOperation 'DecrementWrap 7
+sc_type_set_symbol WGPUStencilOperation 'Keep `(bitcast 0 WGPUStencilOperation)
+sc_type_set_symbol WGPUStencilOperation 'Zero `(bitcast 1 WGPUStencilOperation)
+sc_type_set_symbol WGPUStencilOperation 'Replace `(bitcast 2 WGPUStencilOperation)
+sc_type_set_symbol WGPUStencilOperation 'Invert `(bitcast 3 WGPUStencilOperation)
+sc_type_set_symbol WGPUStencilOperation 'IncrementClamp `(bitcast 4 WGPUStencilOperation)
+sc_type_set_symbol WGPUStencilOperation 'DecrementClamp `(bitcast 5 WGPUStencilOperation)
+sc_type_set_symbol WGPUStencilOperation 'IncrementWrap `(bitcast 6 WGPUStencilOperation)
+sc_type_set_symbol WGPUStencilOperation 'DecrementWrap `(bitcast 7 WGPUStencilOperation)
 
 sc_typename_type_set_storage WGPUStoreOp i32 typename-flag-plain
-sc_type_set_symbol WGPUStoreOp 'Clear 0
-sc_type_set_symbol WGPUStoreOp 'Store 1
+sc_type_set_symbol WGPUStoreOp 'Clear `(bitcast 0 WGPUStoreOp)
+sc_type_set_symbol WGPUStoreOp 'Store `(bitcast 1 WGPUStoreOp)
 
 sc_typename_type_set_storage WGPUSwapChainStatus i32 typename-flag-plain
-sc_type_set_symbol WGPUSwapChainStatus 'Good 0
-sc_type_set_symbol WGPUSwapChainStatus 'Suboptimal 1
-sc_type_set_symbol WGPUSwapChainStatus 'Timeout 2
-sc_type_set_symbol WGPUSwapChainStatus 'Outdated 3
-sc_type_set_symbol WGPUSwapChainStatus 'Lost 4
-sc_type_set_symbol WGPUSwapChainStatus 'OutOfMemory 5
+sc_type_set_symbol WGPUSwapChainStatus 'Good `(bitcast 0 WGPUSwapChainStatus)
+sc_type_set_symbol WGPUSwapChainStatus 'Suboptimal `(bitcast 1 WGPUSwapChainStatus)
+sc_type_set_symbol WGPUSwapChainStatus 'Timeout `(bitcast 2 WGPUSwapChainStatus)
+sc_type_set_symbol WGPUSwapChainStatus 'Outdated `(bitcast 3 WGPUSwapChainStatus)
+sc_type_set_symbol WGPUSwapChainStatus 'Lost `(bitcast 4 WGPUSwapChainStatus)
+sc_type_set_symbol WGPUSwapChainStatus 'OutOfMemory `(bitcast 5 WGPUSwapChainStatus)
 
 sc_typename_type_set_storage WGPUTextureAspect i32 typename-flag-plain
-sc_type_set_symbol WGPUTextureAspect 'All 0
-sc_type_set_symbol WGPUTextureAspect 'StencilOnly 1
-sc_type_set_symbol WGPUTextureAspect 'DepthOnly 2
+sc_type_set_symbol WGPUTextureAspect 'All `(bitcast 0 WGPUTextureAspect)
+sc_type_set_symbol WGPUTextureAspect 'StencilOnly `(bitcast 1 WGPUTextureAspect)
+sc_type_set_symbol WGPUTextureAspect 'DepthOnly `(bitcast 2 WGPUTextureAspect)
 
 sc_typename_type_set_storage WGPUTextureComponentType i32 typename-flag-plain
-sc_type_set_symbol WGPUTextureComponentType 'Float 0
-sc_type_set_symbol WGPUTextureComponentType 'Sint 1
-sc_type_set_symbol WGPUTextureComponentType 'Uint 2
+sc_type_set_symbol WGPUTextureComponentType 'Float `(bitcast 0 WGPUTextureComponentType)
+sc_type_set_symbol WGPUTextureComponentType 'Sint `(bitcast 1 WGPUTextureComponentType)
+sc_type_set_symbol WGPUTextureComponentType 'Uint `(bitcast 2 WGPUTextureComponentType)
 
 sc_typename_type_set_storage WGPUTextureDimension i32 typename-flag-plain
-sc_type_set_symbol WGPUTextureDimension 'D1 0
-sc_type_set_symbol WGPUTextureDimension 'D2 1
-sc_type_set_symbol WGPUTextureDimension 'D3 2
+sc_type_set_symbol WGPUTextureDimension 'D1 `(bitcast 0 WGPUTextureDimension)
+sc_type_set_symbol WGPUTextureDimension 'D2 `(bitcast 1 WGPUTextureDimension)
+sc_type_set_symbol WGPUTextureDimension 'D3 `(bitcast 2 WGPUTextureDimension)
 
 sc_typename_type_set_storage WGPUTextureFormat i32 typename-flag-plain
-sc_type_set_symbol WGPUTextureFormat 'R8Unorm 0
-sc_type_set_symbol WGPUTextureFormat 'R8Snorm 1
-sc_type_set_symbol WGPUTextureFormat 'R8Uint 2
-sc_type_set_symbol WGPUTextureFormat 'R8Sint 3
-sc_type_set_symbol WGPUTextureFormat 'R16Uint 4
-sc_type_set_symbol WGPUTextureFormat 'R16Sint 5
-sc_type_set_symbol WGPUTextureFormat 'R16Float 6
-sc_type_set_symbol WGPUTextureFormat 'Rg8Unorm 7
-sc_type_set_symbol WGPUTextureFormat 'Rg8Snorm 8
-sc_type_set_symbol WGPUTextureFormat 'Rg8Uint 9
-sc_type_set_symbol WGPUTextureFormat 'Rg8Sint 10
-sc_type_set_symbol WGPUTextureFormat 'R32Uint 11
-sc_type_set_symbol WGPUTextureFormat 'R32Sint 12
-sc_type_set_symbol WGPUTextureFormat 'R32Float 13
-sc_type_set_symbol WGPUTextureFormat 'Rg16Uint 14
-sc_type_set_symbol WGPUTextureFormat 'Rg16Sint 15
-sc_type_set_symbol WGPUTextureFormat 'Rg16Float 16
-sc_type_set_symbol WGPUTextureFormat 'Rgba8Unorm 17
-sc_type_set_symbol WGPUTextureFormat 'Rgba8UnormSrgb 18
-sc_type_set_symbol WGPUTextureFormat 'Rgba8Snorm 19
-sc_type_set_symbol WGPUTextureFormat 'Rgba8Uint 20
-sc_type_set_symbol WGPUTextureFormat 'Rgba8Sint 21
-sc_type_set_symbol WGPUTextureFormat 'Bgra8Unorm 22
-sc_type_set_symbol WGPUTextureFormat 'Bgra8UnormSrgb 23
-sc_type_set_symbol WGPUTextureFormat 'Rgb10a2Unorm 24
-sc_type_set_symbol WGPUTextureFormat 'Rg11b10Float 25
-sc_type_set_symbol WGPUTextureFormat 'Rg32Uint 26
-sc_type_set_symbol WGPUTextureFormat 'Rg32Sint 27
-sc_type_set_symbol WGPUTextureFormat 'Rg32Float 28
-sc_type_set_symbol WGPUTextureFormat 'Rgba16Uint 29
-sc_type_set_symbol WGPUTextureFormat 'Rgba16Sint 30
-sc_type_set_symbol WGPUTextureFormat 'Rgba16Float 31
-sc_type_set_symbol WGPUTextureFormat 'Rgba32Uint 32
-sc_type_set_symbol WGPUTextureFormat 'Rgba32Sint 33
-sc_type_set_symbol WGPUTextureFormat 'Rgba32Float 34
-sc_type_set_symbol WGPUTextureFormat 'Depth32Float 35
-sc_type_set_symbol WGPUTextureFormat 'Depth24Plus 36
-sc_type_set_symbol WGPUTextureFormat 'Depth24PlusStencil8 37
+sc_type_set_symbol WGPUTextureFormat 'R8Unorm `(bitcast 0 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R8Snorm `(bitcast 1 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R8Uint `(bitcast 2 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R8Sint `(bitcast 3 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R16Uint `(bitcast 4 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R16Sint `(bitcast 5 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R16Float `(bitcast 6 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg8Unorm `(bitcast 7 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg8Snorm `(bitcast 8 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg8Uint `(bitcast 9 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg8Sint `(bitcast 10 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R32Uint `(bitcast 11 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R32Sint `(bitcast 12 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'R32Float `(bitcast 13 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg16Uint `(bitcast 14 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg16Sint `(bitcast 15 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg16Float `(bitcast 16 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba8Unorm `(bitcast 17 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba8UnormSrgb `(bitcast 18 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba8Snorm `(bitcast 19 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba8Uint `(bitcast 20 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba8Sint `(bitcast 21 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Bgra8Unorm `(bitcast 22 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Bgra8UnormSrgb `(bitcast 23 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgb10a2Unorm `(bitcast 24 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg11b10Float `(bitcast 25 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg32Uint `(bitcast 26 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg32Sint `(bitcast 27 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rg32Float `(bitcast 28 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba16Uint `(bitcast 29 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba16Sint `(bitcast 30 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba16Float `(bitcast 31 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba32Uint `(bitcast 32 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba32Sint `(bitcast 33 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Rgba32Float `(bitcast 34 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Depth32Float `(bitcast 35 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Depth24Plus `(bitcast 36 WGPUTextureFormat)
+sc_type_set_symbol WGPUTextureFormat 'Depth24PlusStencil8 `(bitcast 37 WGPUTextureFormat)
 
 sc_typename_type_set_storage WGPUTextureViewDimension i32 typename-flag-plain
-sc_type_set_symbol WGPUTextureViewDimension 'D1 0
-sc_type_set_symbol WGPUTextureViewDimension 'D2 1
-sc_type_set_symbol WGPUTextureViewDimension 'D2Array 2
-sc_type_set_symbol WGPUTextureViewDimension 'Cube 3
-sc_type_set_symbol WGPUTextureViewDimension 'CubeArray 4
-sc_type_set_symbol WGPUTextureViewDimension 'D3 5
+sc_type_set_symbol WGPUTextureViewDimension 'D1 `(bitcast 0 WGPUTextureViewDimension)
+sc_type_set_symbol WGPUTextureViewDimension 'D2 `(bitcast 1 WGPUTextureViewDimension)
+sc_type_set_symbol WGPUTextureViewDimension 'D2Array `(bitcast 2 WGPUTextureViewDimension)
+sc_type_set_symbol WGPUTextureViewDimension 'Cube `(bitcast 3 WGPUTextureViewDimension)
+sc_type_set_symbol WGPUTextureViewDimension 'CubeArray `(bitcast 4 WGPUTextureViewDimension)
+sc_type_set_symbol WGPUTextureViewDimension 'D3 `(bitcast 5 WGPUTextureViewDimension)
 
 sc_typename_type_set_storage WGPUVertexFormat i32 typename-flag-plain
-sc_type_set_symbol WGPUVertexFormat 'Uchar2 0
-sc_type_set_symbol WGPUVertexFormat 'Uchar4 1
-sc_type_set_symbol WGPUVertexFormat 'Char2 2
-sc_type_set_symbol WGPUVertexFormat 'Char4 3
-sc_type_set_symbol WGPUVertexFormat 'Uchar2Norm 4
-sc_type_set_symbol WGPUVertexFormat 'Uchar4Norm 5
-sc_type_set_symbol WGPUVertexFormat 'Char2Norm 6
-sc_type_set_symbol WGPUVertexFormat 'Char4Norm 7
-sc_type_set_symbol WGPUVertexFormat 'Ushort2 8
-sc_type_set_symbol WGPUVertexFormat 'Ushort4 9
-sc_type_set_symbol WGPUVertexFormat 'Short2 10
-sc_type_set_symbol WGPUVertexFormat 'Short4 11
-sc_type_set_symbol WGPUVertexFormat 'Ushort2Norm 12
-sc_type_set_symbol WGPUVertexFormat 'Ushort4Norm 13
-sc_type_set_symbol WGPUVertexFormat 'Short2Norm 14
-sc_type_set_symbol WGPUVertexFormat 'Short4Norm 15
-sc_type_set_symbol WGPUVertexFormat 'Half2 16
-sc_type_set_symbol WGPUVertexFormat 'Half4 17
-sc_type_set_symbol WGPUVertexFormat 'Float 18
-sc_type_set_symbol WGPUVertexFormat 'Float2 19
-sc_type_set_symbol WGPUVertexFormat 'Float3 20
-sc_type_set_symbol WGPUVertexFormat 'Float4 21
-sc_type_set_symbol WGPUVertexFormat 'Uint 22
-sc_type_set_symbol WGPUVertexFormat 'Uint2 23
-sc_type_set_symbol WGPUVertexFormat 'Uint3 24
-sc_type_set_symbol WGPUVertexFormat 'Uint4 25
-sc_type_set_symbol WGPUVertexFormat 'Int 26
-sc_type_set_symbol WGPUVertexFormat 'Int2 27
-sc_type_set_symbol WGPUVertexFormat 'Int3 28
-sc_type_set_symbol WGPUVertexFormat 'Int4 29
+sc_type_set_symbol WGPUVertexFormat 'Uchar2 `(bitcast 0 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Uchar4 `(bitcast 1 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Char2 `(bitcast 2 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Char4 `(bitcast 3 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Uchar2Norm `(bitcast 4 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Uchar4Norm `(bitcast 5 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Char2Norm `(bitcast 6 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Char4Norm `(bitcast 7 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Ushort2 `(bitcast 8 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Ushort4 `(bitcast 9 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Short2 `(bitcast 10 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Short4 `(bitcast 11 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Ushort2Norm `(bitcast 12 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Ushort4Norm `(bitcast 13 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Short2Norm `(bitcast 14 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Short4Norm `(bitcast 15 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Half2 `(bitcast 16 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Half4 `(bitcast 17 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Float `(bitcast 18 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Float2 `(bitcast 19 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Float3 `(bitcast 20 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Float4 `(bitcast 21 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Uint `(bitcast 22 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Uint2 `(bitcast 23 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Uint3 `(bitcast 24 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Uint4 `(bitcast 25 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Int `(bitcast 26 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Int2 `(bitcast 27 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Int3 `(bitcast 28 WGPUVertexFormat)
+sc_type_set_symbol WGPUVertexFormat 'Int4 `(bitcast 29 WGPUVertexFormat)
 
 let @<WGPUChainedStruct> = (sc_pointer_type WGPUChainedStruct 2:u64 unnamed)
 store (sc_key_type 'next @<WGPUChainedStruct>) (getelementptr type-buffer 0)
@@ -1347,6 +1347,6 @@ do
     let COPY_BYTES_PER_ROW_ALIGNMENT = 256
     let MAX_COLOR_TARGETS = 4
     let MAX_MIP_LEVELS = 16
-    let DESIRED_NUM_FRAMES = 3
     let MAX_VERTEX_BUFFERS = 16
+    let DESIRED_NUM_FRAMES = 3
     locals;

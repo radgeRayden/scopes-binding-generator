@@ -105,7 +105,8 @@ inline emit-type-definition (storage bindings struct-transformer enum-transforme
             let constant =
                 string (cjson.GetStringValue (cjson.GetObjectItem f "constant"))
             let field =
-                interpolate "sc_type_set_symbol ${name} '${field-name} ${constant}\n"
+                interpolate
+                    "sc_type_set_symbol ${name} '${field-name} `(bitcast ${constant} ${name})\n"
             .. result field
     case "union"
         error "NYI"
