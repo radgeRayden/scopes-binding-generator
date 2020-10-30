@@ -1,3 +1,8 @@
+typedef SCGenPointer < pointer
+    inline __rimply (A B)
+        inline (self other)
+            imply self (storageof B)
+
 let type-buffer = (alloca-array type 128)
 let WGPUShaderSource = (sc_typename_type "WGPUShaderSource" CStruct)
 let WGPURasterizationStateDescriptor = (sc_typename_type "WGPURasterizationStateDescriptor" CStruct)
@@ -8,7 +13,7 @@ let WGPUBindGroupLayoutEntry = (sc_typename_type "WGPUBindGroupLayoutEntry" CStr
 let WGPURenderBundleEncoderDescriptor = (sc_typename_type "WGPURenderBundleEncoderDescriptor" CStruct)
 let WGPUCommandEncoderDescriptor = (sc_typename_type "WGPUCommandEncoderDescriptor" CStruct)
 let WGPURenderPipelineId = (sc_typename_type "WGPURenderPipelineId" integer)
-let WGPURequestAdapterCallback = (sc_typename_type "WGPURequestAdapterCallback" pointer)
+let WGPURequestAdapterCallback = (sc_typename_type "WGPURequestAdapterCallback" SCGenPointer)
 let WGPUBackendBit = (sc_typename_type "WGPUBackendBit" integer)
 let WGPUId_SwapChain_Dummy = (sc_typename_type "WGPUId_SwapChain_Dummy" integer)
 let WGPUNonZeroU64 = (sc_typename_type "WGPUNonZeroU64" integer)
@@ -17,7 +22,7 @@ let WGPUChainedStruct = (sc_typename_type "WGPUChainedStruct" CStruct)
 let WGPUId_BindGroup_Dummy = (sc_typename_type "WGPUId_BindGroup_Dummy" integer)
 let WGPUTextureDimension = (sc_typename_type "WGPUTextureDimension" CEnum)
 let WGPUSwapChainDescriptor = (sc_typename_type "WGPUSwapChainDescriptor" CStruct)
-let WGPULogCallback = (sc_typename_type "WGPULogCallback" pointer)
+let WGPULogCallback = (sc_typename_type "WGPULogCallback" SCGenPointer)
 let WGPUId_Sampler_Dummy = (sc_typename_type "WGPUId_Sampler_Dummy" integer)
 let WGPUFilterMode = (sc_typename_type "WGPUFilterMode" CEnum)
 let WGPUSwapChainId = (sc_typename_type "WGPUSwapChainId" integer)
@@ -27,9 +32,9 @@ let WGPUId_Device_Dummy = (sc_typename_type "WGPUId_Device_Dummy" integer)
 let WGPUSwapChainOutput = (sc_typename_type "WGPUSwapChainOutput" CStruct)
 let WGPUCommandBufferDescriptor = (sc_typename_type "WGPUCommandBufferDescriptor" CStruct)
 let WGPUId_Texture_Dummy = (sc_typename_type "WGPUId_Texture_Dummy" integer)
-let WGPULabel = (sc_typename_type "WGPULabel" pointer)
+let WGPULabel = (sc_typename_type "WGPULabel" SCGenPointer)
 let WGPUCullMode = (sc_typename_type "WGPUCullMode" CEnum)
-let WGPURenderBundleEncoderId = (sc_typename_type "WGPURenderBundleEncoderId" pointer)
+let WGPURenderBundleEncoderId = (sc_typename_type "WGPURenderBundleEncoderId" SCGenPointer)
 let WGPUStencilStateFaceDescriptor = (sc_typename_type "WGPUStencilStateFaceDescriptor" CStruct)
 let WGPUCompareFunction = (sc_typename_type "WGPUCompareFunction" CEnum)
 let WGPUQueueId = (sc_typename_type "WGPUQueueId" integer)
@@ -64,10 +69,10 @@ let WGPUPresentMode = (sc_typename_type "WGPUPresentMode" CEnum)
 let WGPUAdapterId = (sc_typename_type "WGPUAdapterId" integer)
 let WGPUBindGroupEntry = (sc_typename_type "WGPUBindGroupEntry" CStruct)
 let WGPUId_RenderBundle = (sc_typename_type "WGPUId_RenderBundle" integer)
-let WGPURawString = (sc_typename_type "WGPURawString" pointer)
+let WGPURawString = (sc_typename_type "WGPURawString" SCGenPointer)
 let WGPUTextureId = (sc_typename_type "WGPUTextureId" integer)
 let WGPUSwapChainStatus = (sc_typename_type "WGPUSwapChainStatus" CEnum)
-let WGPUBufferMapCallback = (sc_typename_type "WGPUBufferMapCallback" pointer)
+let WGPUBufferMapCallback = (sc_typename_type "WGPUBufferMapCallback" SCGenPointer)
 let WGPUBlendOperation = (sc_typename_type "WGPUBlendOperation" CEnum)
 let WGPUTextureDescriptor = (sc_typename_type "WGPUTextureDescriptor" CStruct)
 let WGPUShaderLocation = (sc_typename_type "WGPUShaderLocation" integer)
@@ -1347,6 +1352,6 @@ do
     let COPY_BYTES_PER_ROW_ALIGNMENT = 256
     let MAX_COLOR_TARGETS = 4
     let MAX_MIP_LEVELS = 16
-    let DESIRED_NUM_FRAMES = 3
     let MAX_VERTEX_BUFFERS = 16
+    let DESIRED_NUM_FRAMES = 3
     locals;

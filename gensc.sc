@@ -134,6 +134,16 @@ inline emit-typename (tname tname-transformer)
         string tname.string
         string (cjson.GetStringValue tname)
 
+    # HACK: substitute pointer super types by our own __rimply equipped one.
+    # I dislike this because it was supposed to cover only function pointers,
+    # but we'll have to settle for our pointers. Maybe that's good, as C typedefs
+    # aren't supposed to override storage behaviour anyway.
+    let super =
+        if (super == "pointer")
+            "SCGenPointer"
+        else
+            super
+
     io-write! f""""let ${name} = (sc_typename_type "${tname-transformer name}" ${super})
 
 fn emit-extern-fn (fdef)
@@ -199,7 +209,16 @@ inline from-JSON (jsondata transformers...)
     let enum-field-transformer = (get-transformer transformers 'enum-field-transformer)
     let struct-field-transformer = (get-transformer transformers 'struct-field-transformer)
 
+    # definition for our own pointer supertype. See comment in emit-typename.
+    vvv print
+    """"typedef SCGenPointer < pointer
+            inline __rimply (A B)
+                inline (self other)
+                    imply self (storageof B)
+
     # FIXME: should first go through the exports to verify the maximum tuple/function size
+    # This buffer is used to store types for tuple and function creation, instead of
+    # alloca'ing a new one every time like core does (for good reason).
     print "let type-buffer = (alloca-array type 128)"
 
     let typenames = (cjson.GetObjectItem jsondata "typenames")
