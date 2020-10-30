@@ -205,16 +205,15 @@ inline from-JSON (jsondata transformers...)
         emit-extern-fn f
 
     print "do"
-    print "    let"
     for tname in (json-array->generator typenames)
         let tname = (string tname.string)
-        print f"        ${symbol-transformer tname}"
+        print f"    let ${symbol-transformer tname} = ${tname}"
     for ext in (json-array->generator externs)
         let name =
             string
                 cjson.GetStringValue
                     cjson.GetObjectItem ext "name"
-        print f"        ${symbol-transformer name}"
+        print f"    let ${symbol-transformer name} = ${name}"
 
     for const in (json-array->generator defines)
         let name =

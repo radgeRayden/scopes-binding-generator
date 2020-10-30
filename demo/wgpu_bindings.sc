@@ -1099,251 +1099,250 @@ let wgpu_texture_destroy = (sc_global_new 'wgpu_texture_destroy (sc_function_typ
 store u64 (getelementptr type-buffer 0)
 let wgpu_texture_view_destroy = (sc_global_new 'wgpu_texture_view_destroy (sc_function_type void 1 type-buffer) 6 unnamed)
 do
-    let
-        ShaderSource
-        RasterizationStateDescriptor
-        BindGroupId
-        DeviceId
-        CAdapterInfo
-        BindGroupLayoutEntry
-        RenderBundleEncoderDescriptor
-        CommandEncoderDescriptor
-        RenderPipelineId
-        RequestAdapterCallback
-        BackendBit
-        Id_SwapChain_Dummy
-        NonZeroU64
-        RenderPassDepthStencilAttachmentDescriptor
-        ChainedStruct
-        Id_BindGroup_Dummy
-        TextureDimension
-        SwapChainDescriptor
-        LogCallback
-        Id_Sampler_Dummy
-        FilterMode
-        SwapChainId
-        CDeviceType
-        TextureViewDimension
-        Id_Device_Dummy
-        SwapChainOutput
-        CommandBufferDescriptor
-        Id_Texture_Dummy
-        Label
-        CullMode
-        RenderBundleEncoderId
-        StencilStateFaceDescriptor
-        CompareFunction
-        QueueId
-        Option_AdapterId
-        TextureCopyView
-        VertexBufferLayoutDescriptor
-        Option_SurfaceId
-        BindingType
-        BindGroupDescriptor
-        Option_SamplerId
-        DynamicOffset
-        SamplerDescriptor
-        VertexFormat
-        InputStepMode
-        Option_NonZeroU64
-        TextureAspect
-        RenderPassColorAttachmentDescriptor
-        Option_NonZeroU32
-        TextureViewDescriptor
-        SurfaceId
-        TextureViewId
-        LoadOp
-        RenderPassDescriptor
-        CommandBufferId
-        RenderPass
-        BindGroupLayoutId
-        ComputePipelineDescriptor
-        BindGroupLayoutDescriptor
-        PassChannel_f32
-        RenderPassColorAttachmentDescriptorBase_TextureViewId
-        PresentMode
-        AdapterId
-        BindGroupEntry
-        Id_RenderBundle
-        RawString
-        TextureId
-        SwapChainStatus
-        BufferMapCallback
-        BlendOperation
-        TextureDescriptor
-        ShaderLocation
-        SType
-        ComputePipelineId
-        CommandEncoderId
-        TextureFormat
-        Id_Buffer_Dummy
-        CDeviceType
-        PassChannel_u32
-        Backend
-        Option_BufferSize
-        StencilOperation
-        TextureUsage
-        ShaderStage
-        BufferMapAsyncStatus
-        IndexFormat
-        BufferDescriptor
-        BufferId
-        BufferAddress
-        VertexAttributeDescriptor
-        Id_Surface
-        PrimitiveTopology
-        ComputePassDescriptor
-        BlendFactor
-        Id_ComputePipeline_Dummy
-        LogLevel
-        BlendDescriptor
-        RenderPipelineDescriptor
-        AddressMode
-        AnisotropicSamplerDescriptorExt
-        StoreOp
-        PipelineLayoutDescriptor
-        RequestAdapterOptions
-        TextureComponentType
-        BufferUsage
-        Id_RenderPipeline_Dummy
-        CLimits
-        Color
-        PassChannel_Color
-        Id_BindGroupLayout_Dummy
-        ColorWrite
-        Id_Adapter_Dummy
-        Option_BufferId
-        SType
-        Option_TextureViewId
-        ComputePass
-        VertexStateDescriptor
-        PipelineLayoutId
-        BufferCopyView
-        Id_CommandBuffer_Dummy
-        Id_TextureView_Dummy
-        TextureDataLayout
-        RenderBundleEncoder
-        Id_PipelineLayout_Dummy
-        Id_ShaderModule_Dummy
-        Backend
-        ProgrammableStageDescriptor
-        BindingType
-        PowerPreference
-        RenderBundleDescriptor_Label
-        RenderBundleId
-        Extent3d
-        ShaderModuleId
-        Origin3d
-        ColorStateDescriptor
-        FrontFace
-        RenderPassDepthStencilAttachmentDescriptorBase_TextureViewId
-        DepthStencilStateDescriptor
-        SamplerId
-        Features
-        BufferSize
-        adapter_destroy
-        adapter_features
-        adapter_get_info
-        adapter_limits
-        adapter_request_device
-        bind_group_destroy
-        bind_group_layout_destroy
-        buffer_destroy
-        buffer_get_mapped_range
-        buffer_map_read_async
-        buffer_map_write_async
-        buffer_unmap
-        command_buffer_destroy
-        command_encoder_begin_compute_pass
-        command_encoder_begin_render_pass
-        command_encoder_copy_buffer_to_buffer
-        command_encoder_copy_buffer_to_texture
-        command_encoder_copy_texture_to_buffer
-        command_encoder_copy_texture_to_texture
-        command_encoder_destroy
-        command_encoder_finish
-        compute_pass_destroy
-        compute_pass_dispatch
-        compute_pass_dispatch_indirect
-        compute_pass_end_pass
-        compute_pass_insert_debug_marker
-        compute_pass_pop_debug_group
-        compute_pass_push_debug_group
-        compute_pass_set_bind_group
-        compute_pass_set_pipeline
-        compute_pipeline_destroy
-        create_surface_from_android
-        create_surface_from_metal_layer
-        create_surface_from_wayland
-        create_surface_from_windows_hwnd
-        create_surface_from_xlib
-        device_create_bind_group
-        device_create_bind_group_layout
-        device_create_buffer
-        device_create_command_encoder
-        device_create_compute_pipeline
-        device_create_pipeline_layout
-        device_create_render_bundle_encoder
-        device_create_render_pipeline
-        device_create_sampler
-        device_create_shader_module
-        device_create_swap_chain
-        device_create_texture
-        device_destroy
-        device_features
-        device_get_default_queue
-        device_limits
-        device_poll
-        get_version
-        pipeline_layout_destroy
-        queue_submit
-        queue_write_buffer
-        queue_write_texture
-        render_bundle_destroy
-        render_bundle_draw
-        render_bundle_draw_indexed
-        render_bundle_draw_indirect
-        render_bundle_encoder_finish
-        render_bundle_insert_debug_marker
-        render_bundle_pop_debug_group
-        render_bundle_push_debug_group
-        render_bundle_set_bind_group
-        render_bundle_set_index_buffer
-        render_bundle_set_pipeline
-        render_bundle_set_vertex_buffer
-        render_pass_bundle_indexed_indirect
-        render_pass_destroy
-        render_pass_draw
-        render_pass_draw_indexed
-        render_pass_draw_indexed_indirect
-        render_pass_draw_indirect
-        render_pass_end_pass
-        render_pass_insert_debug_marker
-        render_pass_multi_draw_indexed_indirect
-        render_pass_multi_draw_indexed_indirect_count
-        render_pass_multi_draw_indirect
-        render_pass_multi_draw_indirect_count
-        render_pass_pop_debug_group
-        render_pass_push_debug_group
-        render_pass_set_bind_group
-        render_pass_set_blend_color
-        render_pass_set_index_buffer
-        render_pass_set_pipeline
-        render_pass_set_scissor_rect
-        render_pass_set_stencil_reference
-        render_pass_set_vertex_buffer
-        render_pass_set_viewport
-        render_pipeline_destroy
-        request_adapter_async
-        sampler_destroy
-        set_log_callback
-        set_log_level
-        shader_module_destroy
-        swap_chain_get_next_texture
-        swap_chain_present
-        texture_create_view
-        texture_destroy
-        texture_view_destroy
+    let ShaderSource = WGPUShaderSource
+    let RasterizationStateDescriptor = WGPURasterizationStateDescriptor
+    let BindGroupId = WGPUBindGroupId
+    let DeviceId = WGPUDeviceId
+    let CAdapterInfo = WGPUCAdapterInfo
+    let BindGroupLayoutEntry = WGPUBindGroupLayoutEntry
+    let RenderBundleEncoderDescriptor = WGPURenderBundleEncoderDescriptor
+    let CommandEncoderDescriptor = WGPUCommandEncoderDescriptor
+    let RenderPipelineId = WGPURenderPipelineId
+    let RequestAdapterCallback = WGPURequestAdapterCallback
+    let BackendBit = WGPUBackendBit
+    let Id_SwapChain_Dummy = WGPUId_SwapChain_Dummy
+    let NonZeroU64 = WGPUNonZeroU64
+    let RenderPassDepthStencilAttachmentDescriptor = WGPURenderPassDepthStencilAttachmentDescriptor
+    let ChainedStruct = WGPUChainedStruct
+    let Id_BindGroup_Dummy = WGPUId_BindGroup_Dummy
+    let TextureDimension = WGPUTextureDimension
+    let SwapChainDescriptor = WGPUSwapChainDescriptor
+    let LogCallback = WGPULogCallback
+    let Id_Sampler_Dummy = WGPUId_Sampler_Dummy
+    let FilterMode = WGPUFilterMode
+    let SwapChainId = WGPUSwapChainId
+    let CDeviceType = WGPUCDeviceType
+    let TextureViewDimension = WGPUTextureViewDimension
+    let Id_Device_Dummy = WGPUId_Device_Dummy
+    let SwapChainOutput = WGPUSwapChainOutput
+    let CommandBufferDescriptor = WGPUCommandBufferDescriptor
+    let Id_Texture_Dummy = WGPUId_Texture_Dummy
+    let Label = WGPULabel
+    let CullMode = WGPUCullMode
+    let RenderBundleEncoderId = WGPURenderBundleEncoderId
+    let StencilStateFaceDescriptor = WGPUStencilStateFaceDescriptor
+    let CompareFunction = WGPUCompareFunction
+    let QueueId = WGPUQueueId
+    let Option_AdapterId = WGPUOption_AdapterId
+    let TextureCopyView = WGPUTextureCopyView
+    let VertexBufferLayoutDescriptor = WGPUVertexBufferLayoutDescriptor
+    let Option_SurfaceId = WGPUOption_SurfaceId
+    let BindingType = WGPUBindingType
+    let BindGroupDescriptor = WGPUBindGroupDescriptor
+    let Option_SamplerId = WGPUOption_SamplerId
+    let DynamicOffset = WGPUDynamicOffset
+    let SamplerDescriptor = WGPUSamplerDescriptor
+    let VertexFormat = WGPUVertexFormat
+    let InputStepMode = WGPUInputStepMode
+    let Option_NonZeroU64 = WGPUOption_NonZeroU64
+    let TextureAspect = WGPUTextureAspect
+    let RenderPassColorAttachmentDescriptor = WGPURenderPassColorAttachmentDescriptor
+    let Option_NonZeroU32 = WGPUOption_NonZeroU32
+    let TextureViewDescriptor = WGPUTextureViewDescriptor
+    let SurfaceId = WGPUSurfaceId
+    let TextureViewId = WGPUTextureViewId
+    let LoadOp = WGPULoadOp
+    let RenderPassDescriptor = WGPURenderPassDescriptor
+    let CommandBufferId = WGPUCommandBufferId
+    let RenderPass = WGPURenderPass
+    let BindGroupLayoutId = WGPUBindGroupLayoutId
+    let ComputePipelineDescriptor = WGPUComputePipelineDescriptor
+    let BindGroupLayoutDescriptor = WGPUBindGroupLayoutDescriptor
+    let PassChannel_f32 = WGPUPassChannel_f32
+    let RenderPassColorAttachmentDescriptorBase_TextureViewId = WGPURenderPassColorAttachmentDescriptorBase_TextureViewId
+    let PresentMode = WGPUPresentMode
+    let AdapterId = WGPUAdapterId
+    let BindGroupEntry = WGPUBindGroupEntry
+    let Id_RenderBundle = WGPUId_RenderBundle
+    let RawString = WGPURawString
+    let TextureId = WGPUTextureId
+    let SwapChainStatus = WGPUSwapChainStatus
+    let BufferMapCallback = WGPUBufferMapCallback
+    let BlendOperation = WGPUBlendOperation
+    let TextureDescriptor = WGPUTextureDescriptor
+    let ShaderLocation = WGPUShaderLocation
+    let SType = WGPUSType
+    let ComputePipelineId = WGPUComputePipelineId
+    let CommandEncoderId = WGPUCommandEncoderId
+    let TextureFormat = WGPUTextureFormat
+    let Id_Buffer_Dummy = WGPUId_Buffer_Dummy
+    let CDeviceType = WGPUCDeviceType
+    let PassChannel_u32 = WGPUPassChannel_u32
+    let Backend = WGPUBackend
+    let Option_BufferSize = WGPUOption_BufferSize
+    let StencilOperation = WGPUStencilOperation
+    let TextureUsage = WGPUTextureUsage
+    let ShaderStage = WGPUShaderStage
+    let BufferMapAsyncStatus = WGPUBufferMapAsyncStatus
+    let IndexFormat = WGPUIndexFormat
+    let BufferDescriptor = WGPUBufferDescriptor
+    let BufferId = WGPUBufferId
+    let BufferAddress = WGPUBufferAddress
+    let VertexAttributeDescriptor = WGPUVertexAttributeDescriptor
+    let Id_Surface = WGPUId_Surface
+    let PrimitiveTopology = WGPUPrimitiveTopology
+    let ComputePassDescriptor = WGPUComputePassDescriptor
+    let BlendFactor = WGPUBlendFactor
+    let Id_ComputePipeline_Dummy = WGPUId_ComputePipeline_Dummy
+    let LogLevel = WGPULogLevel
+    let BlendDescriptor = WGPUBlendDescriptor
+    let RenderPipelineDescriptor = WGPURenderPipelineDescriptor
+    let AddressMode = WGPUAddressMode
+    let AnisotropicSamplerDescriptorExt = WGPUAnisotropicSamplerDescriptorExt
+    let StoreOp = WGPUStoreOp
+    let PipelineLayoutDescriptor = WGPUPipelineLayoutDescriptor
+    let RequestAdapterOptions = WGPURequestAdapterOptions
+    let TextureComponentType = WGPUTextureComponentType
+    let BufferUsage = WGPUBufferUsage
+    let Id_RenderPipeline_Dummy = WGPUId_RenderPipeline_Dummy
+    let CLimits = WGPUCLimits
+    let Color = WGPUColor
+    let PassChannel_Color = WGPUPassChannel_Color
+    let Id_BindGroupLayout_Dummy = WGPUId_BindGroupLayout_Dummy
+    let ColorWrite = WGPUColorWrite
+    let Id_Adapter_Dummy = WGPUId_Adapter_Dummy
+    let Option_BufferId = WGPUOption_BufferId
+    let SType = WGPUSType
+    let Option_TextureViewId = WGPUOption_TextureViewId
+    let ComputePass = WGPUComputePass
+    let VertexStateDescriptor = WGPUVertexStateDescriptor
+    let PipelineLayoutId = WGPUPipelineLayoutId
+    let BufferCopyView = WGPUBufferCopyView
+    let Id_CommandBuffer_Dummy = WGPUId_CommandBuffer_Dummy
+    let Id_TextureView_Dummy = WGPUId_TextureView_Dummy
+    let TextureDataLayout = WGPUTextureDataLayout
+    let RenderBundleEncoder = WGPURenderBundleEncoder
+    let Id_PipelineLayout_Dummy = WGPUId_PipelineLayout_Dummy
+    let Id_ShaderModule_Dummy = WGPUId_ShaderModule_Dummy
+    let Backend = WGPUBackend
+    let ProgrammableStageDescriptor = WGPUProgrammableStageDescriptor
+    let BindingType = WGPUBindingType
+    let PowerPreference = WGPUPowerPreference
+    let RenderBundleDescriptor_Label = WGPURenderBundleDescriptor_Label
+    let RenderBundleId = WGPURenderBundleId
+    let Extent3d = WGPUExtent3d
+    let ShaderModuleId = WGPUShaderModuleId
+    let Origin3d = WGPUOrigin3d
+    let ColorStateDescriptor = WGPUColorStateDescriptor
+    let FrontFace = WGPUFrontFace
+    let RenderPassDepthStencilAttachmentDescriptorBase_TextureViewId = WGPURenderPassDepthStencilAttachmentDescriptorBase_TextureViewId
+    let DepthStencilStateDescriptor = WGPUDepthStencilStateDescriptor
+    let SamplerId = WGPUSamplerId
+    let Features = WGPUFeatures
+    let BufferSize = WGPUBufferSize
+    let adapter_destroy = wgpu_adapter_destroy
+    let adapter_features = wgpu_adapter_features
+    let adapter_get_info = wgpu_adapter_get_info
+    let adapter_limits = wgpu_adapter_limits
+    let adapter_request_device = wgpu_adapter_request_device
+    let bind_group_destroy = wgpu_bind_group_destroy
+    let bind_group_layout_destroy = wgpu_bind_group_layout_destroy
+    let buffer_destroy = wgpu_buffer_destroy
+    let buffer_get_mapped_range = wgpu_buffer_get_mapped_range
+    let buffer_map_read_async = wgpu_buffer_map_read_async
+    let buffer_map_write_async = wgpu_buffer_map_write_async
+    let buffer_unmap = wgpu_buffer_unmap
+    let command_buffer_destroy = wgpu_command_buffer_destroy
+    let command_encoder_begin_compute_pass = wgpu_command_encoder_begin_compute_pass
+    let command_encoder_begin_render_pass = wgpu_command_encoder_begin_render_pass
+    let command_encoder_copy_buffer_to_buffer = wgpu_command_encoder_copy_buffer_to_buffer
+    let command_encoder_copy_buffer_to_texture = wgpu_command_encoder_copy_buffer_to_texture
+    let command_encoder_copy_texture_to_buffer = wgpu_command_encoder_copy_texture_to_buffer
+    let command_encoder_copy_texture_to_texture = wgpu_command_encoder_copy_texture_to_texture
+    let command_encoder_destroy = wgpu_command_encoder_destroy
+    let command_encoder_finish = wgpu_command_encoder_finish
+    let compute_pass_destroy = wgpu_compute_pass_destroy
+    let compute_pass_dispatch = wgpu_compute_pass_dispatch
+    let compute_pass_dispatch_indirect = wgpu_compute_pass_dispatch_indirect
+    let compute_pass_end_pass = wgpu_compute_pass_end_pass
+    let compute_pass_insert_debug_marker = wgpu_compute_pass_insert_debug_marker
+    let compute_pass_pop_debug_group = wgpu_compute_pass_pop_debug_group
+    let compute_pass_push_debug_group = wgpu_compute_pass_push_debug_group
+    let compute_pass_set_bind_group = wgpu_compute_pass_set_bind_group
+    let compute_pass_set_pipeline = wgpu_compute_pass_set_pipeline
+    let compute_pipeline_destroy = wgpu_compute_pipeline_destroy
+    let create_surface_from_android = wgpu_create_surface_from_android
+    let create_surface_from_metal_layer = wgpu_create_surface_from_metal_layer
+    let create_surface_from_wayland = wgpu_create_surface_from_wayland
+    let create_surface_from_windows_hwnd = wgpu_create_surface_from_windows_hwnd
+    let create_surface_from_xlib = wgpu_create_surface_from_xlib
+    let device_create_bind_group = wgpu_device_create_bind_group
+    let device_create_bind_group_layout = wgpu_device_create_bind_group_layout
+    let device_create_buffer = wgpu_device_create_buffer
+    let device_create_command_encoder = wgpu_device_create_command_encoder
+    let device_create_compute_pipeline = wgpu_device_create_compute_pipeline
+    let device_create_pipeline_layout = wgpu_device_create_pipeline_layout
+    let device_create_render_bundle_encoder = wgpu_device_create_render_bundle_encoder
+    let device_create_render_pipeline = wgpu_device_create_render_pipeline
+    let device_create_sampler = wgpu_device_create_sampler
+    let device_create_shader_module = wgpu_device_create_shader_module
+    let device_create_swap_chain = wgpu_device_create_swap_chain
+    let device_create_texture = wgpu_device_create_texture
+    let device_destroy = wgpu_device_destroy
+    let device_features = wgpu_device_features
+    let device_get_default_queue = wgpu_device_get_default_queue
+    let device_limits = wgpu_device_limits
+    let device_poll = wgpu_device_poll
+    let get_version = wgpu_get_version
+    let pipeline_layout_destroy = wgpu_pipeline_layout_destroy
+    let queue_submit = wgpu_queue_submit
+    let queue_write_buffer = wgpu_queue_write_buffer
+    let queue_write_texture = wgpu_queue_write_texture
+    let render_bundle_destroy = wgpu_render_bundle_destroy
+    let render_bundle_draw = wgpu_render_bundle_draw
+    let render_bundle_draw_indexed = wgpu_render_bundle_draw_indexed
+    let render_bundle_draw_indirect = wgpu_render_bundle_draw_indirect
+    let render_bundle_encoder_finish = wgpu_render_bundle_encoder_finish
+    let render_bundle_insert_debug_marker = wgpu_render_bundle_insert_debug_marker
+    let render_bundle_pop_debug_group = wgpu_render_bundle_pop_debug_group
+    let render_bundle_push_debug_group = wgpu_render_bundle_push_debug_group
+    let render_bundle_set_bind_group = wgpu_render_bundle_set_bind_group
+    let render_bundle_set_index_buffer = wgpu_render_bundle_set_index_buffer
+    let render_bundle_set_pipeline = wgpu_render_bundle_set_pipeline
+    let render_bundle_set_vertex_buffer = wgpu_render_bundle_set_vertex_buffer
+    let render_pass_bundle_indexed_indirect = wgpu_render_pass_bundle_indexed_indirect
+    let render_pass_destroy = wgpu_render_pass_destroy
+    let render_pass_draw = wgpu_render_pass_draw
+    let render_pass_draw_indexed = wgpu_render_pass_draw_indexed
+    let render_pass_draw_indexed_indirect = wgpu_render_pass_draw_indexed_indirect
+    let render_pass_draw_indirect = wgpu_render_pass_draw_indirect
+    let render_pass_end_pass = wgpu_render_pass_end_pass
+    let render_pass_insert_debug_marker = wgpu_render_pass_insert_debug_marker
+    let render_pass_multi_draw_indexed_indirect = wgpu_render_pass_multi_draw_indexed_indirect
+    let render_pass_multi_draw_indexed_indirect_count = wgpu_render_pass_multi_draw_indexed_indirect_count
+    let render_pass_multi_draw_indirect = wgpu_render_pass_multi_draw_indirect
+    let render_pass_multi_draw_indirect_count = wgpu_render_pass_multi_draw_indirect_count
+    let render_pass_pop_debug_group = wgpu_render_pass_pop_debug_group
+    let render_pass_push_debug_group = wgpu_render_pass_push_debug_group
+    let render_pass_set_bind_group = wgpu_render_pass_set_bind_group
+    let render_pass_set_blend_color = wgpu_render_pass_set_blend_color
+    let render_pass_set_index_buffer = wgpu_render_pass_set_index_buffer
+    let render_pass_set_pipeline = wgpu_render_pass_set_pipeline
+    let render_pass_set_scissor_rect = wgpu_render_pass_set_scissor_rect
+    let render_pass_set_stencil_reference = wgpu_render_pass_set_stencil_reference
+    let render_pass_set_vertex_buffer = wgpu_render_pass_set_vertex_buffer
+    let render_pass_set_viewport = wgpu_render_pass_set_viewport
+    let render_pipeline_destroy = wgpu_render_pipeline_destroy
+    let request_adapter_async = wgpu_request_adapter_async
+    let sampler_destroy = wgpu_sampler_destroy
+    let set_log_callback = wgpu_set_log_callback
+    let set_log_level = wgpu_set_log_level
+    let shader_module_destroy = wgpu_shader_module_destroy
+    let swap_chain_get_next_texture = wgpu_swap_chain_get_next_texture
+    let swap_chain_present = wgpu_swap_chain_present
+    let texture_create_view = wgpu_texture_create_view
+    let texture_destroy = wgpu_texture_destroy
+    let texture_view_destroy = wgpu_texture_view_destroy
     let MAX_ANISOTROPY = 16
     let COPY_BYTES_PER_ROW_ALIGNMENT = 256
     let MAX_COLOR_TARGETS = 4
