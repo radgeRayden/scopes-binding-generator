@@ -48,7 +48,7 @@ fn gen-pointer-type (T mutable?)
     let flag = (? (mutable? as bool) (bxor pointer-flag-non-writable -1:u64) pointer-flag-non-writable)
     f"(sc_pointer_type ${T} ${flag}:u64 unnamed)"
 
-fn emit-type-definition (storage bindings)
+inline emit-type-definition (storage bindings struct-transformer enum-transformer)
     let name = (string (cjson.GetStringValue (cjson.GetObjectItem storage "typename")))
     let kind = (string (cjson.GetStringValue (cjson.GetObjectItem storage "kind")))
     let typenames = (cjson.GetObjectItem bindings "typenames")
@@ -85,7 +85,8 @@ fn emit-type-definition (storage bindings)
         let fields* =
             fold (result = "") for i f in (enumerate (json-array->generator fields))
                 let field-name =
-                    string (cjson.GetStringValue (cjson.GetObjectItem f "name"))
+                    struct-transformer
+                        string (cjson.GetStringValue (cjson.GetObjectItem f "name"))
                 let fT =
                     string (cjson.GetStringValue (cjson.GetObjectItem f "type"))
                 .. result
@@ -99,7 +100,8 @@ fn emit-type-definition (storage bindings)
             interpolate "sc_typename_type_set_storage ${name} i32 typename-flag-plain\n"
         fold (result = head) for f in (json-array->generator fields)
             let field-name =
-                string (cjson.GetStringValue (cjson.GetObjectItem f "name"))
+                enum-transformer
+                    string (cjson.GetStringValue (cjson.GetObjectItem f "name"))
             let constant =
                 string (cjson.GetStringValue (cjson.GetObjectItem f "constant"))
             let field =
@@ -184,6 +186,8 @@ inline from-JSON (jsondata transformers...)
     let transformers = ((none? transformers) and (Scope) or transformers)
     let tname-transformer = (get-transformer transformers 'typename-transformer)
     let symbol-transformer = (get-transformer transformers 'symbol-transformer)
+    let enum-field-transformer = (get-transformer transformers 'enum-field-transformer)
+    let struct-field-transformer = (get-transformer transformers 'struct-field-transformer)
 
     # FIXME: should first go through the exports to verify the maximum tuple/function size
     print "let type-buffer = (alloca-array type 128)"
@@ -200,7 +204,7 @@ inline from-JSON (jsondata transformers...)
     for tname in (json-array->generator typenames)
         emit-typename tname tname-transformer
     for storage in (json-array->generator storages)
-        emit-type-definition storage jsondata
+        emit-type-definition storage jsondata struct-field-transformer enum-field-transformer
     for f in (json-array->generator externs)
         emit-extern-fn f
 

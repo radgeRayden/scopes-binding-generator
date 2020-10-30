@@ -45,6 +45,12 @@ do
             rslice sym end
         else
             sym
+    fn enum-field-transformer (fname)
+        let match? start end = ('match? "^WGPU.+?_" fname)
+        if match?
+            rslice fname end
+        else
+            fname
     locals;
 
 bindgen.from-include-scope wgpu-header transformers
