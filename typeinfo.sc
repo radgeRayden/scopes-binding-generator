@@ -41,6 +41,7 @@ enum StorageKind
     Tuple : (Array (tuple (field-name = Symbol) (T = Symbol)))
     Enum : (Array (tuple (field-name = Symbol) (constant = i32)))
     Union : (Array (tuple (variant = Symbol) (T = Symbol)))
+    Array : (T = Symbol) (size = usize)
     TypeReference : Symbol
     Opaque
     # to detect cycles, we append the type initially in a pending state.
@@ -197,6 +198,11 @@ struct HeaderTypeInfo
                     StorageKind.Enum (deref fields)
             case CUnion
                 error "not yet implemented"
+            case array
+                let eT = ('element@ T 0)
+                let size = ('element-count T)
+                TypeStorage sym
+                    StorageKind.Array (T = ('get-typename self eT)) (size = size)
             default
                 error (.. "unknown type kind: " (tostring T) " < " (tostring super))
             finish ::
