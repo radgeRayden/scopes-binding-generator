@@ -212,6 +212,9 @@ inline from-JSON (jsondata transformers...)
     # definition for our own pointer supertype. See comment in emit-typename.
     vvv print
     """"typedef SCGenPointer < pointer
+            inline __imply (A B)
+                inline (self)
+                    imply (storagecast self) B
             inline __rimply (A B)
                 inline (self other)
                     imply self (storageof B)

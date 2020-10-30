@@ -1,4 +1,7 @@
 typedef SCGenPointer < pointer
+    inline __imply (A B)
+        inline (self)
+            imply (storagecast self) B
     inline __rimply (A B)
         inline (self other)
             imply self (storageof B)
