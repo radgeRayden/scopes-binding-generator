@@ -35,15 +35,13 @@ fn emit-storage-definition (storage-array TS tinfo)
             cjson.AddStringToObject field "name" (tostring f.field-name)
             cjson.AddStringToObject field "constant" (tostring f.constant)
             cjson.AddItemToArray _fields field
-    case Union (fields)
-        error "not yet implemented"
     case TypeReference (ref)
         cjson.AddStringToObject stdef "kind" "alias"
         cjson.AddStringToObject stdef "type" (tostring ref)
     case Opaque ()
         cjson.AddStringToObject stdef "kind" "opaque"
     default
-        error "not yet implemented"
+        error (.. "serialization not yet implemented: " (tostring TS.storage))
 
     cjson.AddItemToArray storage-array stdef
 
