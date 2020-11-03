@@ -267,7 +267,7 @@ inline from-JSON (jsondata header-code transformers...)
         print f"    let ${symbol-transformer name} = ${gen-constant-initializer T args}"
     print "    locals;"
 
-inline from-include-scope (scope heaader-code transformers...)
+inline from-include-scope (scope header-code transformers...)
     """"Takes an include scope, structured in the same way as what is returned by
         sc_import_c, passes it through the JSON generator then consumes the output,
         emitting pure Scopes bindings to stdout. Additionally transformers can be passed in a
