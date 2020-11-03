@@ -197,7 +197,7 @@ fn gen-constant-initializer (T args)
     default
         error "NYI"
 
-inline from-JSON (jsondata transformers...)
+inline from-JSON (jsondata header-code transformers...)
     """"Takes previously generated JSON bindings data, emitting pure Scopes bindings
         to stdout. Additionally transformers can be passed in a scope.
         See module documentation for the transformers convention.
@@ -208,6 +208,9 @@ inline from-JSON (jsondata transformers...)
     let symbol-transformer = (get-transformer transformers 'symbol-transformer)
     let enum-field-transformer = (get-transformer transformers 'enum-field-transformer)
     let struct-field-transformer = (get-transformer transformers 'struct-field-transformer)
+
+    # user defined header, that can be used to modify the semantics of the definitions.
+    print header-code
 
     # definition for our own pointer supertype. See comment in emit-typename.
     vvv print
@@ -264,7 +267,7 @@ inline from-JSON (jsondata transformers...)
         print f"    let ${symbol-transformer name} = ${gen-constant-initializer T args}"
     print "    locals;"
 
-inline from-include-scope (scope transformers...)
+inline from-include-scope (scope heaader-code transformers...)
     """"Takes an include scope, structured in the same way as what is returned by
         sc_import_c, passes it through the JSON generator then consumes the output,
         emitting pure Scopes bindings to stdout. Additionally transformers can be passed in a
@@ -272,6 +275,7 @@ inline from-include-scope (scope transformers...)
     import .generator
     from-JSON
         generator.gen-bindings-JSON scope
+        header-code
         transformers...
 
 do
