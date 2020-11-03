@@ -53,4 +53,4 @@ do
             fname
     locals;
 
-bindgen.from-include-scope wgpu-header transformers
+bindgen.from-include-scope wgpu-header "" transformers

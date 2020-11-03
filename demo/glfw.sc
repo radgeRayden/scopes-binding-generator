@@ -42,4 +42,4 @@ do
             sym
     locals;
 
-bindgen.from-include-scope glfw-header transformers
+bindgen.from-include-scope glfw-header "" transformers
